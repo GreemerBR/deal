@@ -1,1 +1,1 @@
-// Teste
+void main() {}
