@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DefaultInputWithoutIcon extends StatelessWidget {
+  final String texto;
+
   const DefaultInputWithoutIcon({
     Key? key,
+    required this.texto,
   }) : super(key: key);
 
   @override
@@ -11,7 +14,7 @@ class DefaultInputWithoutIcon extends StatelessWidget {
       padding: const EdgeInsets.only(top: 200, left: 45, right: 45),
       child: TextFormField(
         decoration: InputDecoration(
-            filled: true, fillColor: Colors.grey.shade300, labelText: "Login"
+            filled: true, fillColor: Colors.grey.shade300, labelText: texto
             //borderRadius: BorderRadius.circular(25)),
             ),
       ),
@@ -20,8 +23,13 @@ class DefaultInputWithoutIcon extends StatelessWidget {
 }
 
 class DefaultInputWithIcon extends StatelessWidget {
+  final String texto;
+  final Icon icon;
+
   const DefaultInputWithIcon({
     Key? key,
+    required this.texto,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -32,11 +40,10 @@ class DefaultInputWithIcon extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.grey.shade300,
-          labelText: "Senha",
-          suffixIcon: Icon(Icons.remove_red_eye),
+          labelText: texto,
+          suffixIcon: icon,
         ),
       ),
     );
   }
 }
-
