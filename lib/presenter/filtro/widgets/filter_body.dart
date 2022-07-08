@@ -17,23 +17,25 @@ class FilterBody extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+              child: Column(
+                children: [
+                  FilterOptionContainer(title: "Categoria", option: "Categoria / Subcategoria",),
+                  FilterOptionContainer(title: "Localização", option: "Santa Catarina",),
+                  FilterOptionContainer(title: "Cidade / Zona", option: "Blumenau",),
+                  FilterOptionContainer(title: "Ordenar Por:", option: "Relevância",),
+                  FakeButtonContainer(),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                FilterOptionContainer(title: "Categoria", option: "Categoria / Subcategoria",),
-                FilterOptionContainer(title: "Localização", option: "Santa Catarina",),
-                FilterOptionContainer(title: "Cidade / Zona", option: "Blumenau",),
-                FilterOptionContainer(title: "Ordenar Por:", option: "Relevância",),
-                FakeButtonContainer(),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
