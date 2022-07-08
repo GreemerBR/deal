@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'presenter/mainMenu/main_menu.dart';
+import 'presenter/login/login.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      title: 'Deal',
-      debugShowCheckedModeBanner: false,
-      home: MainMenu(),
-    ),
-  );
+  runApp(MaterialApp(
+    title: 'Deal',
+    home: Login(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
