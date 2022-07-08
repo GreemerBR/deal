@@ -95,8 +95,43 @@ class BodyMainMenu extends StatelessWidget {
 
             ],
           ),
+<<<<<<< HEAD
         )
       ],
+=======
+          CardProductAd(
+            productName: 'Fritadeira Eletrica Nell',
+            productPrice: '55',
+            productLocation: 'Ponta Aguda - 08/07 às 20:00',
+            imageLink: 'assets/images/AirFryer.png',
+          ),
+          CardProductAd(
+            productName: 'Pipoqueira pop time Britania',
+            productPrice: '25',
+            productLocation: 'Ponta Aguda - 08/07 às 20:00',
+            imageLink: 'assets/images/pipoqueira.jpeg',
+          ),
+          CardProductAd(
+            productName: 'Sanduicheira Britania',
+            productPrice: '12',
+            productLocation: 'Ponta Aguda - 08/07 às 20:00',
+            imageLink: 'assets/images/sanduicheira.jpeg',
+          ),
+          CardProductAd(
+            productName: 'Boneco Benio 9',
+            productPrice: '45',
+            productLocation: 'Ponta Aguda - 08/07 às 20:00',
+            imageLink: 'assets/images/ben10.png'
+          ),
+          CardProductAd(
+            productName: 'Máquina Brastemp de Lavar',
+            productPrice: '87',
+            productLocation: 'Ponta Aguda - 08/07 às 20:00',
+            imageLink: 'assets/images/Brastemp.png',
+          ),
+        ],
+      ),
+>>>>>>> f9a77ceaf217d9fa0ad16c94731798fc4e2f3454
     );
   }
 }
