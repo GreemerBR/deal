@@ -1,12 +1,11 @@
-import 'package:app_2/presenter/filtro/filterPage.dart';
 import 'package:flutter/material.dart';
 
+import 'presenter/login/login.dart';
+
 void main() {
-  runApp(
-    const MaterialApp(
-      title: "Deal",
-      home: FilterPage(),
-      debugShowCheckedModeBanner: false,
-    ),
-  );
+  runApp(MaterialApp(
+    title: 'Deal',
+    home: Login(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
