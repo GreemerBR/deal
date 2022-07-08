@@ -1,3 +1,4 @@
+import 'package:app_2/presenter/login/login.dart';
 import 'package:flutter/material.dart';
 
 class CloseButtonProfile extends StatelessWidget {
@@ -13,6 +14,7 @@ class CloseButtonProfile extends StatelessWidget {
         right: 20,
       ),
       child: Container(
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(color: Colors.grey),
@@ -25,39 +27,41 @@ class CloseButtonProfile extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               Positioned.fill(
-                left: 100,
-                right: 100,
+                left: 120,
+                right: 120,
                 top: 30,
                 bottom: 30,
                 child: Container(
+                  // width: double.maxFinite,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(30),
                       bottom: Radius.circular(30),
                     ),
-                    color: Color.fromARGB(255, 63, 81, 181),
+                    // color: Color.fromARGB(255, 63, 81, 181),
                   ),
                 ),
               ),
               TextButton(
                 style: TextButton.styleFrom(
-                  padding: const EdgeInsets.only(
-                    left: 165,
-                    right: 100,
-                    top: 45,
-                    bottom: 50,
+                  padding: EdgeInsets.only(
+                    top: 25,
+                    bottom: 25,
+                    left: 50,
+                    right: 50,
                   ),
+                  backgroundColor: Color.fromARGB(255, 63, 81, 181),
                   primary: Colors.white,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (context){
-                  //       return MainMenu();
-                  //       },
-                  //       ),
-                  //       ),
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Login();
+                      },
+                    ),
+                  );
                 },
                 child: const Text(
                   'SAIR',
