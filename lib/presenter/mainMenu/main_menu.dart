@@ -1,3 +1,5 @@
+import 'package:app_2/presenter/favorites/favorites.dart';
+import 'package:app_2/presenter/filtro/filterPage.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/body_main_menu.dart';
@@ -30,13 +32,14 @@ class MainMenu extends StatelessWidget {
                 Text(
                   'O que você está buscando?',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Icon(
                   Icons.search,
+                  size: 20,
                 )
               ],
             ),
@@ -46,19 +49,37 @@ class MainMenu extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Icon(
-                Icons.favorite_border,
-                size: 30,
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Favorites();
+                      },
+                    ),
+                  );
+                },
+                icon: Icon(
+                  Icons.favorite_outline,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return FilterPage();
+                      },
+                    ),
+                  );
+                },
+                icon: Icon(
+                  Icons.filter_alt_outlined,
+                  size: 30,
+                ),
               ),
               SizedBox(
-                width: 10,
-              ),
-              Icon(
-                Icons.filter_alt_outlined,
-                size: 30,
-              ),
-              SizedBox(
-                width: 30,
+                width: 20,
               ),
             ],
           ),

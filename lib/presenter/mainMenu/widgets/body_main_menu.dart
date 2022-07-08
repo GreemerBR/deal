@@ -1,5 +1,8 @@
+import 'package:app_2/presenter/myProfile/my_profile.dart';
 import 'package:flutter/material.dart';
 
+import '../../chat/chat_box.dart';
+import '../../login/login.dart';
 import 'card_product_ad.dart';
 import 'main_menu_button.dart';
 
@@ -78,60 +81,27 @@ class BodyMainMenu extends StatelessWidget {
               MainMenuButton(
                 icon: Icons.arrow_back,
                 text: 'Sair',
+                destinyPage: Login(),
               ),
               MainMenuButton(
                 icon: Icons.chat_outlined,
                 text: 'Chat',
+                destinyPage: ChatBox(),
               ),
               MainMenuButton(
                 icon: Icons.person_outline,
                 text: 'Perfil',
+                destinyPage: MyProfile(),
               ),
               MainMenuButton(
                 icon: Icons.more_horiz,
                 text: 'Mais',
+                destinyPage: Login(),
               ),
-
-
             ],
           ),
-<<<<<<< HEAD
         )
       ],
-=======
-          CardProductAd(
-            productName: 'Fritadeira Eletrica Nell',
-            productPrice: '55',
-            productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/AirFryer.png',
-          ),
-          CardProductAd(
-            productName: 'Pipoqueira pop time Britania',
-            productPrice: '25',
-            productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/pipoqueira.jpeg',
-          ),
-          CardProductAd(
-            productName: 'Sanduicheira Britania',
-            productPrice: '12',
-            productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/sanduicheira.jpeg',
-          ),
-          CardProductAd(
-            productName: 'Boneco Benio 9',
-            productPrice: '45',
-            productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/ben10.png'
-          ),
-          CardProductAd(
-            productName: 'Máquina Brastemp de Lavar',
-            productPrice: '87',
-            productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/Brastemp.png',
-          ),
-        ],
-      ),
->>>>>>> f9a77ceaf217d9fa0ad16c94731798fc4e2f3454
     );
   }
 }
