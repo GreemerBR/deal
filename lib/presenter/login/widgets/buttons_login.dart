@@ -1,3 +1,4 @@
+import 'package:app_2/presenter/mainMenu/main_menu.dart';
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -7,20 +8,26 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 490),
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            primary: Color.fromARGB(255, 99, 66, 191),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'ACESSAR',
-              style: TextStyle(fontSize: 15),
+    return Padding(
+      padding: const EdgeInsets.only(top: 490),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return MainMenu();
+              },
             ),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromARGB(255, 99, 66, 191),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'ACESSAR',
+            style: TextStyle(fontSize: 15),
           ),
         ),
       ),
