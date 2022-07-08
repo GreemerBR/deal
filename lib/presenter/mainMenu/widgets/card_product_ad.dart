@@ -5,7 +5,8 @@ class CardProductAd extends StatelessWidget {
     Key? key,
     required this.productName,
     required this.productPrice,
-    required this.productLocation, required this.imageLink,
+    required this.productLocation,
+    required this.imageLink,
   }) : super(key: key);
 
   final String productName;
@@ -75,7 +76,10 @@ class CardProductAd extends StatelessWidget {
                   ),
                   Text(
                     productLocation,
-                    style: TextStyle(fontSize: 10, color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.grey,
+                    ),
                   )
                 ],
               ),
