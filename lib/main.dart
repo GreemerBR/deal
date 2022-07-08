@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'presenter/activeAnnounces/active_announces.dart';
+import 'presenter/login/login.dart';
 
 void main() {
-  runApp(
-      MaterialApp(
-      title: "Anúncios",
-      home: ActiveAnnounces(),
-      debugShowCheckedModeBanner: false,
-    ),
-  );
+  runApp(MaterialApp(
+    title: 'Deal',
+    home: Login(),
+    debugShowCheckedModeBanner: false,
+  ),
+ );
 }
