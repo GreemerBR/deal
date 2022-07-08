@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../login/login.dart';
 import 'widgets/close_button_profile.dart';
 import 'widgets/profile_list_item.dart';
 import 'widgets/profile_summary_informations.dart';
@@ -37,7 +38,7 @@ class MyProfile extends StatelessWidget {
             child: IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.edit_note_rounded,
+                Icons.edit_note_outlined,
                 size: 35,
               ),
             ),
@@ -59,18 +60,23 @@ class MyProfile extends StatelessWidget {
                   children: [
                     ProfileListItem(
                       title: 'Meus anúncios',
+                      destinyPage: Login(),
                     ),
                     ProfileListItem(
                       title: 'Buscar recentes',
+                      destinyPage: Login(),
                     ),
                     ProfileListItem(
                       title: 'Notificações',
+                      destinyPage: Login(),
                     ),
                     ProfileListItem(
                       title: 'Segurança e privacidade',
+                      destinyPage: Login(),
                     ),
                     ProfileListItem(
                       title: 'Sobre o DEAL',
+                      destinyPage: Login(),
                     )
                   ],
                 ),
