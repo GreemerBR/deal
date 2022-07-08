@@ -31,7 +31,7 @@ class BodyMainMenu extends StatelessWidget {
             productName: 'Fritadeira Eletrica Nell',
             productPrice: '55',
             productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/maquinadecostura.jpg',
+            imageLink: 'assets/images/AirFryer.png',
           ),
           CardProductAd(
             productName: 'Pipoqueira pop time Britania',
