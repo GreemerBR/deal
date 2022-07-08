@@ -8,30 +8,38 @@ class MainMenu extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
-        title: Container(
-          margin: EdgeInsets.all(15),
-          height: 45,
-          width: double.maxFinite,
-          decoration: BoxDecoration(
-            color: Color.fromARGB(
-              255,
-              192,
-              180,
-              225,
-            ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                'O que você está buscando?',
-                style: TextStyle(fontSize: 17),
+        leading: SizedBox(),
+        leadingWidth: 0,
+        title: Expanded(
+          child: Container(
+            margin: EdgeInsets.all(15),
+            height: 45,
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              color: Color.fromARGB(
+                255,
+                192,
+                180,
+                225,
               ),
-              Icon(
-                Icons.search,
-              )
-            ],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  'O que você está buscando?',
+                  style: TextStyle(
+                    fontSize: 17,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Icon(
+                  Icons.search,
+                )
+              ],
+            ),
           ),
         ),
         actions: [
