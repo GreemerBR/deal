@@ -1,32 +1,104 @@
 import 'package:flutter/material.dart';
 
 import 'card_product_ad.dart';
+import 'main_menu_button.dart';
 
 class BodyMainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          CardProductAd(
-            productName: 'Projetor BenQ - USB HDMI',
-            productPrice: '30',
-            productLocation: 'Centro - 25/02 às 19:25',
-            imageLink: 'assets/images/projetor.png',
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              CardProductAd(
+                productName: 'Projetor BenQ - USB HDMI',
+                productPrice: '30',
+                productLocation: 'Centro - 25/02 às 19:25',
+                imageLink: 'assets/images/projetor.png',
+              ),
+              CardProductAd(
+                productName: 'Máquina Singer Lux',
+                productPrice: '100',
+                productLocation: 'Ponta Aguda - 08/07 às 20:00',
+                imageLink: 'assets/images/maquinadecostura.jpg',
+              ),
+              CardProductAd(
+                productName: 'Filtro água Esmaltec 2000',
+                productPrice: '40',
+                productLocation: 'Baixo Alto - 04/06 às 21:00',
+                imageLink: 'assets/images/filtroagua.png',
+              ),
+              CardProductAd(
+                productName: 'Fritadeira Eletrica Nell',
+                productPrice: '55',
+                productLocation: 'Ponta Aguda - 08/07 às 20:00',
+                imageLink: 'assets/images/maquinadecostura.jpg',
+              ),
+              CardProductAd(
+                productName: 'Pipoqueira pop time Britania',
+                productPrice: '25',
+                productLocation: 'Ponta Aguda - 08/07 às 20:00',
+                imageLink: 'assets/images/pipoqueira.jpeg',
+              ),
+              CardProductAd(
+                productName: 'Sanduicheira Britania',
+                productPrice: '12',
+                productLocation: 'Ponta Aguda - 08/07 às 20:00',
+                imageLink: 'assets/images/sanduicheira.jpeg',
+              ),
+              CardProductAd(
+                  productName: 'Boneco Benio 9',
+                  productPrice: '45',
+                  productLocation: 'Ponta Aguda - 08/07 às 20:00',
+                  imageLink: 'assets/images/ben10.png'),
+              CardProductAd(
+                productName: 'Máquina Brastemp de Lavar',
+                productPrice: '87',
+                productLocation: 'Ponta Aguda - 08/07 às 20:00',
+                imageLink: 'assets/images/Brastemp.png',
+              ),
+            ],
           ),
-          CardProductAd(
-            productName: 'Máquina Singer Lux',
-            productPrice: '100',
-            productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/maquinadecostura.jpg',
+        ),
+        Container(
+          width: double.maxFinite,
+          height: 60,
+          color: Color.fromARGB(
+            255,
+            99,
+            66,
+            191,
           ),
-          CardProductAd(
-            productName: 'Filtro água Esmaltec 2000',
-            productPrice: '40',
-            productLocation: 'Baixo Alto - 04/06 às 21:00',
-            imageLink: 'assets/images/filtroagua.png',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              MainMenuButton(
+                icon: Icons.arrow_back,
+                text: 'Sair',
+              ),
+              MainMenuButton(
+                icon: Icons.chat_outlined,
+                text: 'Chat',
+              ),
+              MainMenuButton(
+                icon: Icons.person_outline,
+                text: 'Perfil',
+              ),
+              MainMenuButton(
+                icon: Icons.more_horiz,
+                text: 'Mais',
+              ),
+
+
+            ],
           ),
+<<<<<<< HEAD
+        )
+      ],
+=======
           CardProductAd(
             productName: 'Fritadeira Eletrica Nell',
             productPrice: '55',
@@ -59,6 +131,7 @@ class BodyMainMenu extends StatelessWidget {
           ),
         ],
       ),
+>>>>>>> f9a77ceaf217d9fa0ad16c94731798fc4e2f3454
     );
   }
 }

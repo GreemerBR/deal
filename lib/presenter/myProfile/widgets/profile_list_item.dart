@@ -1,11 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class ProfileListItem extends StatelessWidget {
   final String title;
+  final Widget destinyPage;
 
   const ProfileListItem({
     Key? key,
     required this.title,
+    required this.destinyPage,
   }) : super(key: key);
 
   @override
@@ -36,10 +39,21 @@ class ProfileListItem extends StatelessWidget {
                 ),
               ),
             ),
-            Icon(
-              Icons.chevron_right_sharp,
-              color: Colors.grey,
-              size: 38,
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return destinyPage;
+                    },
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.chevron_right_sharp,
+                color: Colors.grey,
+                size: 38,
+              ),
             )
           ],
         ),
