@@ -8,21 +8,23 @@ import 'widgets/texts_login.dart';
 class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              BackgroundImage(),
-              PeopleImage(),
-              DefaultTitle(),
-              DefaultInputWithoutIcon(),
-              DefaultInputWithIcon(),
-              DefaultButton(),
-              DefaultLinkText(),
-            ],
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                BackgroundImage(),
+                PeopleImage(),
+                DefaultTitle(),
+                DefaultInputWithoutIcon(),
+                DefaultInputWithIcon(),
+                DefaultButton(),
+                DefaultLinkText(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
