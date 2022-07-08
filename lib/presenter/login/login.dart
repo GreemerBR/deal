@@ -17,8 +17,9 @@ class Login extends StatelessWidget {
                 BackgroundImage(),
                 PeopleImage(),
                 DefaultTitle(),
-                DefaultInputWithoutIcon(),
-                DefaultInputWithIcon(),
+                DefaultInputWithoutIcon(texto: 'Login'),
+                DefaultInputWithIcon(
+                    icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
                 DefaultButton(),
                 DefaultLinkText(),
               ],
@@ -29,8 +30,3 @@ class Login extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
