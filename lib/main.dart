@@ -7,5 +7,6 @@ void main() {
     title: 'Deal',
     home: Login(),
     debugShowCheckedModeBanner: false,
-  ));
+  ),
+ );
 }
