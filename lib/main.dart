@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'presenter/myProfile/my_profile.dart';
+import 'presenter/login/login.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      title: 'Deal',
-      debugShowCheckedModeBanner: false,
-      home: Login(),
-    ),
-  );
+  runApp(MaterialApp(
+    title: 'Deal',
+    home: Login(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
