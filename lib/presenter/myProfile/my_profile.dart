@@ -48,7 +48,7 @@ class MyProfile extends StatelessWidget {
                 );
               },
               icon: const Icon(
-                Icons.edit_note_outlined,
+                Icons.edit_note,
                 size: 35,
               ),
             ),

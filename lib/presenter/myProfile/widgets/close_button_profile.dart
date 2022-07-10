@@ -17,13 +17,15 @@ class CloseButtonProfile extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border(
-            top: BorderSide(color: Colors.grey),
+            top: BorderSide(
+              color: Color.fromARGB(255, 196, 196, 196),
+            ),
           ),
         ),
-        height: 100,
+        height: 150,
         width: double.maxFinite,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(45),
           child: Stack(
             children: <Widget>[
               Positioned.fill(
@@ -32,13 +34,13 @@ class CloseButtonProfile extends StatelessWidget {
                 top: 30,
                 bottom: 30,
                 child: Container(
-                  // width: double.maxFinite,
+                  width: double.maxFinite,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(30),
                       bottom: Radius.circular(30),
                     ),
-                    // color: Color.fromARGB(255, 63, 81, 181),
+                    color: Color.fromARGB(255, 63, 81, 181),
                   ),
                 ),
               ),
@@ -47,11 +49,11 @@ class CloseButtonProfile extends StatelessWidget {
                   padding: EdgeInsets.only(
                     top: 25,
                     bottom: 25,
-                    left: 50,
-                    right: 50,
+                    left: 100,
+                    right: 100,
                   ),
                   backgroundColor: Color.fromARGB(255, 63, 81, 181),
-                  primary: Colors.white,
+                  primary: Color.fromARGB(255, 196, 196, 196),
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -65,6 +67,9 @@ class CloseButtonProfile extends StatelessWidget {
                 },
                 child: const Text(
                   'SAIR',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

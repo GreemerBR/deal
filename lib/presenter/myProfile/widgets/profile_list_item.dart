@@ -24,7 +24,7 @@ class ProfileListItem extends StatelessWidget {
             top: BorderSide(color: Colors.grey),
           ),
         ),
-        height: 100,
+        height: 50,
         width: double.maxFinite,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +52,7 @@ class ProfileListItem extends StatelessWidget {
               icon: const Icon(
                 Icons.chevron_right_sharp,
                 color: Colors.grey,
-                size: 38,
+                size: 25,
               ),
             )
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/profile_list_informations.dart';
 import 'widgets/profile_summary_informations.dart';
 
 class ProfileEditor extends StatefulWidget {
@@ -21,7 +22,7 @@ class _ProfileEditorState extends State<ProfileEditor> {
         title: const Padding(
           padding: EdgeInsets.only(left: 10),
           child: Text(
-            'Editor',
+            'Editar',
             style: TextStyle(fontSize: 30),
           ),
         ),
@@ -43,25 +44,51 @@ class _ProfileEditorState extends State<ProfileEditor> {
               address: 'Blumenau - SC',
               photo: 'assets/images/Avatar.jpeg',
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: Colors.black),
-                  ),
-                ),
-                height: 200,
-                width: double.maxFinite,
-                child: TextField(
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.mail),
-                    labelText: 'Coloque seu login',
-                  ),
+            Expanded(
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    ProfileListInformation(
+                      initialText: 'Gregory Viegas Zimmer',
+                      boxLabel: 'Nome completo',
+                    ),
+                    ProfileListInformation(
+                      initialText: '',
+                      boxLabel: 'Apelido',
+                    ),
+                    ProfileListInformation(
+                      initialText: '',
+                      boxLabel: 'CPF/CNPJ',
+                    ),
+                    ProfileListInformation(
+                      initialText: 'gregory.v.zimmer@gmail.com',
+                      boxLabel: 'Email',
+                    ),
+                    ProfileListInformation(
+                      initialText: '(47) 9 9188-5219',
+                      boxLabel: 'Telefone',
+                    ),
+                    ProfileListInformation(
+                      initialText: '89012-360',
+                      boxLabel: 'CEP',
+                    ),
+                    ProfileListInformation(
+                      initialText: 'Guido Kaestner Sênior',
+                      boxLabel: 'Rua',
+                    ),
+                    ProfileListInformation(
+                      initialText: 'n° 186',
+                      boxLabel: 'Número',
+                    ),
+                    ProfileListInformation(
+                      initialText: '',
+                      boxLabel: 'Complemento',
+                    ),
+                  ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
