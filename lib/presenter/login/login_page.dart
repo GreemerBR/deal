@@ -7,7 +7,7 @@ import 'widgets/default_link_text.dart';
 import 'widgets/default_title.dart';
 import 'widgets/people_image.dart';
 
-class Login extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -20,11 +20,11 @@ class Login extends StatelessWidget {
                 PeopleImage(),
               ],
             ),
-                DefaultTitle(),
-                DefaultInput(texto: 'Login'),
-                DefaultInput(icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
-                DefaultButton(),
-                DefaultLinkText(),
+            DefaultTitle(),
+            DefaultInput(texto: 'Login'),
+            DefaultInput(icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
+            DefaultButton(),
+            DefaultLinkText(),
           ],
         ),
       ),

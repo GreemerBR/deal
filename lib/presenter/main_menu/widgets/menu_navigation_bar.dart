@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../chat/chat_page.dart';
-import '../../login/login.dart';
-import '../../myProfile/my_profile.dart';
+import '../../login/login_page.dart';
+import '../../my_profile/my_profile_page.dart';
 import 'main_menu_button.dart';
 
 class MenuNavigationBar extends StatelessWidget {
@@ -18,7 +18,7 @@ class MenuNavigationBar extends StatelessWidget {
         MainMenuButton(
           icon: Icons.arrow_back,
           text: 'Sair',
-          destinyPage: Login(),
+          destinyPage: LoginPage(),
         ),
         MainMenuButton(
           icon: Icons.chat_outlined,
@@ -28,10 +28,9 @@ class MenuNavigationBar extends StatelessWidget {
         MainMenuButton(
           icon: Icons.person_outline,
           text: 'Perfil',
-          destinyPage: MyProfile(),
+          destinyPage: MyProfilePage(),
         ),
       ],
     );
   }
 }
-
