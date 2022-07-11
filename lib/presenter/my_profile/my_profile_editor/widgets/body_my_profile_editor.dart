@@ -1,3 +1,4 @@
+import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/profile_summary_informations.dart';
@@ -19,7 +20,7 @@ class BodyMyProfileEditor extends StatelessWidget {
               ProfileSummaryInformations(
                 name: 'Gregory Viegas Zimmer',
                 address: 'Blumenau - SC',
-                photo: 'assets/images/Avatar.jpeg',
+                photo: imgAvatar,
               ),
               Padding(
                 padding: const EdgeInsets.only(

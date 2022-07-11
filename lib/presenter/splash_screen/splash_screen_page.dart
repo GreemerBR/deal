@@ -1,3 +1,4 @@
+import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
 import '../login/login_page.dart';
@@ -40,7 +41,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Image.asset(
-              'assets/images/splashscreen.png',
+              imgSplashScreen,
             ),
           ),
         ));

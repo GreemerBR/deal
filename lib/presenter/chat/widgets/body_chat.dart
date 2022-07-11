@@ -1,3 +1,4 @@
+import '../../../core/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class BodyChat extends StatelessWidget {
@@ -11,7 +12,7 @@ class BodyChat extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
-          'assets/images/chatzinho.png',
+          imgChat,
           height: 150,
         ),
         SizedBox(height: 50),
