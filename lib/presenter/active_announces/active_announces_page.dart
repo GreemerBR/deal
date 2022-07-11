@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'widgets/body_announces.dart';
 
-class ActiveAnnounces extends StatelessWidget {
-  const ActiveAnnounces({Key? key}) : super(key: key);
+class ActiveAnnouncesPage extends StatelessWidget {
+  const ActiveAnnouncesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

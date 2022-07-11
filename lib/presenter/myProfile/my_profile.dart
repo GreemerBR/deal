@@ -1,8 +1,8 @@
-import 'package:app_2/presenter/myProfile/profile_editor.dart';
 import 'package:flutter/material.dart';
 
-import '../activeAnnounces/active_announces.dart';
+import '../active_announces/active_announces_page.dart';
 import '../login/login.dart';
+import 'profile_editor.dart';
 import 'widgets/close_button_profile.dart';
 import 'widgets/profile_list_item.dart';
 import 'widgets/profile_summary_informations.dart';
@@ -70,7 +70,7 @@ class MyProfile extends StatelessWidget {
                   children: [
                     ProfileListItem(
                       title: 'Meus anúncios',
-                      destinyPage: ActiveAnnounces(),
+                      destinyPage: ActiveAnnouncesPage(),
                     ),
                     ProfileListItem(
                       title: 'Buscar recentes',

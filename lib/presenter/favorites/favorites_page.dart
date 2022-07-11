@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../mainMenu/widgets/card_product_ad.dart';
+import '../main_menu/widgets/card_product_ad.dart';
 
 class Favorites extends StatelessWidget {
   const Favorites({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class Favorites extends StatelessWidget {
           },
         ),
         title: Center(
-          child: Text("Favorites",
+          child: Text("Favoritos",
               style: TextStyle(
                 fontSize: 30,
               )),
@@ -35,6 +35,7 @@ class Favorites extends StatelessWidget {
               productPrice: '55',
               productLocation: 'Ponta Aguda - 08/07 às 20:00',
               imageLink: 'assets/images/AirFryer.png',
+              isFavorite: true,
             ),
           ],
         ),

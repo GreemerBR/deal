@@ -1,5 +1,6 @@
-import 'package:app_2/presenter/mainMenu/main_menu.dart';
 import 'package:flutter/material.dart';
+
+import '../../main_menu/main_menu_page.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
@@ -15,7 +16,7 @@ class DefaultButton extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return MainMenu();
+                return MainMenuPage();
               },
             ),
           );

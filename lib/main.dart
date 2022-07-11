@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'presenter/login/login.dart';
+import 'presenter/splash_screen/splash_screen.dart';
 
 void main() {
-  runApp(MaterialApp(
-    title: 'Deal',
-    home: Login(),
-    debugShowCheckedModeBanner: false,
-  ),
- );
+  runApp(
+    MaterialApp(
+      title: 'Deal',
+      home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }
