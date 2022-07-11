@@ -30,6 +30,7 @@ class FilterBody extends StatelessWidget {
                   FilterOptionContainer(title: "Localização", option: "Santa Catarina",),
                   FilterOptionContainer(title: "Cidade / Zona", option: "Blumenau",),
                   FilterOptionContainer(title: "Ordenar Por:", option: "Relevância",),
+                  SizedBox(height: 25,),
                   FakeButtonContainer(),
                 ],
               ),
