@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../main_menu/widgets/card_product_ad.dart';
+import 'widgets/body_favorites.dart';
 
-class Favorites extends StatelessWidget {
-  const Favorites({Key? key}) : super(key: key);
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,20 +26,7 @@ class Favorites extends StatelessWidget {
         ),
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
       ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            CardProductAd(
-              productName: 'Fritadeira Eletrica Nell',
-              productPrice: '55',
-              productLocation: 'Ponta Aguda - 08/07 às 20:00',
-              imageLink: 'assets/images/AirFryer.png',
-              isFavorite: true,
-            ),
-          ],
-        ),
-      ),
+      body: BodyFavorites(),
     );
   }
 }

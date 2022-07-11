@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'fake_button_container.dart';
 import 'filter_option_container.dart';
 
-class FilterBody extends StatelessWidget {
+class BodyFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

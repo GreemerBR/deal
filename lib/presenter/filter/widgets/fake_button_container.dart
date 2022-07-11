@@ -26,7 +26,10 @@ class FakeButtonContainer extends StatelessWidget {
           child: Text(
             "Filtrar",
             style: TextStyle(
-                fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 25,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],

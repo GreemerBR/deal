@@ -15,12 +15,7 @@ class MainMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      splashColor: Color.fromARGB(
-        255,
-        192,
-        180,
-        225,
-      ),
+      splashColor: Color.fromARGB(255, 192, 180, 225),
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(
