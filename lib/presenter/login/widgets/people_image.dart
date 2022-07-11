@@ -1,3 +1,4 @@
+import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class PeopleImage extends StatelessWidget {
@@ -10,7 +11,7 @@ class PeopleImage extends StatelessWidget {
     return Positioned(
       top: 50,
       child: Image.asset(
-        'assets/images/people.png',
+        imgPeopleLogin,
         width: 250,
       ),
     );
