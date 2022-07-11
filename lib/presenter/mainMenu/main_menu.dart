@@ -16,12 +16,12 @@ class MainMenu extends StatelessWidget {
           cursorColor: Colors.white,
           decoration: InputDecoration(
             hintText: 'O que você está procurando?',
-            hintStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 14
-            ),
+            hintStyle: TextStyle(color: Colors.white, fontSize: 14),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white, width: 2.0),
             ),
             filled: true,
             fillColor: Color.fromARGB(
@@ -36,46 +36,12 @@ class MainMenu extends StatelessWidget {
               180,
               225,
             ),
-            
             suffixIcon: Icon(
               Icons.search,
               color: Colors.white,
             ),
           ),
         ),
-        // title: Expanded(
-        //   child: Container(
-        //     margin: EdgeInsets.all(15),
-        //     height: 45,
-        //     width: double.maxFinite,
-        //     decoration: BoxDecoration(
-        //       color: Color.fromARGB(
-        //         255,
-        //         192,
-        //         180,
-        //         225,
-        //       ),
-        //       borderRadius: BorderRadius.circular(10),
-        //     ),
-        //     child: Row(
-        //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //       children: [
-        //         Text(
-        //           'O que você está buscando?',
-        //           style: TextStyle(
-        //             fontSize: 15,
-        //           ),
-        //           maxLines: 1,
-        //           overflow: TextOverflow.ellipsis,
-        //         ),
-        //         Icon(
-        //           Icons.search,
-        //           size: 20,
-        //         )
-        //       ],
-        //     ),
-        //   ),
-        // ),
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
