@@ -12,39 +12,70 @@ class MainMenu extends StatelessWidget {
       appBar: AppBar(
         leading: SizedBox(),
         leadingWidth: 0,
-        title: Expanded(
-          child: Container(
-            margin: EdgeInsets.all(15),
-            height: 45,
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-              color: Color.fromARGB(
-                255,
-                192,
-                180,
-                225,
-              ),
-              borderRadius: BorderRadius.circular(10),
+        title: TextField(
+          cursorColor: Colors.white,
+          decoration: InputDecoration(
+            hintText: 'O que você está procurando?',
+            hintStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 14
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  'O que você está buscando?',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Icon(
-                  Icons.search,
-                  size: 20,
-                )
-              ],
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            filled: true,
+            fillColor: Color.fromARGB(
+              255,
+              192,
+              180,
+              225,
+            ),
+            focusColor: Color.fromARGB(
+              255,
+              192,
+              180,
+              225,
+            ),
+            
+            suffixIcon: Icon(
+              Icons.search,
+              color: Colors.white,
             ),
           ),
         ),
+        // title: Expanded(
+        //   child: Container(
+        //     margin: EdgeInsets.all(15),
+        //     height: 45,
+        //     width: double.maxFinite,
+        //     decoration: BoxDecoration(
+        //       color: Color.fromARGB(
+        //         255,
+        //         192,
+        //         180,
+        //         225,
+        //       ),
+        //       borderRadius: BorderRadius.circular(10),
+        //     ),
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //       children: [
+        //         Text(
+        //           'O que você está buscando?',
+        //           style: TextStyle(
+        //             fontSize: 15,
+        //           ),
+        //           maxLines: 1,
+        //           overflow: TextOverflow.ellipsis,
+        //         ),
+        //         Icon(
+        //           Icons.search,
+        //           size: 20,
+        //         )
+        //       ],
+        //     ),
+        //   ),
+        // ),
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
