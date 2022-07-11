@@ -1,3 +1,4 @@
+import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../main_menu/widgets/card_product_ad.dart';
@@ -17,7 +18,7 @@ class BodyFavorites extends StatelessWidget {
             productName: 'Fritadeira Eletrica Nell',
             productPrice: '55',
             productLocation: 'Ponta Aguda - 08/07 às 20:00',
-            imageLink: 'assets/images/AirFryer.png',
+            imageLink: imgAirFryer,
             isFavorite: true,
           ),
         ],
