@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CardProductAd extends StatefulWidget {
   CardProductAd({
     Key? key,
