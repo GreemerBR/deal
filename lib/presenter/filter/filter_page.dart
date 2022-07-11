@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/filter_body.dart';
+import 'widgets/body_filter.dart';
 
 class FilterPage extends StatelessWidget {
   const FilterPage({
@@ -9,6 +9,6 @@ class FilterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilterBody();
+    return BodyFilter();
   }
 }

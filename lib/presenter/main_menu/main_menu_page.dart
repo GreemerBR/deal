@@ -1,10 +1,10 @@
-import 'package:app_2/presenter/favorites/favorites.dart';
-import 'package:app_2/presenter/filtro/filterPage.dart';
+import '../favorites/favorites.dart';
+import '../filtro/filterPage.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/body_main_menu.dart';
 
-class MainMenu extends StatelessWidget {
+class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,18 +24,8 @@ class MainMenu extends StatelessWidget {
               borderSide: const BorderSide(color: Colors.white, width: 2.0),
             ),
             filled: true,
-            fillColor: Color.fromARGB(
-              255,
-              192,
-              180,
-              225,
-            ),
-            focusColor: Color.fromARGB(
-              255,
-              192,
-              180,
-              225,
-            ),
+            fillColor: Color.fromARGB(255, 192, 180, 225),
+            focusColor: Color.fromARGB(255, 192, 180, 225),
             suffixIcon: Icon(
               Icons.search,
               color: Colors.white,
@@ -49,11 +39,7 @@ class MainMenu extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Favorites();
-                      },
-                    ),
+                    MaterialPageRoute(builder: (context) => Favorites()),
                   );
                 },
                 icon: Icon(
@@ -64,11 +50,7 @@ class MainMenu extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return FilterPage();
-                      },
-                    ),
+                    MaterialPageRoute(builder: (context) => FilterPage()),
                   );
                 },
                 icon: Icon(
@@ -82,12 +64,7 @@ class MainMenu extends StatelessWidget {
             ],
           ),
         ],
-        backgroundColor: Color.fromARGB(
-          255,
-          99,
-          66,
-          191,
-        ),
+        backgroundColor: Color.fromARGB(255, 99, 66, 191),
         toolbarHeight: 80,
       ),
       body: BodyMainMenu(),

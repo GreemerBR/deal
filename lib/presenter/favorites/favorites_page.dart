@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../mainMenu/widgets/card_product_ad.dart';
+import '../main_menu/widgets/card_product_ad.dart';
 
 class Favorites extends StatelessWidget {
   const Favorites({Key? key}) : super(key: key);
