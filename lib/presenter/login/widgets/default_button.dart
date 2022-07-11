@@ -10,7 +10,7 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 490),
+      padding: const EdgeInsets.only(top: 25),
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(

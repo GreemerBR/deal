@@ -11,7 +11,7 @@ class BackgroundImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height * 0.5,
       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage(imgBackgroundLogin),
@@ -21,6 +21,7 @@ class BackgroundImage extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD:lib/presenter/login/widgets/background_image_login.dart
 
 class PeopleImage extends StatelessWidget {
   const PeopleImage({
@@ -38,3 +39,5 @@ class PeopleImage extends StatelessWidget {
     );
   }
 }
+=======
+>>>>>>> 7b5c51e2c9a828160b1b1e2e887982b6cd5a27c6:lib/presenter/login/widgets/background_image.dart

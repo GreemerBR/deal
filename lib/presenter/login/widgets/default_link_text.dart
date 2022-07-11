@@ -1,24 +1,5 @@
 import 'package:flutter/material.dart';
 
-class DefaultTitle extends StatelessWidget {
-  const DefaultTitle({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Positioned(
-      top: 365,
-      child: Text(
-        'Empreste agora mesmo',
-        style: TextStyle(
-          fontSize: 25,
-        ),
-      ),
-    );
-  }
-}
-
 class DefaultLinkText extends StatelessWidget {
   const DefaultLinkText({
     Key? key,
@@ -27,7 +8,7 @@ class DefaultLinkText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 600),
+      padding: const EdgeInsets.only(top: 25),
       child: Text(
         "Registre-se agora",
         style: TextStyle(
