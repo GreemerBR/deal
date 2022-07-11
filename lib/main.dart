@@ -1,11 +1,10 @@
+import 'presenter/splashScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'presenter/login/login.dart';
 
 void main() {
   runApp(MaterialApp(
     title: 'Deal',
-    home: Login(),
+    home: SplashScreen(),
     debugShowCheckedModeBanner: false,
   ),
  );

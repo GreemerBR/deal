@@ -60,7 +60,8 @@ class MainMenu extends StatelessWidget {
                   );
                 },
                 icon: Icon(
-                  Icons.favorite_outline,
+                  Icons.star_border,
+                  size: 30,
                 ),
               ),
               IconButton(
