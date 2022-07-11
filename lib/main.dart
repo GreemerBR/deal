@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'presenter/splash_screen/splash_screen.dart';
+import 'presenter/splash_screen/splash_screen_page.dart';
 
 void main() {
   runApp(
     MaterialApp(
       title: 'Deal',
-      home: SplashScreen(),
+      home: SplashScreenPage(),
       debugShowCheckedModeBanner: false,
     ),
   );
