@@ -14,7 +14,7 @@ class ProfileSummaryInformations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 50),
+      padding: const EdgeInsets.only(bottom: 20),
       child: Container(
         width: double.maxFinite,
         decoration: BoxDecoration(
@@ -25,8 +25,8 @@ class ProfileSummaryInformations extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 100,
-              height: 100,
+              width: 80,
+              height: 80,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(photo),
@@ -48,12 +48,12 @@ class ProfileSummaryInformations extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(
                 top: 10,
-                bottom: 50,
+                bottom: 30,
               ),
               child: Text(
                 address,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 196, 196, 196),
                   fontSize: 15,
                 ),
               ),

@@ -1,5 +1,7 @@
+import 'package:app_2/presenter/myProfile/profile_editor.dart';
 import 'package:flutter/material.dart';
 
+import '../activeAnnounces/active_announces.dart';
 import '../login/login.dart';
 import 'widgets/close_button_profile.dart';
 import 'widgets/profile_list_item.dart';
@@ -36,9 +38,17 @@ class MyProfile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ProfileEditor();
+                    },
+                  ),
+                );
+              },
               icon: const Icon(
-                Icons.edit_note_outlined,
+                Icons.edit_note,
                 size: 35,
               ),
             ),
@@ -60,7 +70,7 @@ class MyProfile extends StatelessWidget {
                   children: [
                     ProfileListItem(
                       title: 'Meus anúncios',
-                      destinyPage: Login(),
+                      destinyPage: ActiveAnnounces(),
                     ),
                     ProfileListItem(
                       title: 'Buscar recentes',
