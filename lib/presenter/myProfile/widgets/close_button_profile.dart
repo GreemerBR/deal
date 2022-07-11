@@ -1,5 +1,6 @@
-import 'package:app_2/presenter/login/login.dart';
 import 'package:flutter/material.dart';
+
+import '../../login/login.dart';
 
 class CloseButtonProfile extends StatelessWidget {
   const CloseButtonProfile({

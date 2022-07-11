@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'widgets/body_chat.dart';
 
-class ChatBox extends StatelessWidget {
-  const ChatBox({Key? key}) : super(key: key);
+class ChatPage extends StatelessWidget {
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

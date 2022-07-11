@@ -1,7 +1,7 @@
-import '../favorites/favorites.dart';
-import '../filtro/filterPage.dart';
 import 'package:flutter/material.dart';
 
+import '../favorites/favorites_page.dart';
+import '../filter/filter_page.dart';
 import 'widgets/body_main_menu.dart';
 
 class MainMenuPage extends StatelessWidget {
@@ -39,7 +39,9 @@ class MainMenuPage extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Favorites()),
+                    MaterialPageRoute(
+                      builder: (context) => FavoritesPage(),
+                    ),
                   );
                 },
                 icon: Icon(
@@ -50,7 +52,9 @@ class MainMenuPage extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => FilterPage()),
+                    MaterialPageRoute(
+                      builder: (context) => FilterPage(),
+                    ),
                   );
                 },
                 icon: Icon(
