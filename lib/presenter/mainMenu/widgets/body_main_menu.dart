@@ -1,5 +1,9 @@
 import 'package:app_2/presenter/myProfile/my_profile.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4023bfdccee5863c9fa8348b645e6c0c3be6c16b
 import '../../chat/chat_box.dart';
 import '../../login/login.dart';
 import 'card_product_ad.dart';
