@@ -39,10 +39,29 @@ class _ProfileEditorState extends State<ProfileEditor> {
       body: Center(
         child: Column(
           children: [
-            ProfileSummaryInformations(
-              name: 'Gregory Viegas Zimmer',
-              address: 'Blumenau - SC',
-              photo: 'assets/images/Avatar.jpeg',
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                ProfileSummaryInformations(
+                  name: 'Gregory Viegas Zimmer',
+                  address: 'Blumenau - SC',
+                  photo: 'assets/images/Avatar.jpeg',
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 70,
+                    bottom: 80,
+                  ),
+                  child: Transform.rotate(
+                    angle: 0.15,
+                    child: Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  ),
+                ),
+              ],
             ),
             Expanded(
               child: SingleChildScrollView(
