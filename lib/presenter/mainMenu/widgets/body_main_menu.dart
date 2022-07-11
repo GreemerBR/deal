@@ -1,9 +1,5 @@
 import 'package:app_2/presenter/myProfile/my_profile.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-=======
->>>>>>> 4023bfdccee5863c9fa8348b645e6c0c3be6c16b
 import '../../chat/chat_box.dart';
 import '../../login/login.dart';
 import 'card_product_ad.dart';
@@ -44,6 +40,13 @@ class BodyMainMenu extends StatelessWidget {
                 imageLink: 'assets/images/maquinadecostura.jpg',
               ),
               CardProductAd(
+              productName: 'Fritadeira Eletrica Nell',
+              productPrice: '55',
+              productLocation: 'Ponta Aguda - 08/07 às 20:00',
+              imageLink: 'assets/images/AirFryer.png',
+              isFavorite: true,
+            ),
+              CardProductAd(
                 productName: 'Pipoqueira pop time Britania',
                 productPrice: '25',
                 productLocation: 'Ponta Aguda - 08/07 às 20:00',
@@ -54,12 +57,14 @@ class BodyMainMenu extends StatelessWidget {
                 productPrice: '12',
                 productLocation: 'Ponta Aguda - 08/07 às 20:00',
                 imageLink: 'assets/images/sanduicheira.jpeg',
+
               ),
               CardProductAd(
-                  productName: 'Boneco Benio 9',
-                  productPrice: '45',
-                  productLocation: 'Ponta Aguda - 08/07 às 20:00',
-                  imageLink: 'assets/images/ben10.png'),
+                productName: 'Boneco Benio 9',
+                productPrice: '45',
+                productLocation: 'Ponta Aguda - 08/07 às 20:00',
+                imageLink: 'assets/images/ben10.png',
+              ),
               CardProductAd(
                 productName: 'Máquina Brastemp de Lavar',
                 productPrice: '87',
@@ -96,11 +101,7 @@ class BodyMainMenu extends StatelessWidget {
                 text: 'Perfil',
                 destinyPage: MyProfile(),
               ),
-              MainMenuButton(
-                icon: Icons.more_horiz,
-                text: 'Mais',
-                destinyPage: Login(),
-              ),
+              
             ],
           ),
         )
