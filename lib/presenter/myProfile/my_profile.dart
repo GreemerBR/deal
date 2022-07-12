@@ -1,11 +1,12 @@
+import 'package:app_2/presenter/active_announces/active_announces_page.dart';
+import 'package:app_2/presenter/login/login_page.dart';
+import 'package:app_2/presenter/my_profile/my_profile_editor/profile_editor_page.dart';
+import 'package:app_2/presenter/my_profile/widgets/close_button_profile.dart';
 import 'package:flutter/material.dart';
 
-import '../activeAnnounces/active_announces.dart';
-import '../login/login.dart';
-import 'profile_editor.dart';
-import 'widgets/close_button_profile.dart';
-import 'widgets/profile_list_item.dart';
-import 'widgets/profile_summary_informations.dart';
+import '../my_profile/widgets/profile_list_item.dart';
+import '../my_profile/widgets/profile_summary_informations.dart';
+
 
 class MyProfile extends StatelessWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class MyProfile extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return ProfileEditor();
+                      return ProfileEditorPage();
                     },
                   ),
                 );
@@ -70,23 +71,23 @@ class MyProfile extends StatelessWidget {
                   children: [
                     ProfileListItem(
                       title: 'Meus anúncios',
-                      destinyPage: ActiveAnnounces(),
+                      destinyPage: ActiveAnnouncesPage(),
                     ),
                     ProfileListItem(
                       title: 'Buscar recentes',
-                      destinyPage: Login(),
+                      destinyPage: LoginPage(),
                     ),
                     ProfileListItem(
                       title: 'Notificações',
-                      destinyPage: Login(),
+                      destinyPage: LoginPage(),
                     ),
                     ProfileListItem(
                       title: 'Segurança e privacidade',
-                      destinyPage: Login(),
+                      destinyPage: LoginPage(),
                     ),
                     ProfileListItem(
                       title: 'Sobre o DEAL',
-                      destinyPage: Login(),
+                      destinyPage: LoginPage(),
                     )
                   ],
                 ),

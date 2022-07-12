@@ -1,9 +1,12 @@
-import '../../myProfile/my_profile.dart';
+import 'package:app_2/presenter/chat/chat_page.dart';
+import 'package:app_2/presenter/login/login_page.dart';
 import 'package:flutter/material.dart';
-import '../../chat/chat_box.dart';
-import '../../login/login.dart';
-import 'card_product_ad.dart';
-import 'main_menu_button.dart';
+
+
+import '../../main_menu/widgets/card_product_ad.dart';
+import '../../main_menu/widgets/main_menu_button.dart';
+import '../../myProfile/my_profile.dart';
+
 
 class BodyMainMenu extends StatelessWidget {
   @override
@@ -89,12 +92,12 @@ class BodyMainMenu extends StatelessWidget {
               MainMenuButton(
                 icon: Icons.arrow_back,
                 text: 'Sair',
-                destinyPage: Login(),
+                destinyPage: LoginPage(),
               ),
               MainMenuButton(
                 icon: Icons.chat_outlined,
                 text: 'Chat',
-                destinyPage: ChatBox(),
+                destinyPage: ChatPage(),
               ),
               MainMenuButton(
                 icon: Icons.person_outline,

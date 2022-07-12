@@ -1,7 +1,8 @@
-import '../favorites/favorites.dart';
-import '../filtro/filterPage.dart';
+import 'package:app_2/presenter/favorites/favorites_page.dart';
 import 'package:flutter/material.dart';
 
+
+import '../filter/filter_page.dart';
 import 'widgets/body_main_menu.dart';
 
 class MainMenu extends StatelessWidget {
@@ -54,7 +55,7 @@ class MainMenu extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return Favorites();
+                        return FavoritesPage();
                       },
                     ),
                   );
