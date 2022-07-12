@@ -56,23 +56,23 @@ class BodyMyProfileEditor extends StatelessWidget {
                     boxLabel: 'CPF/CNPJ',
                   ),
                   ProfileListInformation(
-                    initialText: 'gregory.v.zimmer@gmail.com',
+                    initialText: '',
                     boxLabel: 'Email',
                   ),
                   ProfileListInformation(
-                    initialText: '(47) 9 9188-5219',
+                    initialText: '',
                     boxLabel: 'Telefone',
                   ),
                   ProfileListInformation(
-                    initialText: '89012-360',
+                    initialText: '',
                     boxLabel: 'CEP',
                   ),
                   ProfileListInformation(
-                    initialText: 'Guido Kaestner Sênior',
+                    initialText: '',
                     boxLabel: 'Rua',
                   ),
                   ProfileListInformation(
-                    initialText: 'n° 186',
+                    initialText: '',
                     boxLabel: 'Número',
                   ),
                   ProfileListInformation(
