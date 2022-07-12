@@ -1,4 +1,4 @@
-import 'package:app_2/presenter/myProfile/my_profile.dart';
+import '../../myProfile/my_profile.dart';
 import 'package:flutter/material.dart';
 import '../../chat/chat_box.dart';
 import '../../login/login.dart';

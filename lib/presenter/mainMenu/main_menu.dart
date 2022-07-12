@@ -1,5 +1,5 @@
-import 'package:app_2/presenter/favorites/favorites.dart';
-import 'package:app_2/presenter/filtro/filterPage.dart';
+import '../favorites/favorites.dart';
+import '../filtro/filterPage.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/body_main_menu.dart';

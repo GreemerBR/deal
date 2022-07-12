@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 
-class FilterOptionContainer extends StatelessWidget {
+class FilterOptionContainer extends StatefulWidget {
   final String title;
-  final String option;
-  
+  final List<String> option;
+
   const FilterOptionContainer({
     Key? key,
     required this.title,
     required this.option,
   }) : super(key: key);
+
+  @override
+  State<FilterOptionContainer> createState() => _FilterOptionContainerState();
+}
+
+class _FilterOptionContainerState extends State<FilterOptionContainer> {
+  String dropdownvalue = 'Selecione...';
+
+  // List of items in our dropdown menu
+  var items = ['Selecione...'];
+
+  void initState() {
+    items.addAll(widget.option);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +33,7 @@ class FilterOptionContainer extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                title,
+                widget.title,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey.shade700,
@@ -29,24 +43,35 @@ class FilterOptionContainer extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-          margin: EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(255, 196, 196, 196),
+            color: Colors.grey.shade300,
+            borderRadius: BorderRadius.circular(15),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                option,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-              Icon(Icons.arrow_forward_ios)
-            ],
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: DropdownButton(
+            iconEnabledColor: Color.fromARGB(255, 99, 66, 191),
+            isExpanded: true,
+            // Initial Value
+            value: dropdownvalue,
+
+            // Down Arrow Icon
+            icon: const Icon(Icons.keyboard_arrow_down),
+
+            // Array list of items
+            items: items.map((String items) {
+              return DropdownMenuItem(
+                value: items,
+                child: Text(items),
+              );
+            }).toList(),
+            // After selecting the desired option,it will
+            // change button value to selected value
+            onChanged: (String? newValue) {
+              setState(() {
+                dropdownvalue = newValue!;
+              });
+            },
           ),
         ),
       ],
