@@ -31,7 +31,6 @@ class _CardProductAdState extends State<CardProductAd> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      height: 125,
       width: double.maxFinite,
       decoration: BoxDecoration(
         color: Colors.white,
