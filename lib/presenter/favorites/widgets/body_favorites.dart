@@ -1,6 +1,6 @@
-import '../../../core/app_assets.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
 import '../../main_menu/widgets/card_product_ad.dart';
 
 class BodyFavorites extends StatelessWidget {

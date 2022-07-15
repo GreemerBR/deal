@@ -1,6 +1,6 @@
-import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/app_assets.dart';
 import '../login/login_page.dart';
 
 class SplashScreenPage extends StatefulWidget {

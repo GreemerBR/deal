@@ -1,6 +1,6 @@
-import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
 import '../../active_announces/active_announces_page.dart';
 import '../../login/login_page.dart';
 import 'close_button_profile.dart';
