@@ -1,1 +1,15 @@
-const String imgCamera = 'assets/images/camerazinha.png';
+const String imgAirFryer = 'assets/images/AirFryer.png';
+const String imgAvatar = 'assets/images/Avatar.jpeg';
+const String imgBackgroundLogin = 'assets/images/background.png';
+const String imgBen10 = 'assets/images/ben10.png';
+const String imgWashingMachine = 'assets/images/Brastemp.png';
+const String imgCamera = 'assets/images/camera.png';
+const String imgChat = 'assets/images/chat.png';
+const String imgWaterFilter = 'assets/images/filtroagua.png';
+const String imgProjetcto = 'assets/images/background.png';
+const String imgSewingMachine = 'assets/images/maquinadecostura.jpg';
+const String imgPeopleLogin = 'assets/images/people.png';
+const String imgPopcornMaker = 'assets/images/pipoqueira.jpeg';
+const String imgProjector = 'assets/images/projetor.png';
+const String imgSandwichMaker = 'assets/images/sanduicheira.jpeg';
+const String imgSplashScreen = 'assets/images/splashscreen.png';

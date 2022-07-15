@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
+
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({
     Key? key,
@@ -13,7 +15,7 @@ class BackgroundImage extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.5,
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
+            image: AssetImage(imgBackgroundLogin),
             fit: BoxFit.fitWidth,
             alignment: Alignment(1, -1)),
       ),

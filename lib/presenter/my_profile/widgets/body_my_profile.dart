@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
 import '../../active_announces/active_announces_page.dart';
 import '../../login/login_page.dart';
 import 'close_button_profile.dart';
@@ -19,7 +20,7 @@ class BodyMyProfile extends StatelessWidget {
           ProfileSummaryInformations(
             name: 'Gregory Viegas Zimmer',
             address: 'Blumenau - SC',
-            photo: 'assets/images/Avatar.jpeg',
+            photo: imgAvatar,
           ),
           Expanded(
             child: SingleChildScrollView(

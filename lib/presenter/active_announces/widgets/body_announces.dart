@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
+
 class BodyAnnounces extends StatelessWidget {
   const BodyAnnounces({
     Key? key,
@@ -16,7 +18,7 @@ class BodyAnnounces extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
-                'assets/images/camerazinha.png',
+                imgCamera,
                 height: 150,
               ),
               SizedBox(height: 50),

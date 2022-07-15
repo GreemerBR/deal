@@ -1,3 +1,4 @@
+import 'price_range_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'fake_button_container.dart';
@@ -13,7 +14,10 @@ class BodyFilter extends StatelessWidget {
         title: Center(
           child: Text(
             "Filtro",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(
+              fontSize: 30,
+              fontStyle: FontStyle.italic,
+            ),
           ),
         ),
       ),
@@ -26,11 +30,38 @@ class BodyFilter extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  FilterOptionContainer(title: "Categoria", option: "Categoria / Subcategoria",),
-                  FilterOptionContainer(title: "Localização", option: "Santa Catarina",),
-                  FilterOptionContainer(title: "Cidade / Zona", option: "Blumenau",),
-                  FilterOptionContainer(title: "Ordenar Por:", option: "Relevância",),
-                  SizedBox(height: 25,),
+                  FilterOptionContainer(
+                    title: "Categoria",
+                    option: ["Móveis", "Roupas", "Peças", "Carros"],
+                  ),
+                  FilterOptionContainer(
+                    title: "Localização",
+                    option: ["SC", "PR", "RS", "SP"],
+                  ),
+                  FilterOptionContainer(
+                    title: "Cidade",
+                    option: [
+                      "Blumenau",
+                      "Gaspar",
+                      "Ilhota",
+                      "Indaial",
+                      "Curitiba",
+                      "Porto Alegre",
+                      "São Paulo"
+                    ],
+                  ),
+                  FilterOptionContainer(
+                    title: "Ordenar Por:",
+                    option: [
+                      "Relevância",
+                      "Valor",
+                    ],
+                  ),
+                  SizedBox(height:25),
+                  PriceRangeSlider(),
+                  SizedBox(
+                    height: 25,
+                  ),
                   FakeButtonContainer(),
                 ],
               ),
