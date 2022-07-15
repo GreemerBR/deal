@@ -17,7 +17,6 @@ class FilterOptionContainer extends StatefulWidget {
 class _FilterOptionContainerState extends State<FilterOptionContainer> {
   String dropdownvalue = 'Selecione...';
 
-  // List of items in our dropdown menu
   var items = ['Selecione...'];
 
   void initState() {

@@ -1,3 +1,4 @@
+import 'price_range_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'fake_button_container.dart';
@@ -30,23 +31,34 @@ class BodyFilter extends StatelessWidget {
               child: Column(
                 children: [
                   FilterOptionContainer(
-                      title: "Categoria",
-                      option: ["Móveis", "Roupas", "Peças", "Carros"]),
+                    title: "Categoria",
+                    option: ["Móveis", "Roupas", "Peças", "Carros"],
+                  ),
                   FilterOptionContainer(
-                      title: "Localização", option: ["SC", "PR", "RS", "SP"]),
-                  FilterOptionContainer(title: "Cidade", option: [
-                    "Blumenau",
-                    "Gaspar",
-                    "Ilhota",
-                    "Indaial",
-                    "Curitiba",
-                    "Porto Alegre",
-                    "São Paulo"
-                  ]),
-                  FilterOptionContainer(title: "Ordenar Por:", option: [
-                    "Relevância",
-                    "Valor",
-                  ]),
+                    title: "Localização",
+                    option: ["SC", "PR", "RS", "SP"],
+                  ),
+                  FilterOptionContainer(
+                    title: "Cidade",
+                    option: [
+                      "Blumenau",
+                      "Gaspar",
+                      "Ilhota",
+                      "Indaial",
+                      "Curitiba",
+                      "Porto Alegre",
+                      "São Paulo"
+                    ],
+                  ),
+                  FilterOptionContainer(
+                    title: "Ordenar Por:",
+                    option: [
+                      "Relevância",
+                      "Valor",
+                    ],
+                  ),
+                  SizedBox(height:25),
+                  PriceRangeSlider(),
                   SizedBox(
                     height: 25,
                   ),
