@@ -1,8 +1,8 @@
-import 'price_range_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'fake_button_container.dart';
 import 'filter_option_container.dart';
+import 'price_range_slider.dart';
 
 class BodyFilter extends StatelessWidget {
   @override

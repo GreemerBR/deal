@@ -1,5 +1,6 @@
-import 'package:app_2/presenter/my_profile/my_profile_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../my_profile/my_profile_page.dart';
 
 // ignore: must_be_immutable
 class CardProductAd extends StatefulWidget {
