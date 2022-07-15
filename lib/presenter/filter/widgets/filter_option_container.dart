@@ -49,6 +49,7 @@ class _FilterOptionContainerState extends State<FilterOptionContainer> {
           margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: DropdownButton(
+            underline: SizedBox(),
             iconEnabledColor: Color.fromARGB(255, 99, 66, 191),
             isExpanded: true,
             // Initial Value
