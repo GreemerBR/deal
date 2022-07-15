@@ -1,5 +1,6 @@
-import 'package:app_2/presenter/my_profile/my_profile_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../announcement/announce_page.dart';
 
 // ignore: must_be_immutable
 class CardProductAd extends StatefulWidget {
@@ -35,7 +36,7 @@ class _CardProductAdState extends State<CardProductAd> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return MyProfilePage();
+              return AnnoucementPage();
             },
           ),
         );
@@ -84,9 +85,8 @@ class _CardProductAdState extends State<CardProductAd> {
                     makeFavorite();
                   },
                   icon: Icon(
-                    widget.isFavorite ? Icons.star :  Icons.star_border,
-                    color: (
-                      widget.isFavorite
+                    widget.isFavorite ? Icons.star : Icons.star_border,
+                    color: (widget.isFavorite
                         ? Color.fromARGB(
                             255,
                             99,

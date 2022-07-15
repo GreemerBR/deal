@@ -13,3 +13,31 @@ const String imgPopcornMaker = 'assets/images/pipoqueira.jpeg';
 const String imgProjector = 'assets/images/projetor.png';
 const String imgSandwichMaker = 'assets/images/sanduicheira.jpeg';
 const String imgSplashScreen = 'assets/images/splashscreen.png';
+
+const List<String> imageList = [imgAirFryer, imgBen10];
+
+// final List<Widget> imageSliders = imageList
+//     .map((item) => Container(
+//           child: Container(
+//             margin: EdgeInsets.all(5),
+//             child: ClipRRect(
+//                 borderRadius: BorderRadius.all(Radius.circular(5)),
+//                 child: Stack(
+//                   children: <Widget>[
+//                     Image.asset(
+//                       item,
+//                       fit: BoxFit.fill,
+//                       width: 1000,
+//                     ),
+//                     Positioned(
+//                       child: Container(
+//                         decoration: BoxDecoration(),
+//                         padding:
+//                             EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+//                       ),
+//                     ),
+//                   ],
+//                 )),
+//           ),
+//         ))
+//     .toList();

@@ -1,3 +1,5 @@
+// ignore_for_file: must_call_super
+
 import 'package:flutter/material.dart';
 
 class FilterOptionContainer extends StatefulWidget {

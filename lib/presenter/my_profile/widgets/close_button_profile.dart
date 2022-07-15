@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../login/login_page.dart';
 
-
 class CloseButtonProfile extends StatelessWidget {
   const CloseButtonProfile({
     Key? key,
@@ -16,6 +15,7 @@ class CloseButtonProfile extends StatelessWidget {
         right: 20,
       ),
       child: Container(
+        height: 100,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border(
@@ -24,7 +24,6 @@ class CloseButtonProfile extends StatelessWidget {
             ),
           ),
         ),
-        height: 150,
         width: double.maxFinite,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(45),
@@ -49,10 +48,10 @@ class CloseButtonProfile extends StatelessWidget {
               TextButton(
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.only(
-                    top: 25,
-                    bottom: 25,
-                    left: 100,
-                    right: 100,
+                    top: 15,
+                    bottom: 15,
+                    left: 75,
+                    right: 75,
                   ),
                   backgroundColor: Color.fromARGB(255, 63, 81, 181),
                   primary: Color.fromARGB(255, 196, 196, 196),
