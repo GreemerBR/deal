@@ -9,31 +9,28 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 25),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return MainMenuPage();
-              },
-            ),
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 99, 66, 191),
-          side: BorderSide(
-            width: 2.0,
-            color: Colors.white,
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return MainMenuPage();
+            },
           ),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        primary: Color.fromARGB(255, 99, 66, 191),
+        side: BorderSide(
+          width: 2.0,
+          color: Colors.white,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'ACESSAR',
-            style: TextStyle(fontSize: 15),
-          ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Text(
+          'ACESSAR',
+          style: TextStyle(fontSize: 15),
         ),
       ),
     );
