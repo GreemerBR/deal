@@ -36,7 +36,7 @@ class _CardProductAdState extends State<CardProductAd> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return MyProfilePage();
+              return AnnoucementPage();
             },
           ),
         );
@@ -85,9 +85,8 @@ class _CardProductAdState extends State<CardProductAd> {
                     makeFavorite();
                   },
                   icon: Icon(
-                    widget.isFavorite ? Icons.star :  Icons.star_border,
-                    color: (
-                      widget.isFavorite
+                    widget.isFavorite ? Icons.star : Icons.star_border,
+                    color: (widget.isFavorite
                         ? Color.fromARGB(
                             255,
                             99,
