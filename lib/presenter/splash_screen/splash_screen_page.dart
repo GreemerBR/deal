@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/app_assets.dart';
 import '../login/login_page.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -34,6 +35,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
+            child: Image.asset(
+              imgSplashScreen,
+            ),
           ),
         ));
   }

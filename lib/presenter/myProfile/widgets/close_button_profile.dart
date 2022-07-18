@@ -1,5 +1,6 @@
-import 'package:app_2/presenter/login/login.dart';
 import 'package:flutter/material.dart';
+
+import '../../login/login_page.dart';
 
 class CloseButtonProfile extends StatelessWidget {
   const CloseButtonProfile({
@@ -58,7 +59,7 @@ class CloseButtonProfile extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return Login();
+                        return LoginPage();
                       },
                     ),
                   );
