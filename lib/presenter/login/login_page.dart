@@ -13,13 +13,8 @@ class LoginPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                BackgroundImage(),
-                PeopleImage(),
-              ],
-            ),
+            BackgroundImage(),
+            PeopleImage(),
             DefaultTitle(),
             DefaultInput(texto: 'Login'),
             DefaultInput(icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
