@@ -22,6 +22,12 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
     });
   }
 
+  void whatsAppOpen() async {
+    // TODO: VER ISSO !!!!!
+    //https://pub.dev/packages/url_launcher/example
+    // await FlutterLaunch.launchWhatsapp(phone: '+5547991885219', message: 'Oi');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +58,17 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
         ],
       ),
       body: BodyAnnouncement(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () async {
+          whatsAppOpen();
+        },
+        child: const Icon(
+          Icons.whatsapp,
+          size: 35,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
