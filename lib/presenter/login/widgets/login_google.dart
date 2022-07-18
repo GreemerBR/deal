@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/app_assets.dart';
+import '../../../core/app_assets.dart';
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({

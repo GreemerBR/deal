@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'login_google.dart';
+import 'widgets/login_google.dart';
 import 'widgets/circle_avatar.dart';
 import 'widgets/default_button.dart';
 import 'widgets/default_input.dart';
