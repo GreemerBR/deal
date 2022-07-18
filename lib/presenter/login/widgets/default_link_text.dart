@@ -7,17 +7,19 @@ class DefaultLinkText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 25),
-      child: Text(
-        "Registre-se agora",
-        style: TextStyle(
-          fontSize: 15,
-          decoration: TextDecoration.underline,
-          color: Colors.grey.shade700,
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 25),
+      child: TextButton(
+        onPressed: () {},
+        child: Text(
+          "Registre-se agora",
+          style: TextStyle(
+            fontSize: 15,
+            decoration: TextDecoration.underline,
+            color: Colors.white,
+          ),
         ),
       ),
     );
   }
 }
-

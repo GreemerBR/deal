@@ -7,14 +7,23 @@ class DefaultTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Positioned(
-      top: 25,
-      child: Text(
-        'Empreste agora mesmo',
-        style: TextStyle(
-          fontSize: 25,
+    return Column(
+      children: [
+        Text(
+          'Já possui sua conta?',
+          style: TextStyle(
+            fontSize: 25,
+            color: Colors.white,
+          ),
         ),
-      ),
+        Text(
+          'Entre agora mesmo',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+      ],
     );
   }
 }
