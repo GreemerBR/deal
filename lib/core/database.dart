@@ -64,6 +64,10 @@ class _DatabaseAppState extends State<DatabaseApp> {
 
     // Get the records
     List<Map> list = await database.rawQuery('SELECT * FROM Test');
+    List<Map> expectedList = [
+      {'name': 'updated name', 'id': 1, 'value': 9876, 'num': 456.789},
+      {'name': 'another name', 'id': 2, 'value': 12345678, 'num': 3.1416}
+    ];
 
     // Delete a record
     count = await database.rawDelete(
