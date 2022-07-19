@@ -12,5 +12,6 @@ const String imgPopcornMaker = 'assets/images/popcorn_maker.jpeg';
 const String imgProjector = 'assets/images/projector.png';
 const String imgSandwichMaker = 'assets/images/sandwich_maker.jpeg';
 const String imgSplashScreen = 'assets/images/splashscreen.png';
+const String imgWelcome = 'assets/images/welcome.jpg';
 
 const List<String> imageList = [imgAirFryer, imgBen10];
