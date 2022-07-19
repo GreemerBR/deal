@@ -36,7 +36,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Image.asset(
-              imgSplashScreen,
+              imgLogoApp,
+              scale: 2,
             ),
           ),
         ));
