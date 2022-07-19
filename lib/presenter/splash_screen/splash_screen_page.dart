@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
-import '../secound_splash/splash_screen_page.dart';
+import '../second_splash/splash_screen_page.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return SecoundSplashScreen();
+            return SecondSplashScreen();
           },
         ),
       );

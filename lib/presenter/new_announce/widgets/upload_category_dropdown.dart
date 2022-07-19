@@ -20,6 +20,7 @@ class _UploadCategoryDropdownState extends State<UploadCategoryDropdown> {
   var items = ['Selecione...'];
 
   void initState() {
+    super.initState();
     items.addAll(widget.option);
   }
 
