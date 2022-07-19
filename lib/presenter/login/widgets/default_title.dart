@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
 class DefaultTitle extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final Color colortitle;
+  final Color colorSubtitle;
+
   const DefaultTitle({
     Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.colortitle,
+    required this.colorSubtitle,
   }) : super(key: key);
 
   @override
@@ -10,17 +19,17 @@ class DefaultTitle extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Já possui sua conta?',
+          title,
           style: TextStyle(
             fontSize: 25,
-            color: Colors.white,
+            color: colortitle,
           ),
         ),
         Text(
-          'Entre agora mesmo',
+          subtitle,
           style: TextStyle(
             fontSize: 20,
-            color: Colors.white,
+            color: colorSubtitle,
           ),
         ),
       ],

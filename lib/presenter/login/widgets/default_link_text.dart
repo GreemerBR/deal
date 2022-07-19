@@ -1,3 +1,4 @@
+import 'package:app_2/presenter/register/register_page.dart';
 import 'package:flutter/material.dart';
 
 class DefaultLinkText extends StatelessWidget {
@@ -10,7 +11,15 @@ class DefaultLinkText extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 25),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return Register();
+              },
+            ),
+          );
+        },
         child: Text(
           "Registre-se agora",
           style: TextStyle(

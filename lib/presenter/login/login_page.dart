@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../main_menu/main_menu_page.dart';
 import 'widgets/login_google.dart';
 import 'widgets/circle_avatar.dart';
 import 'widgets/default_button.dart';
@@ -14,12 +15,17 @@ class LoginPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          DefaultTitle(),
+          DefaultTitle(
+            title: 'Já possui conta?',
+            subtitle: 'Entre agora mesmo',
+            colortitle: Colors.white,
+            colorSubtitle: Colors.white,
+          ),
           ProfileAvatar(),
           DefaultInput(texto: 'Login'),
           DefaultInput(icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
           GoogleButton(),
-          DefaultButton(),
+          DefaultButton(rota: MainMenuPage(), buttonText: 'ACESSAR'),
           DefaultLinkText(),
         ],
       ),
