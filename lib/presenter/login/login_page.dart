@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../main_menu/main_menu_page.dart';
-import 'widgets/login_google.dart';
 import 'widgets/circle_avatar.dart';
-import 'widgets/default_button.dart';
-import 'widgets/default_input.dart';
 import 'widgets/default_link_text.dart';
 import 'widgets/default_title.dart';
+import 'widgets/login_google.dart';
+
+import 'widgets/login_widget.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 99, 66, 191),
@@ -24,10 +28,8 @@ class LoginPage extends StatelessWidget {
                 colorSubtitle: Colors.white,
               ),
               ProfileAvatar(),
-              DefaultInput(texto: 'Login'),
-              DefaultInput(icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
+              LoginWidget(),
               GoogleButton(),
-              DefaultButton(rota: MainMenuPage(), buttonText: 'ACESSAR'),
               DefaultLinkText(),
             ],
           ),

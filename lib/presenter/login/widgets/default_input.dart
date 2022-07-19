@@ -6,6 +6,7 @@ class DefaultInput extends StatelessWidget {
   final Icon? icon;
   final Color textColor;
   final Color backgroundColor;
+  final TextEditingController? controller;
 
   const DefaultInput({
     Key? key,
@@ -13,6 +14,7 @@ class DefaultInput extends StatelessWidget {
     this.icon,
     this.textColor = Colors.black,
     this.backgroundColor = grey,
+    this.controller
   }) : super(key: key);
 
   @override
@@ -20,7 +22,8 @@ class DefaultInput extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: TextFormField(
-        decoration: InputDecoration(
+        controller: controller,
+        decoration: InputDecoration( 
           contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
           filled: true,
           fillColor: backgroundColor,

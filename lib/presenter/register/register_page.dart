@@ -52,6 +52,9 @@ class Register extends StatelessWidget {
                 buttonText: 'Criar Conta',
                 borderSize: 0,
                 rota: MainMenuPage(),
+                func: () {
+                  
+                }
               ),
             ],
           ),

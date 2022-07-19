@@ -42,7 +42,7 @@ class _CardProductAdState extends State<CardProductAd> {
         );
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         width: double.maxFinite,
         decoration: BoxDecoration(
           color: Colors.white,
