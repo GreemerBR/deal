@@ -35,11 +35,6 @@ class Register extends StatelessWidget {
                 backgroundColor: Colors.white,
               ),
               DefaultInput(
-                texto: 'Usuário de Login',
-                textColor: Color.fromARGB(255, 99, 66, 191),
-                backgroundColor: Colors.white,
-              ),
-              DefaultInput(
                 texto: 'Senha',
                 icon: Icon(
                   Icons.remove_red_eye,
