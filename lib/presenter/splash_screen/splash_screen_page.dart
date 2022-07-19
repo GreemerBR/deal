@@ -30,16 +30,26 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 99, 66, 191),
-        body: Center(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Image.asset(
-              imgLogoApp,
-              scale: 2,
+      backgroundColor: Color.fromARGB(255, 99, 66, 191),
+      body: Column(
+        children: [
+          Center(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset(
+                imgLogoApp,
+                scale: 2,
+              ),
             ),
           ),
-        ));
+          // Center(
+          //   child: CircularProgressIndicator(
+          //     color: Colors.white,
+          //   ),
+          // ),
+        ],
+      ),
+    );
   }
 }
