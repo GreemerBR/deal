@@ -24,16 +24,20 @@ class NewAnnounceBody extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          ImageUploadContainer(),
-          UploadTextOption(title: "Título *", hint: "Exemplo: Batedeira Inox Cadence"),
-          UploadTextOption(title: "Descrição *", hint: "Exemplo: Semi Nova, Usada Poucas Vezes "),
-          UploadCategoryDropdown(title: "Categoria", option: ["Móveis","Roupas","Peças","Eletrodomésticos"]),
-          UploadTextOption(title: "CEP *", hint: "Exemplo: 00000-000"),
-          SizedBox(height: 20,),
-          BottomAnnounceButton(),
-        ],
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            ImageUploadContainer(),
+            UploadTextOption(title: "Título *", hint: "Exemplo: Batedeira Inox Cadence"),
+            UploadTextOption(title: "Descrição *", hint: "Exemplo: Semi Nova, Usada Poucas Vezes "),
+            UploadCategoryDropdown(title: "Categoria *", option: ["Móveis","Roupas","Peças","Eletrodomésticos"]),
+            UploadTextOption(title: "CEP *", hint: "Exemplo: 00000-000"),
+            SizedBox(height: 20,),
+            BottomAnnounceButton(),
+            SizedBox(height: 20,),
+          ],
+        ),
       ),
     );
   }
