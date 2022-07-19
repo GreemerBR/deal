@@ -15,8 +15,8 @@ class Register extends StatelessWidget {
         children: [
           Center(
             child: DefaultTitle(
-              title: 'Já possuí sua conta?',
-              subtitle: 'Entre agora mesmo',
+              title: 'Não possui uma conta?',
+              subtitle: 'Comece a emprestar agora mesmo!',
               colortitle: Color.fromARGB(255, 99, 66, 191),
               colorSubtitle: Color.fromARGB(255, 99, 66, 191),
             ),
