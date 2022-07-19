@@ -13,20 +13,20 @@ class SecoundSplashScreen extends StatefulWidget {
 
 class _SecoundSplashScreenState extends State<SecoundSplashScreen> {
   @override
-  void initState() {
-    Future.delayed(
-      const Duration(seconds: 4),
-    ).then((value) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) {
-            return LoginPage();
-          },
-        ),
-      );
-    });
-    super.initState();
-  }
+  // void initState() {
+  //   Future.delayed(
+  //     const Duration(seconds: 4),
+  //   ).then((value) {
+  //     Navigator.of(context).push(
+  //       MaterialPageRoute(
+  //         builder: (context) {
+  //           return LoginPage();
+  //         },
+  //       ),
+  //     );
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +68,20 @@ class _SecoundSplashScreenState extends State<SecoundSplashScreen> {
                   SizedBox(
                     height: 15,
                   ),
-                  CircularProgressIndicator(
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LoginPage();
+                          },
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.keyboard_double_arrow_up_rounded),
                     color: Colors.white,
-                  ),
+                    iconSize: 45,
+                  )
                 ],
               ),
             ),
