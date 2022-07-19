@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'widgets/body_announcement.dart';
 
@@ -22,10 +23,14 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
     });
   }
 
-  void whatsAppOpen() async {
-    // TODO: VER ISSO !!!!!
-    //https://pub.dev/packages/url_launcher/example
-    // await FlutterLaunch.launchWhatsapp(phone: '+5547991885219', message: 'Oi');
+  void launchWhatsApp() async {
+    try {
+      await launch(
+        'https://api.whatsapp.com/send?phone=5545991318552&text=Ol%C3%A1%2C%20eu%20vi%20seu%20an%C3%BAncio%20no%20Deal.%20Podemos%20conversar%3F',
+      );
+    } catch (e) {
+      print('Erro ao enviar mensagem.');
+    }
   }
 
   @override
@@ -59,9 +64,9 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
       ),
       body: BodyAnnouncement(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 99, 66, 191),
         onPressed: () async {
-          whatsAppOpen();
+          launchWhatsApp();
         },
         child: const Icon(
           Icons.whatsapp,
