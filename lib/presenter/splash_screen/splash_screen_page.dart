@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
-import '../login/login_page.dart';
+import '../secound_splash/splash_screen_page.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -14,12 +14,12 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     Future.delayed(
-      const Duration(seconds: 4),
+      const Duration(seconds: 2),
     ).then((value) {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return LoginPage();
+            return SecoundSplashScreen();
           },
         ),
       );
@@ -30,18 +30,14 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(
-          255,
-          99,
-          66,
-          191,
-        ),
+        backgroundColor: Color.fromARGB(255, 99, 66, 191),
         body: Center(
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Image.asset(
-              imgSplashScreen,
+              imgLogoApp,
+              scale: 2,
             ),
           ),
         ));

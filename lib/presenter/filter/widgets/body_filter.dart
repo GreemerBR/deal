@@ -1,8 +1,8 @@
-import 'price_range_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'fake_button_container.dart';
 import 'filter_option_container.dart';
+import 'price_range_slider.dart';
 
 class BodyFilter extends StatelessWidget {
   @override
@@ -16,18 +16,16 @@ class BodyFilter extends StatelessWidget {
             "Filtro",
             style: TextStyle(
               fontSize: 30,
-              fontStyle: FontStyle.italic,
             ),
           ),
         ),
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-              ),
+              padding: const EdgeInsets.all(15),
               child: Column(
                 children: [
                   FilterOptionContainer(
@@ -57,11 +55,9 @@ class BodyFilter extends StatelessWidget {
                       "Valor",
                     ],
                   ),
-                  SizedBox(height:25),
+                  SizedBox(height: 25),
                   PriceRangeSlider(),
-                  SizedBox(
-                    height: 25,
-                  ),
+                  SizedBox(height: 25),
                   FakeButtonContainer(),
                 ],
               ),

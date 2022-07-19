@@ -11,7 +11,12 @@ class FakeButtonContainer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         MaterialButton(
+          hoverColor: Colors.purple.shade800,
+          focusColor: Colors.purple.shade800,
           minWidth: 250,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
           height: 85,
           color: Color.fromARGB(255, 99, 66, 191),
           onPressed: () {
