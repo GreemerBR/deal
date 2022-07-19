@@ -21,19 +21,6 @@ class MenuNavigationBar extends StatelessWidget {
           func: () => FirebaseAuth.instance.signOut(),
         ),
         MainMenuButton(
-          icon: Icons.chat_outlined,
-          text: 'Chat',
-          func: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return CategoriesPage();
-                },
-              ),
-            );
-          },
-        ),
-        MainMenuButton(
           icon: Icons.person_outline,
           text: 'Perfil',
           func: () {
