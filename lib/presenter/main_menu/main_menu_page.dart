@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../favorites/favorites_page.dart';
 import '../filter/filter_page.dart';
 import 'widgets/body_main_menu.dart';
+import 'widgets/menu_navigation_bar.dart';
 
 class MainMenuPage extends StatelessWidget {
   @override
@@ -72,6 +73,7 @@ class MainMenuPage extends StatelessWidget {
         toolbarHeight: 80,
       ),
       body: BodyMainMenu(),
+      // bottomNavigationBar: MenuNavigationBar(),
     );
   }
 }

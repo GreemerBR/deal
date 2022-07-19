@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../chat/chat_page.dart';
+import '../../categories/categories_page.dart';
 import '../../my_profile/my_profile_page.dart';
 import 'main_menu_button.dart';
 
@@ -27,7 +27,7 @@ class MenuNavigationBar extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return ChatPage();
+                  return CategoriesPage();
                 },
               ),
             );
