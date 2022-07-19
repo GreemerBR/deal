@@ -1,6 +1,8 @@
+import 'package:app_2/presenter/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/app_assets.dart';
+import '../../../new_announce/widgets/image_upload_container.dart';
 import '../../widgets/profile_summary_informations.dart';
 import 'profile_list_informations.dart';
 
@@ -29,10 +31,23 @@ class BodyMyProfileEditor extends StatelessWidget {
                 ),
                 child: Transform.rotate(
                   angle: 0.15,
-                  child: Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                    size: 25,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ImageUploadContainer()
+                                // ver -> modal bottom sheet flutter
+                                ;
+                          },
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
