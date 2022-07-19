@@ -1,33 +1,33 @@
+import 'package:app_2/is_logged/is_logged_page.dart';
 import 'package:app_2/presenter/login/widgets/default_title.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
 import '../login/login_page.dart';
-import 'widgets/animated_slide_up.dart';
 
-class SecoundSplashScreen extends StatefulWidget {
-  const SecoundSplashScreen({Key? key}) : super(key: key);
+class SecondSplashScreen extends StatefulWidget {
+  const SecondSplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SecoundSplashScreen> createState() => _SecoundSplashScreenState();
+  State<SecondSplashScreen> createState() => _SecondSplashScreenState();
 }
 
-class _SecoundSplashScreenState extends State<SecoundSplashScreen> {
+class _SecondSplashScreenState extends State<SecondSplashScreen> {
   @override
-  // void initState() {
-  //   Future.delayed(
-  //     const Duration(seconds: 4),
-  //   ).then((value) {
-  //     Navigator.of(context).push(
-  //       MaterialPageRoute(
-  //         builder: (context) {
-  //           return LoginPage();
-  //         },
-  //       ),
-  //     );
-  //   });
-  //   super.initState();
-  // }
+  void initState() {
+    Future.delayed(
+      const Duration(seconds: 4),
+    ).then((value) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) {
+            return IsLoggedPage();
+          },
+        ),
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
