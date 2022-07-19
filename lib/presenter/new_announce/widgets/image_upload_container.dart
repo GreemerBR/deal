@@ -20,10 +20,24 @@ class ImageUploadContainer extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.upload,
-                color: Color.fromARGB(255, 99, 66, 191),
-                size: 75,
+              IconButton(
+                iconSize: 65,
+                onPressed: () {
+                  final snackBar = SnackBar(
+                    content: const Text('Image Uploaded!'),
+                    action: SnackBarAction(
+                      label: 'Close',
+                      onPressed: () {
+                        
+                      },
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                icon: Icon(
+                  Icons.upload,
+                  color: Color.fromARGB(255, 99, 66, 191),
+                ),
               ),
               Text(
                 "Inserir Foto...",
