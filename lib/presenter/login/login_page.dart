@@ -12,22 +12,26 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 99, 66, 191),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          DefaultTitle(
-            title: 'Já possui conta?',
-            subtitle: 'Entre agora mesmo',
-            colortitle: Colors.white,
-            colorSubtitle: Colors.white,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DefaultTitle(
+                title: 'Já possui conta?',
+                subtitle: 'Entre agora mesmo',
+                colortitle: Colors.white,
+                colorSubtitle: Colors.white,
+              ),
+              ProfileAvatar(),
+              DefaultInput(texto: 'Login'),
+              DefaultInput(icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
+              GoogleButton(),
+              DefaultButton(rota: MainMenuPage(), buttonText: 'ACESSAR'),
+              DefaultLinkText(),
+            ],
           ),
-          ProfileAvatar(),
-          DefaultInput(texto: 'Login'),
-          DefaultInput(icon: Icon(Icons.remove_red_eye), texto: 'Senha'),
-          GoogleButton(),
-          DefaultButton(rota: MainMenuPage(), buttonText: 'ACESSAR'),
-          DefaultLinkText(),
-        ],
+        ),
       ),
     );
   }
