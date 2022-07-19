@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DefaultInput extends StatelessWidget {
   static const Color grey = Color.fromRGBO(224, 224, 224, 1);

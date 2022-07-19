@@ -14,6 +14,6 @@ const String imgSandwichMaker = 'assets/images/sandwich_maker.jpeg';
 const String imgSplashScreen = 'assets/images/splashscreen.png';
 const String imgLoginGoogle = 'assets/images/loginGoogle.png';
 const String imgLogoApp = 'assets/images/iconApp.png';
-const String imgFriendsSplash = 'assets/images/friendsSplash.png';
+const String imgFriendsSplash = 'assets/images/friendSplash.jpg';
 
 const List<String> imageList = [imgAirFryer, imgBen10];
