@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
+import '../../is_logged/is_logged_page.dart';
 import '../login/login_page.dart';
 import '../login/widgets/default_title.dart';
 
@@ -13,20 +14,20 @@ class SecondSplashScreen extends StatefulWidget {
 
 class _SecondSplashScreenState extends State<SecondSplashScreen> {
   @override
-  // void initState() {
-  //   Future.delayed(
-  //     const Duration(seconds: 4),
-  //   ).then((value) {
-  //     Navigator.of(context).push(
-  //       MaterialPageRoute(
-  //         builder: (context) {
-  //           return LoginPage();
-  //         },
-  //       ),
-  //     );
-  //   });
-  //   super.initState();
-  // }
+  void initState() {
+    Future.delayed(
+      const Duration(seconds: 4),
+    ).then((value) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) {
+            return IsLoggedPage();
+          },
+        ),
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
