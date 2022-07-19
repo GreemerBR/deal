@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
 import '../login/login_page.dart';
+import 'widgets/animated_slide_up.dart';
 
 class SecoundSplashScreen extends StatefulWidget {
   const SecoundSplashScreen({Key? key}) : super(key: key);
@@ -13,20 +14,20 @@ class SecoundSplashScreen extends StatefulWidget {
 
 class _SecoundSplashScreenState extends State<SecoundSplashScreen> {
   @override
-  void initState() {
-    Future.delayed(
-      const Duration(seconds: 4),
-    ).then((value) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) {
-            return LoginPage();
-          },
-        ),
-      );
-    });
-    super.initState();
-  }
+  // void initState() {
+  //   Future.delayed(
+  //     const Duration(seconds: 4),
+  //   ).then((value) {
+  //     Navigator.of(context).push(
+  //       MaterialPageRoute(
+  //         builder: (context) {
+  //           return LoginPage();
+  //         },
+  //       ),
+  //     );
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +69,15 @@ class _SecoundSplashScreenState extends State<SecoundSplashScreen> {
                   SizedBox(
                     height: 15,
                   ),
-                  CircularProgressIndicator(
+                  //AnimatedSlideUp(),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(_createRoute());
+                    },
+                    icon: Icon(Icons.keyboard_double_arrow_up_rounded),
                     color: Colors.white,
-                  ),
+                    iconSize: 45,
+                  )
                 ],
               ),
             ),
@@ -79,4 +86,22 @@ class _SecoundSplashScreenState extends State<SecoundSplashScreen> {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => LoginPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
