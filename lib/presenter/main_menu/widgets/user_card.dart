@@ -1,4 +1,3 @@
-import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
 import 'avatar.dart';
