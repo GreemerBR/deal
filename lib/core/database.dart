@@ -37,39 +37,43 @@ class _DatabaseAppState extends State<DatabaseApp> {
 
         await db.execute(
             'CREATE TABLE AnunciosFavoritos ( FavId INT PRIMARY KEY AUTO_INCREMENT, UserId INT REFERENCES Usuario (UserId), AnunId INT REFERENCES Anuncios (AnunId));');
+
+        await db.execute(
+            'INSERT INTO Usuarios VALUES (NULL, "André Pereira Martins", "Andre@gmail.com", "Andre2022", "And", "127.983.223-33", "(48)997398237", "88160-076", "Rua XV", 1123, "Apto 23");');
       },
     );
 
     // Insert some records in a transaction
-    await database.transaction(
-      (txn) async {
-        int id1 = await txn.rawInsert(
-          'INSERT INTO Test(name, value, num) VALUES("some name", 1234, 456.789)',
-        );
-        print('inserted1: $id1');
-        int id2 = await txn.rawInsert(
-          'INSERT INTO Test(name, value, num) VALUES(?, ?, ?)',
-          ['another name', 12345678, 3.1416],
-        );
-        print('inserted2: $id2');
-      },
-    );
+    // await database.transaction(
+    //   (txn) async {
+    //     int id1 = await txn.rawInsert(
+    //       'INSERT INTO Test(name, value, num) VALUES("some name", 1234, 456.789)',
+    //     );
+    //     print('inserted1: $id1');
+    //     int id2 = await txn.rawInsert(
+    //       'INSERT INTO Test(name, value, num) VALUES(?, ?, ?)',
+    //       ['another name', 12345678, 3.1416],
+    //     );
+    //     print('inserted2: $id2');
+    //   },
+    // );
 
     // Update some record
-    int count = await database.rawUpdate(
-      'UPDATE Test SET name = ?, value = ? WHERE name = ?',
-      ['updated name', '9876', 'some name'],
-    );
-    print('updated: $count');
+    // int count = await database.rawUpdate(
+    //   'UPDATE Test SET name = ?, value = ? WHERE name = ?',
+    //   ['updated name', '9876', 'some name'],
+    // );
+    // print('updated: $count');
 
     // Get the records
-    List<Map> list = await database.rawQuery('SELECT * FROM Test');
+    List<Map> list = await database.rawQuery('SELECT * FROM Usuarios');
+    print(list);
 
     // Delete a record
-    count = await database.rawDelete(
-      'DELETE FROM Test WHERE name = ?',
-      ['another name'],
-    );
+    // count = await database.rawDelete(
+    //   'DELETE FROM Test WHERE name = ?',
+    //   ['another name'],
+    // );
 
     // Close the database
     await database.close();
