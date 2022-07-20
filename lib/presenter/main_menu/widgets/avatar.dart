@@ -11,7 +11,7 @@ class Avatar extends StatelessWidget {
     return Column(
       children: [
         ClipOval(
-          child: Image.network(
+          child: Image.asset(
             imgAvatar,
             width: 100,
             height: 100,

@@ -1,13 +1,41 @@
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+// import 'package:image_picker/image_picker.dart';
+import 'package:flutter/src/services/message_codec.dart';
 
 import '../../../../core/app_assets.dart';
 import '../../widgets/profile_summary_informations.dart';
 import 'profile_list_informations.dart';
 
-class BodyMyProfileEditor extends StatelessWidget {
+class BodyMyProfileEditor extends StatefulWidget {
   const BodyMyProfileEditor({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<BodyMyProfileEditor> createState() => _BodyMyProfileEditorState();
+}
+
+class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
+  Uint8List? photo;
+  File? image;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+        photo = imageTemp.readAsBytesSync();
+      });
+    } on PlatformException catch (e) {
+      // ignore: avoid_print
+      print('Failed to pick image: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +57,62 @@ class BodyMyProfileEditor extends StatelessWidget {
                 ),
                 child: Transform.rotate(
                   angle: 0.15,
-                  child: Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                    size: 25,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Wrap(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(25),
+                                child: DottedBorder(
+                                  dashPattern: [4, 7],
+                                  color: Colors.grey.shade700,
+                                  radius: Radius.circular(15),
+                                  child: MaterialButton(
+                                    onPressed: () {
+                                      pickImage();
+                                      Image.memory(photo!);
+                                    },
+                                    child: Container(
+                                      height: 200,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.9,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.upload,
+                                            size: 55,
+                                            color: Color.fromARGB(
+                                                255, 99, 66, 191),
+                                          ),
+                                          Text(
+                                            "Inserir Foto...",
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 99, 66, 191),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
                   ),
                 ),
               ),
