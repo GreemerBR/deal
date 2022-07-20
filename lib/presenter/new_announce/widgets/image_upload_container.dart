@@ -23,16 +23,27 @@ class ImageUploadContainer extends StatelessWidget {
               IconButton(
                 iconSize: 65,
                 onPressed: () {
-                  final snackBar = SnackBar(
-                    content: const Text('Image Uploaded!'),
-                    action: SnackBarAction(
-                      label: 'Close',
-                      onPressed: () {
-                        
-                      },
-                    ),
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Wrap(
+                        children: [
+                          ListTile(
+                            leading: Icon(Icons.share),
+                            title: Text("Share"),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.copy),
+                            title: Text("Copy"),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.edit),
+                            title: Text("Edit"),
+                          ),
+                        ],
+                      );
+                    },
                   );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 icon: Icon(
                   Icons.upload,
@@ -53,3 +64,15 @@ class ImageUploadContainer extends StatelessWidget {
     );
   }
 }
+
+
+//  final snackBar = SnackBar(
+//                     content: const Text('Image Uploaded!'),
+//                     action: SnackBarAction(
+//                       label: 'Close',
+//                       onPressed: () {
+                        
+//                       },
+//                     ),
+//                   );
+//                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
