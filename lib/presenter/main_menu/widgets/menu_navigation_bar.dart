@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../categories/categories_page.dart';
+import '../../favorites/favorites_page.dart';
 import '../../my_profile/my_profile_page.dart';
 import 'main_menu_button.dart';
 
@@ -19,6 +18,19 @@ class MenuNavigationBar extends StatelessWidget {
           icon: Icons.arrow_back,
           text: 'Sair',
           func: () => FirebaseAuth.instance.signOut(),
+        ),
+        MainMenuButton(
+          icon: Icons.favorite_border_outlined,
+          text: 'Favoritos',
+          func: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return FavoritesPage();
+                },
+              ),
+            );
+          },
         ),
         MainMenuButton(
           icon: Icons.person_outline,

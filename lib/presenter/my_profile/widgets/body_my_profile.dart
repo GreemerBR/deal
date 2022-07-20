@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
 import '../../active_announces/active_announces_page.dart';
-import '../../login/login_page.dart';
+import '../../main_menu/main_menu_page.dart';
 import 'close_button_profile.dart';
 import 'profile_list_item.dart';
 import 'profile_summary_informations.dart';
@@ -32,20 +32,8 @@ class BodyMyProfile extends StatelessWidget {
                     destinyPage: ActiveAnnouncesPage(),
                   ),
                   ProfileListItem(
-                    title: 'Buscar recentes',
-                    destinyPage: LoginPage(),
-                  ),
-                  ProfileListItem(
-                    title: 'Notificações',
-                    destinyPage: LoginPage(),
-                  ),
-                  ProfileListItem(
-                    title: 'Segurança e privacidade',
-                    destinyPage: LoginPage(),
-                  ),
-                  ProfileListItem(
                     title: 'Sobre o DEAL',
-                    destinyPage: LoginPage(),
+                    destinyPage: MainMenuPage(),
                   )
                 ],
               ),

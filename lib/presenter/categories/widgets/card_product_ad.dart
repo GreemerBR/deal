@@ -33,13 +33,17 @@ class _CardProductAdState extends State<CardProductAd> {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return AnnoucementPage();
-            },
-          ),
-        );
+        try {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return AnnoucementPage();
+              },
+            ),
+          );
+        } catch (e) {
+          print(e);
+        }
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),

@@ -15,15 +15,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     Future.delayed(
       const Duration(seconds: 2),
-    ).then((value) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) {
-            return SecondSplashScreen();
-          },
-        ),
-      );
-    });
+    ).then(
+      (value) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) {
+              return SecondSplashScreen();
+            },
+          ),
+        );
+      },
+    );
     super.initState();
   }
 
