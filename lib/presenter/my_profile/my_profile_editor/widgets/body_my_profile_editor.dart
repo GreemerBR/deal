@@ -6,6 +6,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'save_button_profile.dart';
 import '../../widgets/profile_summary_informations.dart';
 import 'profile_list_informations.dart';
 
@@ -163,7 +164,8 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
                 ],
               ),
             ),
-          )
+          ),
+          SaveButtonProfile(),
         ],
       ),
     );

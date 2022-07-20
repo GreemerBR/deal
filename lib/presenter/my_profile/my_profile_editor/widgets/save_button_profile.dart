@@ -1,8 +1,8 @@
 import 'package:app_2/presenter/my_profile/my_profile_page.dart';
 import 'package:flutter/material.dart';
 
-class CloseButtonProfile extends StatelessWidget {
-  const CloseButtonProfile({
+class SaveButtonProfile extends StatelessWidget {
+  const SaveButtonProfile({
     Key? key,
   }) : super(key: key);
 
@@ -66,7 +66,7 @@ class CloseButtonProfile extends StatelessWidget {
                   );
                 },
                 child: const Text(
-                  'SAIR',
+                  'SALVAR',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
