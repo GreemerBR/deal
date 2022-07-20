@@ -15,11 +15,6 @@ class MenuNavigationBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         MainMenuButton(
-          icon: Icons.arrow_back,
-          text: 'Sair',
-          func: () => FirebaseAuth.instance.signOut(),
-        ),
-        MainMenuButton(
           icon: Icons.favorite_border_outlined,
           text: 'Favoritos',
           func: () {
@@ -44,6 +39,11 @@ class MenuNavigationBar extends StatelessWidget {
               ),
             );
           },
+        ),
+        MainMenuButton(
+          icon: Icons.output_sharp,
+          text: 'Sair',
+          func: () => FirebaseAuth.instance.signOut(),
         ),
       ],
     );

@@ -13,21 +13,22 @@ class FilterIcon extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget> [
+        children: <Widget>[
           IconButton(
-            icon: const Icon (Icons.filter_alt_outlined),
-            color: color,
-            onPressed: () {
-              Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return FilterPage();
-                },
+              icon: const Icon(
+                Icons.filter_alt_outlined,
+                size: 32,
               ),
-            );
-            }
-            
-          )
+              color: color,
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return FilterPage();
+                    },
+                  ),
+                );
+              })
         ],
       ),
     );

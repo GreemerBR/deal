@@ -10,7 +10,10 @@ class SearchBar extends StatelessWidget {
       cursorColor: Colors.white,
       decoration: InputDecoration(
         hintText: 'O que você está procurando?',
-        hintStyle: TextStyle(color: Colors.white, fontSize: 14),
+        hintStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
