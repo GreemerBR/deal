@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DefaultInput extends StatelessWidget {
+class DefaultInput extends StatefulWidget {
   static const Color grey = Color.fromRGBO(224, 224, 224, 1);
   final String texto;
-  final Icon? icon;
+  final Icon icon;
   final Color textColor;
   final Color backgroundColor;
   final TextEditingController? controller;
@@ -12,37 +12,48 @@ class DefaultInput extends StatelessWidget {
   const DefaultInput(
       {Key? key,
       required this.texto,
-      this.icon,
+      this.icon = const Icon(Icons.check_box_outline_blank_rounded),
       this.textColor = Colors.black,
       this.backgroundColor = grey,
       this.controller,
       this.password = false})
       : super(key: key);
 
-  // void showPassword() {
-  //   if (!password) {
-  //     password;
-  //   }
-  // }
+  @override
+  State<DefaultInput> createState() => _DefaultInputState();
+}
+
+class _DefaultInputState extends State<DefaultInput> {
+  late bool _passwordVisible;
+
+  @override
+  void initState() {
+    _passwordVisible = false;
+    print(_passwordVisible.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: TextFormField(
-        controller: controller,
-        obscureText: password,
+        controller: widget.controller,
+        obscureText: !_passwordVisible && widget.password,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
           filled: true,
-          fillColor: backgroundColor,
-          labelText: texto,
-          labelStyle: TextStyle(color: textColor),
-          suffixIcon: icon,
-          //TODO Fazer esse botão atvar e desativar o obscureText
-          // IconButton(
-          //     onPressed: () => showPassword(),
-          //     icon: Icon(Icons.remove_red_eye)),
+          fillColor: widget.backgroundColor,
+          labelText: widget.texto,
+          labelStyle: TextStyle(color: widget.textColor),
+          suffixIcon: IconButton(
+              onPressed: () => setState(
+                    () {
+                      _passwordVisible = !_passwordVisible;
+                    },
+                  ),
+              icon: widget.icon,
+              color:
+                  widget.password ? widget.textColor : widget.backgroundColor),
           border: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10.0),

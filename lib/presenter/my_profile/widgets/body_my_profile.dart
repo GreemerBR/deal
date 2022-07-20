@@ -32,18 +32,6 @@ class BodyMyProfile extends StatelessWidget {
                     destinyPage: ActiveAnnouncesPage(),
                   ),
                   ProfileListItem(
-                    title: 'Buscar recentes',
-                    destinyPage: MainMenuPage(),
-                  ),
-                  ProfileListItem(
-                    title: 'Notificações',
-                    destinyPage: MainMenuPage(),
-                  ),
-                  ProfileListItem(
-                    title: 'Segurança e privacidade',
-                    destinyPage: MainMenuPage(),
-                  ),
-                  ProfileListItem(
                     title: 'Sobre o DEAL',
                     destinyPage: MainMenuPage(),
                   )

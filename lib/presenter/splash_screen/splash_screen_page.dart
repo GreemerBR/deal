@@ -15,15 +15,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     Future.delayed(
       const Duration(seconds: 2),
-    ).then((value) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) {
-            return SecondSplashScreen();
-          },
-        ),
-      );
-    });
+    ).then(
+      (value) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) {
+              return SecondSplashScreen();
+            },
+          ),
+        );
+      },
+    );
     super.initState();
   }
 
@@ -31,24 +33,26 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 99, 66, 191),
-      body: Column(
-        children: [
-          Center(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Image.asset(
-                imgLogoApp,
-                scale: 2,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Image.asset(
+                  imgLogoApp,
+                  scale: 2,
+                ),
               ),
             ),
-          ),
-          // Center(
-          //   child: CircularProgressIndicator(
-          //     color: Colors.white,
-          //   ),
-          // ),
-        ],
+            // Center(
+            //   child: CircularProgressIndicator(
+            //     color: Colors.white,
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }
