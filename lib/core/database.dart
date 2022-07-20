@@ -85,4 +85,3 @@ class _DatabaseAppState extends State<DatabaseApp> {
     throw UnimplementedError();
   }
 }
-git commit -m "[fix] ajusting password input in login and adding insert into database"
