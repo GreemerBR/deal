@@ -1,4 +1,3 @@
-import 'package:app_2/core/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
@@ -11,10 +10,10 @@ class Avatar extends StatelessWidget {
     return Column(
       children: [
         ClipOval(
-          child: Image.network(
-            imgAvatar,
-            width: 100,
-            height: 100,
+          child: Image.asset(
+            'assets/images/Avatar.jpeg',
+            width: 90,
+            height: 90,
             fit: BoxFit.cover,
           ),
         ),

@@ -16,4 +16,7 @@ const String imgWelcome = 'assets/images/welcome.jpg';
 const String imgLoginGoogle = 'assets/images/loginGoogle.png';
 const String imgLogoApp = 'assets/images/iconApp.png';
 const String imgFriendsSplash = 'assets/images/friendSplash.jpg';
+const String imgPeopleDeal = 'assets/images/deal_card.jpg';
+const String imgWelcomeDeal = 'assets/images/welcome_card.jpg';
 const List<String> imageList = [imgAirFryer, imgBen10];
+const List<String> imageListCard = [imgWelcomeDeal, imgPeopleDeal];
