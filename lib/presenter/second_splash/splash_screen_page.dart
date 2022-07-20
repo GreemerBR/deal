@@ -1,7 +1,13 @@
-import 'package:app_2/is_logged/is_logged_page.dart';
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
+<<<<<<< HEAD
+import '../../is_logged/is_logged_page.dart';
+import '../login/login_page.dart';
+=======
+>>>>>>> e35115720dc92acb2f7e65f91e1268e92ec701bc
 import '../login/widgets/default_title.dart';
 import 'widgets/animated_slide_up.dart';
 import 'widgets/gesture.dart';
@@ -16,16 +22,19 @@ class SecondSplashScreen extends StatefulWidget {
 class _SecondSplashScreenState extends State<SecondSplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return RawGestureDetector(
-      gestures: {
-        AllowMultipleVerticalDragGestureRecognizer:
-            GestureRecognizerFactoryWithHandlers<
-                AllowMultipleVerticalDragGestureRecognizer>(
-          () => AllowMultipleVerticalDragGestureRecognizer(),
-          (AllowMultipleVerticalDragGestureRecognizer instance) {
-            instance..onEnd = (_) => Navigator.of(context).push(_createRoute());
-          },
-        )
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {
+        int sensitivity = 8;
+        if (details.delta.dy < -sensitivity) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return IsLoggedPage();
+              },
+            ),
+          );
+        }
+        ;
       },
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
@@ -81,22 +90,4 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
       ),
     );
   }
-}
-
-Route _createRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => IsLoggedPage(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, 1.0);
-      const end = Offset.zero;
-      const curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
 }
