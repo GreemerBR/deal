@@ -1,7 +1,7 @@
+import 'package:app_2/presenter/main_menu/widgets/slide_component.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../core/app_assets.dart';
-import 'carrousel_imagens_info.dart';
 
 class BodyAnnouncement extends StatelessWidget {
   const BodyAnnouncement({
@@ -13,8 +13,10 @@ class BodyAnnouncement extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          CarrouselImagensInfo(
-            listCarousel: imageList,
+          Expanded(
+            child: SlideComponent(
+              listCarousel: imageList,
+            ),
           ),
           Container(
             child: Column(

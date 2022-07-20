@@ -3,11 +3,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
-<<<<<<< HEAD
 import '../../is_logged/is_logged_page.dart';
 import '../login/login_page.dart';
-=======
->>>>>>> e35115720dc92acb2f7e65f91e1268e92ec701bc
 import '../login/widgets/default_title.dart';
 import 'widgets/animated_slide_up.dart';
 import 'widgets/gesture.dart';
