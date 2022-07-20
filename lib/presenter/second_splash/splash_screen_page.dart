@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
 import '../../is_logged/is_logged_page.dart';
-import '../login/login_page.dart';
 import '../login/widgets/default_title.dart';
 import 'widgets/animated_slide_up.dart';
-import 'widgets/gesture.dart';
 
 class SecondSplashScreen extends StatefulWidget {
   const SecondSplashScreen({Key? key}) : super(key: key);

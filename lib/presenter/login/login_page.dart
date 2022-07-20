@@ -5,7 +5,6 @@ import 'widgets/circle_avatar.dart';
 import 'widgets/default_link_text.dart';
 import 'widgets/default_title.dart';
 import 'widgets/login_google.dart';
-
 import 'widgets/login_widget.dart';
 
 class LoginPage extends StatelessWidget {
