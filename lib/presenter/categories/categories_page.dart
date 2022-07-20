@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/body_chat.dart';
+import 'widgets/body_categories.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
-
+class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         toolbarHeight: 80,
         centerTitle: true,
         title: Text(
-          "Chats",
+          "Eletrônicos",
           style: TextStyle(
             fontSize: 30,
           ),
         ),
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
       ),
-      body: BodyChat(),
+      body: BodyCategories(),
     );
   }
 }
-

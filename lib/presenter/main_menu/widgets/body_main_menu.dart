@@ -1,18 +1,65 @@
+import 'package:app_2/presenter/main_menu/widgets/icon_filter.dart';
 import 'package:flutter/material.dart';
-
-import 'main_menu_cards.dart';
+import '../../../core/app_assets.dart';
+import 'categories_cards.dart';
+import 'divisor_line.dart';
 import 'menu_navigation_bar.dart';
+import 'search_bar.dart';
+import 'user_card.dart';
+import 'slide_component.dart';
 
 class BodyMainMenu extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: MainMenuCards(),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  right: 30, left: 30, top: 20, bottom: 20),
+              child: Container(
+                height: 100,
+                //decoration: BoxDecoration(color: Colors.red),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    UserCard(),
+                    FilterIcon(),
+                  ],
+                ),
+              ),
+            ),
+            DivisorLine(),
+            Padding(
+              padding: const EdgeInsets.only(right: 30, left: 30, top: 20),
+              child: Container(
+                child: SearchBar(),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 30, left: 30),
+              child: SlideComponent(
+                listCarousel: imageList,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 30, left: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CategoriesCards(
+                      title: "Brinquedos", icon: Icons.toys_outlined),
+                  CategoriesCards(
+                      title: "Cozinha", icon: Icons.kitchen_outlined),
+                  CategoriesCards(
+                      title: "Eletrônicos", icon: Icons.power_outlined),
+                  CategoriesCards(title: "Outros", icon: Icons.more_horiz),
+                ],
+              ),
+            ),
+          ],
         ),
         Container(
           width: double.maxFinite,
@@ -24,4 +71,3 @@ class BodyMainMenu extends StatelessWidget {
     );
   }
 }
-
