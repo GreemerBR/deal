@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../announcement/announce_page.dart';
-import '../../my_profile/my_profile_page.dart';
 
 // ignore: must_be_immutable
 class CardProductAd extends StatefulWidget {
@@ -43,7 +42,7 @@ class _CardProductAdState extends State<CardProductAd> {
         );
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         width: double.maxFinite,
         decoration: BoxDecoration(
           color: Colors.white,

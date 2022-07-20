@@ -1,7 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../chat/chat_page.dart';
-import '../../login/login_page.dart';
+import '../../categories/categories_page.dart';
 import '../../my_profile/my_profile_page.dart';
 import 'main_menu_button.dart';
 
@@ -18,17 +18,20 @@ class MenuNavigationBar extends StatelessWidget {
         MainMenuButton(
           icon: Icons.arrow_back,
           text: 'Sair',
-          destinyPage: LoginPage(),
-        ),
-        MainMenuButton(
-          icon: Icons.chat_outlined,
-          text: 'Chat',
-          destinyPage: ChatPage(),
+          func: () => FirebaseAuth.instance.signOut(),
         ),
         MainMenuButton(
           icon: Icons.person_outline,
           text: 'Perfil',
-          destinyPage: MyProfilePage(),
+          func: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return MyProfilePage();
+                },
+              ),
+            );
+          },
         ),
       ],
     );

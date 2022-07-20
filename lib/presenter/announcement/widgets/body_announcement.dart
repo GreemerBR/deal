@@ -59,7 +59,7 @@ class BodyAnnouncement extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Flexible(
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

@@ -25,13 +25,16 @@ class UploadTextOption extends StatelessWidget {
               color: Colors.grey.shade700,
             ),
           ),
-          TextFormField(
-            decoration: InputDecoration(
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-              helperText: hint,
-              filled: true,
-              fillColor: Colors.grey.shade300,
+          SizedBox(
+            height: 68,
+            child: TextFormField(
+              decoration: InputDecoration(
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                helperText: hint,
+                filled: true,
+                fillColor: Colors.grey.shade300,
+              ),
             ),
           ),
         ],

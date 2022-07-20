@@ -20,44 +20,60 @@ class _UploadCategoryDropdownState extends State<UploadCategoryDropdown> {
   var items = ['Selecione...'];
 
   void initState() {
+    super.initState();
     items.addAll(widget.option);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey.shade300,
-        borderRadius: BorderRadius.circular(15),
-      ),
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: DropdownButton(
-        underline: SizedBox(),
-        iconEnabledColor: Color.fromARGB(255, 99, 66, 191),
-        isExpanded: true,
-        // Initial Value
-        value: dropdownvalue,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            widget.title,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey.shade700,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 3),
+            padding: EdgeInsets.symmetric(horizontal: 13),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: DropdownButton(
+              underline: SizedBox(),
+              iconEnabledColor: Color.fromARGB(255, 99, 66, 191),
+              isExpanded: true,
+              // Initial Value
+              value: dropdownvalue,
 
-        // Down Arrow Icon
-        icon: const Icon(Icons.keyboard_arrow_down),
+              // Down Arrow Icon
+              icon: const Icon(Icons.keyboard_arrow_down),
 
-        // Array list of items
-        items: items.map((String items) {
-          return DropdownMenuItem(
-            value: items,
-            child: Text(items),
-          );
-        }).toList(),
-        // After selecting the desired option,it will
-        // change button value to selected value
-        onChanged: (String? newValue) {
-          setState(
-            () {
-              dropdownvalue = newValue!;
-            },
-          );
-        },
+              // Array list of items
+              items: items.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              // After selecting the desired option,it will
+              // change button value to selected value
+              onChanged: (String? newValue) {
+                setState(
+                  () {
+                    dropdownvalue = newValue!;
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
