@@ -28,8 +28,8 @@ class CategoriesCards extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Container(
-                height: 50,
-                width: 50,
+                height: 60,
+                width: 60,
                 decoration: BoxDecoration(
                   color: color,
                   borderRadius: BorderRadius.circular(50),
@@ -37,7 +37,7 @@ class CategoriesCards extends StatelessWidget {
               ),
               Icon(
                 icon,
-                size: 35,
+                size: 32,
                 color: Colors.white,
               ),
             ],

@@ -9,7 +9,7 @@ class DivisorLine extends StatelessWidget {
     const color = Color.fromARGB(255, 153, 152, 152);
     return Container(
       height: 1,
-      margin: EdgeInsets.only(right: 30, left: 30, top: 10),
+      margin: EdgeInsets.only(right: 30, left: 30, top: 16),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: color,

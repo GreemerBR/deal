@@ -15,19 +15,23 @@ class UserCard extends StatelessWidget {
             Avatar(),
           ],
         ),
-        SizedBox(width: 12),
+        SizedBox(width: 14),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Olá,",
-              style: TextStyle(color: Color.fromARGB(255, 153, 152, 152)),
+              style: TextStyle(
+                color: Color.fromARGB(255, 153, 152, 152),
+                fontSize: 16,
+              ),
             ),
             Text(
               "Gregory Viegas Zimmer",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 16,
               ),
             ),
           ],
