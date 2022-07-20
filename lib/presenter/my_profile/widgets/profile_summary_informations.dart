@@ -11,6 +11,8 @@ class ProfileSummaryInformations extends StatelessWidget {
     required this.photo,
   }) : super(key: key);
 
+// Image.memory(photo!)
+
   @override
   Widget build(BuildContext context) {
     return Padding(
