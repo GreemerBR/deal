@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../filter/filter_page.dart';
+
 class FilterIcon extends StatelessWidget {
   const FilterIcon({Key? key}) : super(key: key);
 
@@ -11,10 +13,20 @@ class FilterIcon extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Icon(
-            Icons.filter_alt_outlined,
+        children: <Widget> [
+          IconButton(
+            icon: const Icon (Icons.filter_alt_outlined),
             color: color,
+            onPressed: () {
+              Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return FilterPage();
+                },
+              ),
+            );
+            }
+            
           )
         ],
       ),
