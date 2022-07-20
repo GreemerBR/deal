@@ -40,6 +40,7 @@ class Register extends StatelessWidget {
                   Icons.remove_red_eye,
                   color: Color.fromARGB(255, 99, 66, 191),
                 ),
+                password: true,
                 textColor: Color.fromARGB(255, 99, 66, 191),
                 backgroundColor: Colors.white,
               ),

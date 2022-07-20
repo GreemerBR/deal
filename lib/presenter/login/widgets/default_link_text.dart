@@ -1,4 +1,4 @@
-import 'package:app_2/presenter/register/register_page.dart';
+import '../../register/register_page.dart';
 import 'package:flutter/material.dart';
 
 class DefaultLinkText extends StatelessWidget {

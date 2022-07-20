@@ -1,4 +1,4 @@
-import 'package:app_2/presenter/new_announce/new_announce_page.dart';
+import '../../new_announce/new_announce_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
