@@ -11,12 +11,11 @@ class BodyFilter extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
         toolbarHeight: 80,
-        title: Center(
-          child: Text(
-            "Filtro",
-            style: TextStyle(
-              fontSize: 30,
-            ),
+        centerTitle: true,
+        title: Text(
+          "Filtro",
+          style: TextStyle(
+            fontSize: 30,
           ),
         ),
       ),
