@@ -17,7 +17,7 @@ class FakeButtonContainer extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          height: 85,
+          height: 65,
           color: Color.fromARGB(255, 99, 66, 191),
           onPressed: () {
             Navigator.of(context).push(

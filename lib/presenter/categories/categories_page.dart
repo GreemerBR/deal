@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../favorites/favorites_page.dart';
-import '../filter/filter_page.dart';
 import 'widgets/body_categories.dart';
 
 class CategoriesPage extends StatelessWidget {

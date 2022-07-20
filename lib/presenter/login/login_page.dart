@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/database.dart';
 import 'widgets/circle_avatar.dart';
 import 'widgets/default_link_text.dart';
 import 'widgets/default_title.dart';
@@ -31,6 +32,12 @@ class LoginPage extends StatelessWidget {
               LoginWidget(),
               GoogleButton(),
               DefaultLinkText(),
+              ElevatedButton(
+                onPressed: () {
+                  DatabaseApp();
+                },
+                child: Text('Clique aqui'),
+              )
             ],
           ),
         ),

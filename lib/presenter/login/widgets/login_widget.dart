@@ -44,6 +44,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           icon: Icon(Icons.remove_red_eye),
           texto: 'Senha',
           controller: passwordController,
+          password: true,
         ),
         DefaultButton(buttonText: 'ACESSAR', func: signIn),
       ],
