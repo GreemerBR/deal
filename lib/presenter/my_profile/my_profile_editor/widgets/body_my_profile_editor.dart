@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import '../../../../core/app_assets.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/src/services/message_codec.dart';
 
-import '../../../../core/app_assets.dart';
+import 'save_button_profile.dart';
 import '../../widgets/profile_summary_informations.dart';
 import 'profile_list_informations.dart';
 
@@ -31,7 +31,7 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
         this.image = imageTemp;
         photo = imageTemp.readAsBytesSync();
       });
-    } on PlatformException catch (e) {
+    } catch (e) {
       // ignore: avoid_print
       print('Failed to pick image: $e');
     }
@@ -50,69 +50,71 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
                 address: 'Blumenau - SC',
                 photo: imgAvatar,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 70,
-                  bottom: 80,
-                ),
-                child: Transform.rotate(
-                  angle: 0.15,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.edit,
-                      color: Colors.white,
-                      size: 25,
-                    ),
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return Wrap(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(25),
-                                child: DottedBorder(
-                                  dashPattern: [4, 7],
-                                  color: Colors.grey.shade700,
-                                  radius: Radius.circular(15),
-                                  child: MaterialButton(
-                                    onPressed: () {
-                                      pickImage();
-                                      Image.memory(photo!);
-                                    },
-                                    child: Container(
-                                      height: 200,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.9,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.upload,
-                                            size: 55,
-                                            color: Color.fromARGB(
-                                                255, 99, 66, 191),
-                                          ),
-                                          Text(
-                                            "Inserir Foto...",
-                                            style: TextStyle(
-                                              fontSize: 20,
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 70,
+                    bottom: 80,
+                  ),
+                  child: Transform.rotate(
+                    angle: 0.15,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                        size: 25,
+                      ),
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return Wrap(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(25),
+                                  child: DottedBorder(
+                                    dashPattern: [4, 7],
+                                    color: Colors.grey.shade700,
+                                    radius: Radius.circular(15),
+                                    child: MaterialButton(
+                                      onPressed: () {
+                                        pickImage();
+                                      },
+                                      child: Container(
+                                        height: 200,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.9,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.upload,
+                                              size: 55,
                                               color: Color.fromARGB(
                                                   255, 99, 66, 191),
                                             ),
-                                          ),
-                                        ],
+                                            Text(
+                                              "Inserir Foto...",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: Color.fromARGB(
+                                                    255, 99, 66, 191),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              )
-                            ],
-                          );
-                        },
-                      );
-                    },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
@@ -162,7 +164,8 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
                 ],
               ),
             ),
-          )
+          ),
+          SaveButtonProfile(),
         ],
       ),
     );
