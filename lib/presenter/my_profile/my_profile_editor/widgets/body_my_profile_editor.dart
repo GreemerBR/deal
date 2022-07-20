@@ -1,8 +1,7 @@
-import 'package:app_2/presenter/login/login_page.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/app_assets.dart';
-import '../../../new_announce/widgets/image_upload_container.dart';
 import '../../widgets/profile_summary_informations.dart';
 import 'profile_list_informations.dart';
 
@@ -38,14 +37,48 @@ class BodyMyProfileEditor extends StatelessWidget {
                       size: 25,
                     ),
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ImageUploadContainer()
-                                // ver -> modal bottom sheet flutter
-                                ;
-                          },
-                        ),
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Wrap(
+                            children: [
+                              InkWell(
+                                child: Container(
+                                  margin: EdgeInsets.all(25),
+                                  child: DottedBorder(
+                                    dashPattern: [4, 7],
+                                    color: Colors.grey.shade700,
+                                    radius: Radius.circular(15),
+                                    child: Container(
+                                      height: 200,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.9,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.upload,
+                                            color: Color.fromARGB(
+                                                255, 99, 66, 191),
+                                          ),
+                                          Text(
+                                            "Inserir Foto...",
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 99, 66, 191),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        },
                       );
                     },
                   ),
