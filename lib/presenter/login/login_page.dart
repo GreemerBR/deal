@@ -8,9 +8,10 @@ import 'widgets/login_google.dart';
 import 'widgets/login_widget.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({
+  LoginPage({
     Key? key,
   }) : super(key: key);
+  final database = DatabaseApp();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,66 @@ class LoginPage extends StatelessWidget {
               DefaultLinkText(),
               ElevatedButton(
                 onPressed: () {
-                  DatabaseApp();
+                  database.insert(
+                    tableName: 'Users',
+                    columnNames: [
+                      'UserNomeCompleto',
+                      'UserEmail',
+                      'UserSenha',
+                    ],
+                    columnValues: [
+                      'Henrique da Silva Cardoso',
+                      'riquinho@gmail.com',
+                      '123456'
+                    ],
+                  );
+                  database.insert(
+                    tableName: 'Users',
+                    columnNames: [
+                      'UserNomeCompleto',
+                      'UserEmail',
+                      'UserSenha',
+                    ],
+                    columnValues: [
+                      'Rique da Pimba Caridoso',
+                      'riquinho@gmail.com',
+                      '123456'
+                    ],
+                  );
+                  database.insert(
+                    tableName: 'Announces',
+                    columnNames: [
+                      'UserID',
+                      'AnunTitulo',
+                      'AnunDescri',
+                      'AnunValor'
+                    ],
+                    columnValues: [
+                      '1',
+                      'Frigideira',
+                      'Frigideira Limpinha',
+                      2.50
+                    ],
+                  );
+
+                  var result = database.select(
+                    tableName: 'Users',
+                    columnNames: [
+                      'UserNomeCompleto',
+                      'AnunTitulo',
+                      'AnunValor'
+                    ],
+                    isJoin: true,
+                    joinType: 'INNER JOIN',
+                    joinLeftColumnNames: ['UserID'],
+                    joinRightTableNames: ['Announces'],
+                    joinRightColumnNames: ['UserID'],
+                  );
+
+                  result.then((List<Map<String, dynamic>> list) {
+                    print(list);
+                    database.closeDatabase();
+                  });
                 },
                 child: Text('Clique aqui'),
               )

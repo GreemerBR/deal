@@ -7,8 +7,9 @@ class MainMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
-      body: BodyMainMenu(),
-      // bottomNavigationBar: MenuNavigationBar(),
+      body: SingleChildScrollView(
+        child: BodyMainMenu(),
+      ),
     );
   }
 }

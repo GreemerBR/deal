@@ -1,87 +1,178 @@
-import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DatabaseApp extends StatefulWidget {
-  const DatabaseApp({Key? key}) : super(key: key);
-
-  @override
-  State<DatabaseApp> createState() => _DatabaseAppState();
-}
-
-class _DatabaseAppState extends State<DatabaseApp> {
-  @override
-  void initState() {
+class DatabaseApp {
+  late Database database;
+  DatabaseApp() {
     init();
-    super.initState();
   }
 
   void init() async {
-    // Passa a localização para o android e iOS para criar o banco no path
     var databasesPath = await getDatabasesPath();
-    String path = '${databasesPath}/demo.db';
+    String path = '${databasesPath}demo.db';
 
-    // Método para deletar a database
-    // await deleteDatabase(path);
+    await deleteDatabase(path);
 
-    // Método para abrir a database
-    Database database = await openDatabase(
+    database = await openDatabase(
       path,
       version: 1,
       onCreate: (Database db, int version) async {
         // When creating the db, create the table
-        await db.execute(
-            'CREATE TABLE Usuarios (UserId INT PRIMARY KEY AUTO_INCREMENT, UserNomeCompleto VARCHAR(50) NOT NULL, UserEmail VARCHAR(50) NOT NULL, UserSenha VARCHAR(50) NOT NULL, UserApelido VARCHAR(50), UserCPF VARCHAR(14), UserTelefone VARCHAR(20), UserCep VARCHAR(20), UserRua VARCHAR(20), UserNumero INT, UserComplemento VARCHAR(50));');
+        await db.execute('PRAGMA foreign_keys = ON');
 
         await db.execute(
-            'CREATE TABLE Anuncios ( AnunId INT PRIMARY KEY AUTO_INCREMENT, UserId INT REFERENCES Usuario (UserId), AnunTitulo VARCHAR(50) NOT NULL, AnunDescri VARCHAR(150) NOT NULL, AnunCat VARCHAR(20), AnunCEF VARCHAR(18), AnunEndereco VARCHAR(20), AnunData DATE, AnunValor DOUBLE);');
+          '''CREATE TABLE Users (
+              UserID INTEGER PRIMARY KEY AUTOINCREMENT, 
+              UserNomeCompleto TEXT NOT NULL, 
+              UserEmail TEXT NOT NULL, 
+              UserSenha TEXT NOT NULL, 
+              UserApelido TEXT, 
+              UserCPF TEXT, 
+              UserTelefone TEXT, 
+              UserCep TEXT, 
+              UserRua TEXT, 
+              UserNumero INTEGER, 
+              UserComplemento TEXT
+              );''',
+        );
 
         await db.execute(
-            'CREATE TABLE AnunciosFavoritos ( FavId INT PRIMARY KEY AUTO_INCREMENT, UserId INT REFERENCES Usuario (UserId), AnunId INT REFERENCES Anuncios (AnunId));');
+          '''CREATE TABLE Announces ( 
+            AnunID INTEGER PRIMARY KEY AUTOINCREMENT, 
+            UserID INTEGER NOT NULL,
+            AnunTitulo TEXT NOT NULL, 
+            AnunDescri TEXT NOT NULL, 
+            AnunValor REAL NOT NULL,
+            AnunCat TEXT, 
+            AnunCEF TEXT, 
+            AnunEndereco TEXT, 
+            AnunData DATE, 
+            FOREIGN KEY (UserID) REFERENCES Users (UserID)
+            );
+            ''',
+        );
 
         await db.execute(
-            'INSERT INTO Usuarios VALUES (NULL, "André Pereira Martins", "Andre@gmail.com", "Andre2022", "And", "127.983.223-33", "(48)997398237", "88160-076", "Rua XV", 1123, "Apto 23");');
+          '''CREATE TABLE FavoriteAnnouces ( 
+            FavId INTEGER PRIMARY KEY AUTOINCREMENT, 
+            UserID INTEGER NOT NULL, 
+            AnunID INTEGER NOT NULL,
+            FOREIGN KEY (UserID) REFERENCES Users (UserID),
+            FOREIGN KEY (UserID) REFERENCES Announces (AnunID)
+            );
+            '''
+        );
       },
     );
-
-    // Insert some records in a transaction
-    // await database.transaction(
-    //   (txn) async {
-    //     int id1 = await txn.rawInsert(
-    //       'INSERT INTO Test(name, value, num) VALUES("some name", 1234, 456.789)',
-    //     );
-    //     print('inserted1: $id1');
-    //     int id2 = await txn.rawInsert(
-    //       'INSERT INTO Test(name, value, num) VALUES(?, ?, ?)',
-    //       ['another name', 12345678, 3.1416],
-    //     );
-    //     print('inserted2: $id2');
-    //   },
-    // );
-
-    // Update some record
-    // int count = await database.rawUpdate(
-    //   'UPDATE Test SET name = ?, value = ? WHERE name = ?',
-    //   ['updated name', '9876', 'some name'],
-    // );
-    // print('updated: $count');
-
-    // Get the records
-    List<Map> list = await database.rawQuery('SELECT * FROM Usuarios');
-    print(list);
-
-    // Delete a record
-    // count = await database.rawDelete(
-    //   'DELETE FROM Test WHERE name = ?',
-    //   ['another name'],
-    // );
-
-    // Close the database
-    await database.close();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+  void insert({
+    required String tableName,
+    List<String>? columnNames,
+    required List<dynamic> columnValues,
+  }) async {
+    String query = 'INSERT INTO $tableName ';
+
+    for (int index = 0; index < (columnNames?.length ?? 0); index++) {
+      if (index == 0) {
+        query += '(';
+      }
+      query += "'${columnNames![index]}', ";
+      if (index == columnNames.length - 1) {
+        query = query.substring(0, query.length - 2);
+        query += ')';
+      }
+    }
+
+    query += ' VALUES ';
+
+    for (int index = 0; index < columnValues.length; index++) {
+      if (index == 0) {
+        query += '(';
+      }
+      query += "'${columnValues[index]}', ";
+      if (index == columnValues.length - 1) {
+        query = query.substring(0, query.length - 2);
+        query += ')';
+      }
+    }
+
+    await database.rawInsert(query);
+  }
+
+  void update({
+    required String tableName,
+    required List<String> columnNames,
+    required List<dynamic> columnValues,
+    required String condition,
+  }) async {
+    String query = 'UPDATE $tableName SET ';
+
+    for (int index = 0; index < columnNames.length; index++) {
+      query += '${columnNames[index]} = ?, ';
+
+      if (index == columnNames.length - 1) {
+        query = query.substring(0, query.length - 2);
+      }
+    }
+    query += ' WHERE $condition';
+    print(query);
+
+    await database.rawUpdate(
+      query,
+      columnValues,
+    );
+  }
+
+  Future<List<Map<String, dynamic>>> select({
+    List<String>? columnNames,
+    required String tableName,
+    bool isJoin = false,
+    String? joinType,
+    List<String>? joinLeftColumnNames,
+    List<String>? joinRightTableNames,
+    List<String>? joinRightColumnNames,
+  }) async {
+    bool assertJoinTrue = (isJoin == true &&
+        (joinType != null &&
+            joinRightTableNames != null &&
+            joinRightColumnNames != null &&
+            joinLeftColumnNames != null));
+    bool assertJoinFalse = (isJoin == false &&
+        (joinType == null &&
+            joinRightTableNames == null &&
+            joinRightColumnNames == null &&
+            joinLeftColumnNames == null));
+    assert(assertJoinTrue || assertJoinFalse);
+
+    String query =
+        'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
+
+    if (isJoin == true) {
+      for (int index = 0; index < joinRightTableNames!.length; index++) {
+        query += '$joinType ';
+        query += '${joinRightTableNames[index]}';
+        query += ' ON ';
+        query += '${joinRightTableNames[index]}.';
+        query += '${joinRightColumnNames![index]}';
+        query += ' = ';
+        query += '${tableName}.${joinLeftColumnNames![index]}';
+      }
+    }
+
+    List<Map<String, dynamic>> list = await database.rawQuery(query);
+    return list;
+  }
+
+  void delete({
+    required String tableName,
+    required String condition,
+  }) async {
+    await database.rawDelete(
+      'DELETE FROM $tableName WHERE $condition',
+    );
+  }
+
+  void closeDatabase() async {
+    await database.close();
   }
 }
