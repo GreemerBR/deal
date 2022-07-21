@@ -1,3 +1,5 @@
+import 'package:app_2/core/database.dart';
+import 'package:app_2/presenter/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../login/widgets/default_button.dart';
@@ -5,7 +7,17 @@ import '../login/widgets/default_input.dart';
 import '../login/widgets/default_title.dart';
 import '../main_menu/main_menu_page.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  final database = DatabaseApp();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +40,13 @@ class Register extends StatelessWidget {
                 texto: 'Nome Completo',
                 textColor: Color.fromARGB(255, 99, 66, 191),
                 backgroundColor: Colors.white,
+                controller: nameController,
               ),
               DefaultInput(
                 texto: 'Email',
                 textColor: Color.fromARGB(255, 99, 66, 191),
                 backgroundColor: Colors.white,
+                controller: emailController,
               ),
               DefaultInput(
                 texto: 'Senha',
@@ -43,12 +57,47 @@ class Register extends StatelessWidget {
                 password: true,
                 textColor: Color.fromARGB(255, 99, 66, 191),
                 backgroundColor: Colors.white,
+                controller: passwordController,
               ),
               DefaultButton(
-                  buttonText: 'Criar Conta',
-                  borderSize: 0,
-                  rota: MainMenuPage(),
-                  func: () {}),
+                buttonText: 'Criar Conta',
+                borderSize: 0,
+                rota: MainMenuPage(),
+                func: () {
+                  database.insert(
+                    tableName: 'Users',
+                    columnNames: [
+                      'UserNomeCompleto',
+                      'UserEmail',
+                      'UserSenha',
+                    ],
+                    columnValues: [
+                      nameController.text.trim(),
+                      emailController.text.trim(),
+                      passwordController.text.trim(),
+                    ],
+                  );
+
+                  var result =
+                      database.select(tableName: 'Users', isJoin: false);
+
+                  result.then(
+                    (List<Map<String, dynamic>> list) {
+                      print(list);
+
+                      database.closeDatabase();
+
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LoginPage();
+                          },
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class UploadTextOption extends StatelessWidget {
-
   final String title;
   final String hint;
+  final TextEditingController? controller;
 
   const UploadTextOption({
     Key? key,
     required this.title,
     required this.hint,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -28,6 +29,7 @@ class UploadTextOption extends StatelessWidget {
           SizedBox(
             height: 68,
             child: TextFormField(
+              controller: controller,
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
