@@ -12,15 +12,7 @@ class GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       padding: EdgeInsets.zero,
-      onPressed: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return MyProfilePage();
-            },
-          ),
-        );
-      },
+      onPressed: () {},
       icon: Image.asset(
         imgLoginGoogle,
         fit: BoxFit.cover,

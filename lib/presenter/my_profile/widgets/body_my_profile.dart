@@ -40,7 +40,7 @@ class BodyMyProfile extends StatelessWidget {
                     title: 'Notificações',
                   ),
                   ProfileListItem(
-                    title: 'Opções de Segurança/Privacidade',
+                    title: 'Termos e Política de Privacidade',
                   ),
                   ProfileListItem(
                     title: 'Sobre o DEAL',
