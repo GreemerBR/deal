@@ -28,10 +28,6 @@ class BodyFilter extends StatelessWidget {
               child: Column(
                 children: [
                   FilterOptionContainer(
-                    title: "Categoria",
-                    option: ["Móveis", "Roupas", "Peças", "Carros"],
-                  ),
-                  FilterOptionContainer(
                     title: "Localização",
                     option: ["SC", "PR", "RS", "SP"],
                   ),
