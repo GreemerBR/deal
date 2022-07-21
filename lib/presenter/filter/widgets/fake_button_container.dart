@@ -20,13 +20,7 @@ class FakeButtonContainer extends StatelessWidget {
           height: 65,
           color: Color.fromARGB(255, 99, 66, 191),
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return MainMenuPage();
-                },
-              ),
-            );
+            Navigator.pop(context);
           },
           child: Text(
             "Filtrar",

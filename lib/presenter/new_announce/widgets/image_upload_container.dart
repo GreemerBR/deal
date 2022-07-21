@@ -29,16 +29,12 @@ class ImageUploadContainer extends StatelessWidget {
                       return Wrap(
                         children: [
                           ListTile(
-                            leading: Icon(Icons.share),
-                            title: Text("Share"),
+                            leading: Icon(Icons.image),
+                            title: Text("Escolher Imagem da Galeria"),
                           ),
                           ListTile(
-                            leading: Icon(Icons.copy),
-                            title: Text("Copy"),
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.edit),
-                            title: Text("Edit"),
+                            leading: Icon(Icons.camera_alt_outlined),
+                            title: Text("Abrir Câmera"),
                           ),
                         ],
                       );
