@@ -1,7 +1,7 @@
-import 'package:app_2/presenter/main_menu/widgets/slide_component.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../core/app_assets.dart';
+import '../../main_menu/widgets/slide_component.dart';
 
 class BodyAnnouncement extends StatelessWidget {
   const BodyAnnouncement({

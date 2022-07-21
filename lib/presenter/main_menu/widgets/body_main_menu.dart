@@ -1,13 +1,14 @@
-import 'icon_filter.dart';
 import 'package:flutter/material.dart';
+
 import '../../../core/app_assets.dart';
 import '../../categories/categories_page.dart';
 import 'categories_cards.dart';
 import 'divisor_line.dart';
+import 'icon_filter.dart';
 import 'menu_navigation_bar.dart';
 import 'search_bar.dart';
-import 'user_card.dart';
 import 'slide_component.dart';
+import 'user_card.dart';
 
 class BodyMainMenu extends StatelessWidget {
   @override
