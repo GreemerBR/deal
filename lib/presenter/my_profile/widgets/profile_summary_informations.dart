@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProfileSummaryInformations extends StatelessWidget {
   final String name;
   final String address;
-  final String photo;
+  final photo;
   const ProfileSummaryInformations({
     Key? key,
     required this.name,
@@ -25,13 +25,24 @@ class ProfileSummaryInformations extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: [ photo.runtimeType == String ?
             Container(
               width: 80,
               height: 80,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(photo),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(300),
+              ),
+            ) : 
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: FileImage(photo),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(300),

@@ -12,6 +12,7 @@ class BodyMyProfile extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -20,7 +21,7 @@ class BodyMyProfile extends StatelessWidget {
           ProfileSummaryInformations(
             name: 'Gregory Viegas Zimmer',
             address: 'Blumenau - SC',
-            photo: imgAvatar,
+            photo: imgAvatar
           ),
           Expanded(
             child: SingleChildScrollView(

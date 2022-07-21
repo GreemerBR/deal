@@ -57,12 +57,45 @@ class AboutDealPage extends StatelessWidget {
                   color: Color.fromARGB(255, 99, 66, 191),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    'A Deal foi fundada em 2022',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'A Deal foi fundada em 2022 pensando em fomentar a Economia Circular no Brasil. Isso porque estimulamos uma cultura de consumo consciente, conectando pessoas para que elas possam emprestar produtos de forma fácil e rápida. Para que assim, diversas pessoas possam aproveitar bons produtos e gerar boas memórias.',
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Nossos usuários têm total controle em suas transações e decidem juntos a melhor forma de fechar negócio. Na expectativa de um mundo melhor, criamos uma comunidade na qual milhões de pessoas podem se conectar de maneira colaborativa.',
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Afinal, cada pessoa que tem sucesso em seu emprestimo, acaba trazendo mais valor para sociedade em que vivem, pois acreditamos que, além de possibilitar benefícios financeiros contribuímos para o bem-estar das pessoas e do meio ambiente.',
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Assim, com a Deal todo mundo sai ganhando!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                  ],
                 ),
               )
             ],
