@@ -1,14 +1,14 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import '../../../../core/app_assets.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'save_button_profile.dart';
+import '../../../../core/app_assets.dart';
 import '../../widgets/profile_summary_informations.dart';
 import 'profile_list_informations.dart';
+import 'save_button_profile.dart';
 
 class BodyMyProfileEditor extends StatefulWidget {
   const BodyMyProfileEditor({

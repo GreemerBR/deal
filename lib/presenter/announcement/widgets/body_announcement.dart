@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../core/app_assets.dart';
 import 'slide_component_announces.dart';
 
+
 class BodyAnnouncement extends StatelessWidget {
   const BodyAnnouncement({
     Key? key,
