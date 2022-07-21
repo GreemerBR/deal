@@ -54,7 +54,9 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
                 makeFavorite();
               },
               icon: Icon(
-                widget.isFavorite ? Icons.star : Icons.star_border,
+                widget.isFavorite
+                    ? Icons.favorite_outlined
+                    : Icons.favorite_outline_sharp,
                 color: (widget.isFavorite ? Colors.white : Colors.grey),
               ),
               splashRadius: 1,

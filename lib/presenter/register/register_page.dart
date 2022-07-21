@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../is_logged/is_logged_page.dart';
 
 import 'package:app_2/presenter/is_logged/is_logged_page.dart';
-import 'package:app_2/presenter/login/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
