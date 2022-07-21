@@ -1,4 +1,3 @@
-import 'package:app_2/is_logged/is_logged_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
