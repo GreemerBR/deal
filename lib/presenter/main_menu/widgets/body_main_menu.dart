@@ -1,4 +1,4 @@
-import 'package:app_2/presenter/main_menu/widgets/icon_filter.dart';
+import 'icon_filter.dart';
 import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 import '../../categories/categories_page.dart';
