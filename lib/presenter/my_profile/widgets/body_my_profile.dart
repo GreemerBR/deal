@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
+import '../../about_deal/about_deal_page.dart';
 import '../../active_announces/active_announces_page.dart';
 import '../../main_menu/main_menu_page.dart';
 import 'close_button_profile.dart';
@@ -33,7 +34,7 @@ class BodyMyProfile extends StatelessWidget {
                   ),
                   ProfileListItem(
                     title: 'Sobre o DEAL',
-                    destinyPage: MainMenuPage(),
+                    destinyPage: AboutDealPage(),
                   )
                 ],
               ),
