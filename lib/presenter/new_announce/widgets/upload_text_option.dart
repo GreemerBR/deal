@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class UploadTextOption extends StatelessWidget {
-
+class DefaultInput extends StatelessWidget {
   final String title;
   final String hint;
+  final TextEditingController? controller;
 
-  const UploadTextOption({
+  const DefaultInput({
     Key? key,
     required this.title,
     required this.hint,
+    this.controller,
   }) : super(key: key);
 
   @override

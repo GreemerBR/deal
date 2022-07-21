@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class UploadCategoryDropdown extends StatefulWidget {
   final String title;
   final List<String> option;
+  final TextEditingController controller;
 
   const UploadCategoryDropdown({
     Key? key,
     required this.title,
     required this.option,
+    required this.controller,
   }) : super(key: key);
 
   @override
