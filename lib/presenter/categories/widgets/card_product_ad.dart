@@ -89,7 +89,7 @@ class _CardProductAdState extends State<CardProductAd> {
                     makeFavorite();
                   },
                   icon: Icon(
-                    widget.isFavorite ? Icons.star : Icons.star_border,
+                    widget.isFavorite ? Icons.favorite : Icons.favorite_border,
                     color: (widget.isFavorite
                         ? Color.fromARGB(
                             255,

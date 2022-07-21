@@ -50,12 +50,6 @@ class MainMenuCards extends StatelessWidget {
           imageLink: imgSandwichMaker,
         ),
         CardProductAd(
-          productName: 'Boneco Benio 9',
-          productPrice: '45',
-          productLocation: 'Ponta Aguda - 08/07 às 20:00',
-          imageLink: imgBen10,
-        ),
-        CardProductAd(
           productName: 'Máquina Brastemp de Lavar',
           productPrice: '87',
           productLocation: 'Ponta Aguda - 08/07 às 20:00',

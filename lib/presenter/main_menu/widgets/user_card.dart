@@ -15,7 +15,6 @@ class UserCard extends StatelessWidget {
             Avatar(),
           ],
         ),
-        SizedBox(width: 14),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
