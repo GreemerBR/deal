@@ -7,8 +7,6 @@ class NewAnnouncePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: NewAnnounceBody()
-    );
+    return Scaffold(body: NewAnnounceBody());
   }
 }
