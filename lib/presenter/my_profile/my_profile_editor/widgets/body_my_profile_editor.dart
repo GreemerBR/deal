@@ -165,7 +165,7 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
               ),
             ),
           ),
-          SaveButtonProfile(),
+          // SaveButtonProfile(),
         ],
       ),
     );
