@@ -22,7 +22,7 @@ class SlideComponent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
                       listCarousel[index],
-                      height: 200,
+                      height: 190,
                       fit: BoxFit.cover,
                     ),
                   ),
