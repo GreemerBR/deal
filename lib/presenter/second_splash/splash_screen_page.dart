@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_assets.dart';
-import '../../is_logged/is_logged_page.dart';
+import '../is_logged/is_logged_page.dart';
 import '../login/widgets/default_title.dart';
 import 'widgets/animated_slide_up.dart';
 
