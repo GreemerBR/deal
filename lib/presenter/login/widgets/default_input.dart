@@ -36,28 +36,42 @@ class _DefaultInputState extends State<DefaultInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: widget.backgroundColor,
+        border: Border(
+          top: BorderSide(color: Color.fromARGB(255, 196, 196, 196)),
+          bottom: BorderSide(color: Color.fromARGB(255, 196, 196, 196)),
+          left: BorderSide(color: Color.fromARGB(255, 196, 196, 196)),
+          right: BorderSide(color: Color.fromARGB(255, 196, 196, 196)),
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
       margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-      child: TextFormField(
-        controller: widget.controller,
-        obscureText: !_passwordVisible && widget.password,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
-          filled: true,
-          fillColor: widget.backgroundColor,
-          labelText: widget.texto,
-          labelStyle: TextStyle(color: widget.textColor),
-          suffixIcon: IconButton(
-              onPressed: () => setState(
-                    () {
-                      _passwordVisible = !_passwordVisible;
-                    },
-                  ),
-              icon: widget.icon,
-              color:
-                  widget.password ? widget.textColor : widget.backgroundColor),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(10.0),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: TextFormField(
+          controller: widget.controller,
+          obscureText: !_passwordVisible && widget.password,
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
+            filled: true,
+            fillColor: widget.backgroundColor,
+            labelText: widget.texto,
+            labelStyle: TextStyle(color: widget.textColor),
+            suffixIcon: IconButton(
+                onPressed: () => setState(
+                      () {
+                        _passwordVisible = !_passwordVisible;
+                      },
+                    ),
+                icon: widget.icon,
+                color: widget.password
+                    ? widget.textColor
+                    : widget.backgroundColor),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
           ),
         ),
       ),
