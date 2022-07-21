@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 import '../../about_deal/about_deal_page.dart';
 import '../../active_announces/active_announces_page.dart';
-import '../../main_menu/main_menu_page.dart';
 import 'close_button_profile.dart';
 import 'profile_list_item.dart';
 import 'profile_summary_informations.dart';
@@ -13,6 +12,7 @@ class BodyMyProfile extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,7 +21,7 @@ class BodyMyProfile extends StatelessWidget {
           ProfileSummaryInformations(
             name: 'Gregory Viegas Zimmer',
             address: 'Blumenau - SC',
-            photo: imgAvatar,
+            photo: imgAvatar
           ),
           Expanded(
             child: SingleChildScrollView(
