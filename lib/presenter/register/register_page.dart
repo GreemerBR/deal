@@ -1,7 +1,7 @@
 import 'package:app_2/core/database.dart';
-import 'package:app_2/presenter/login/login_page.dart';
 import 'package:flutter/material.dart';
 
+import '../is_logged/is_logged_page.dart';
 import '../login/widgets/default_button.dart';
 import '../login/widgets/default_input.dart';
 import '../login/widgets/default_title.dart';
@@ -90,7 +90,7 @@ class _RegisterState extends State<Register> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return LoginPage();
+                            return IsLoggedPage();
                           },
                         ),
                       );

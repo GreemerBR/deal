@@ -77,51 +77,46 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
             ),
             BottomAnnounceButton(
               func: () {
-                // database.insert(
-                //   tableName: 'Announces',
-                //   columnNames: [
-                //     'UserID',
-                //     'AnunTitulo',
-                //     'AnunDescri',
-                //     'AnunValor',
-                //     'AnunCat',
-                //     // 'AnunCEP',
-                //     // 'AnunEndereco',
-                //     'AnunData',
-                //   ],
-                //   columnValues: [
-                //     1,
-                //     titleController.value,
-                //     descriptionController.text.trim(),
-                //     priceController.text.trim(),
-                //     categoryController.text.trim(),
-                //     'getdate()'
-                //   ],
-                // );
-
-                // var result =
-                //     database.select(tableName: 'Announces', isJoin: false);
-
-                // result.then(
-                //   (List<Map<String, dynamic>> list) {
-                //     print(list);
-
-                // database.closeDatabase();
-
-                print(titleController.text.trim());
-                print(descriptionController.text.trim());
-                print(priceController.text.trim());
-                print(dropdownValueSelected);
-
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ActiveAnnouncesPage();
-                    },
-                  ),
+                database.insert(
+                  tableName: 'Announces',
+                  columnNames: [
+                    'UserID',
+                    'AnunTitulo',
+                    'AnunDescri',
+                    'AnunValor',
+                    'AnunCat',
+                    // 'AnunCEP',
+                    // 'AnunEndereco',
+                    'AnunData',
+                  ],
+                  columnValues: [
+                    1,
+                    titleController.text.trim(),
+                    descriptionController.text.trim(),
+                    priceController.text.trim(),
+                    dropdownValueSelected,
+                    'getdate()'
+                  ],
                 );
-                // },
-                // );
+
+                var result =
+                    database.select(tableName: 'Announces', isJoin: false);
+
+                result.then(
+                  (List<Map<String, dynamic>> list) {
+                    print(list);
+
+                    database.closeDatabase();
+
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ActiveAnnouncesPage();
+                        },
+                      ),
+                    );
+                  },
+                );
               },
             ),
             SizedBox(
