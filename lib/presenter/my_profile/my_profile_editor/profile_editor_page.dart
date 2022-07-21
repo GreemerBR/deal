@@ -27,7 +27,7 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
         ),
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back_rounded,
+            Icons.save,
             size: 35,
           ),
           onPressed: () {
