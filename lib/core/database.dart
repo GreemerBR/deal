@@ -10,7 +10,7 @@ class DatabaseApp {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
 
-    await deleteDatabase(path);
+    // await deleteDatabase(path);
 
     database = await openDatabase(
       path,
@@ -43,7 +43,7 @@ class DatabaseApp {
             AnunDescri TEXT NOT NULL, 
             AnunValor REAL NOT NULL,
             AnunCat TEXT, 
-            AnunCEF TEXT, 
+            AnunCEP TEXT, 
             AnunEndereco TEXT, 
             AnunData DATE, 
             FOREIGN KEY (UserID) REFERENCES Users (UserID)
@@ -51,16 +51,14 @@ class DatabaseApp {
             ''',
         );
 
-        await db.execute(
-          '''CREATE TABLE FavoriteAnnouces ( 
+        await db.execute('''CREATE TABLE FavoriteAnnouces ( 
             FavId INTEGER PRIMARY KEY AUTOINCREMENT, 
             UserID INTEGER NOT NULL, 
             AnunID INTEGER NOT NULL,
             FOREIGN KEY (UserID) REFERENCES Users (UserID),
             FOREIGN KEY (UserID) REFERENCES Announces (AnunID)
             );
-            '''
-        );
+            ''');
       },
     );
   }

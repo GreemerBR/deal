@@ -1,5 +1,6 @@
-import '../../register/register_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../register/register_page.dart';
 
 class DefaultLinkText extends StatelessWidget {
   const DefaultLinkText({
