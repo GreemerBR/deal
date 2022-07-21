@@ -1,10 +1,9 @@
-import 'icon_filter.dart';
+import 'favorite_icon.dart';
 import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 import '../../categories/categories_page.dart';
 import 'categories_cards.dart';
 import 'divisor_line.dart';
-import 'menu_navigation_bar.dart';
 import 'search_bar.dart';
 import 'user_card.dart';
 import 'slide_component.dart';
@@ -18,16 +17,16 @@ class BodyMainMenu extends StatelessWidget {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 30, left: 30),
+              padding: const EdgeInsets.only(right: 20, left: 6),
               child: Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 26),
                 child: Container(
                   height: 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       UserCard(),
-                      FilterIcon(),
+                      FavoriteIcon(),
                     ],
                   ),
                 ),
@@ -36,13 +35,13 @@ class BodyMainMenu extends StatelessWidget {
             DivisorLine(),
             Padding(
               padding: const EdgeInsets.only(
-                  right: 30, left: 30, top: 20, bottom: 20),
+                  right: 30, left: 30, top: 20, bottom: 10),
               child: Container(
                 child: SearchBar(),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+              padding: const EdgeInsets.only(right: 20, left: 20, bottom: 10),
               child: SlideComponent(
                 listCarousel: imageListCard,
               ),
@@ -53,7 +52,7 @@ class BodyMainMenu extends StatelessWidget {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(right: 10, left: 10, top: 10),
+                        const EdgeInsets.only(right: 10, left: 10,top:20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -121,15 +120,6 @@ class BodyMainMenu extends StatelessWidget {
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 25),
-          child: Container(
-            width: double.maxFinite,
-            height: 60,
-            color: Color.fromARGB(255, 99, 66, 191),
-            child: MenuNavigationBar(),
-          ),
-        )
       ],
     );
   }

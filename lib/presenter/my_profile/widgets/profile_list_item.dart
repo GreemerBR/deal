@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class ProfileListItem extends StatelessWidget {
   final String title;
-  final Widget destinyPage;
+  final Widget? destinyPage;
 
   const ProfileListItem({
     Key? key,
     required this.title,
-    required this.destinyPage,
+    this.destinyPage,
   }) : super(key: key);
 
   @override
@@ -41,13 +41,17 @@ class ProfileListItem extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return destinyPage;
-                    },
-                  ),
-                );
+                if (destinyPage == null) {
+                  DoNothingAction();
+                } else {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return destinyPage!;
+                      },
+                    ),
+                  );
+                }
               },
               icon: const Icon(
                 Icons.chevron_right_sharp,

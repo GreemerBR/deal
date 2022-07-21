@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class SlideComponent extends StatelessWidget {
+class SlideComponentAnnounces extends StatelessWidget {
   final dynamic listCarousel;
-  const SlideComponent({Key? key, required this.listCarousel})
+  const SlideComponentAnnounces({Key? key, required this.listCarousel})
       : super(key: key);
 
   @override
@@ -22,8 +22,8 @@ class SlideComponent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
                       listCarousel[index],
-                      height: 190,
-                      fit: BoxFit.cover,
+                      height: 500,
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
                 ),

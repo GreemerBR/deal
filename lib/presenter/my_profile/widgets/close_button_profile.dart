@@ -1,4 +1,6 @@
-import '../my_profile_page.dart';
+import 'package:app_2/is_logged/is_logged_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 
 class CloseButtonProfile extends StatelessWidget {
@@ -40,7 +42,7 @@ class CloseButtonProfile extends StatelessWidget {
                       top: Radius.circular(30),
                       bottom: Radius.circular(30),
                     ),
-                    color: Color.fromARGB(255, 63, 81, 181),
+                    color: Color.fromARGB(255, 99, 66, 191),
                   ),
                 ),
               ),
@@ -52,15 +54,16 @@ class CloseButtonProfile extends StatelessWidget {
                     left: 75,
                     right: 75,
                   ),
-                  backgroundColor: Color.fromARGB(255, 63, 81, 181),
-                  primary: Color.fromARGB(255, 196, 196, 196),
+                  backgroundColor: Color.fromARGB(255, 99, 66, 191),
+                  primary: Colors.white,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  FirebaseAuth.instance.signOut();
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return MyProfilePage();
+                        return IsLoggedPage();
                       },
                     ),
                   );

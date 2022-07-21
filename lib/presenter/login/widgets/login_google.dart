@@ -1,4 +1,3 @@
-import '../../my_profile/my_profile_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
@@ -12,15 +11,7 @@ class GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       padding: EdgeInsets.zero,
-      onPressed: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return MyProfilePage();
-            },
-          ),
-        );
-      },
+      onPressed: () {},
       icon: Image.asset(
         imgLoginGoogle,
         fit: BoxFit.cover,
