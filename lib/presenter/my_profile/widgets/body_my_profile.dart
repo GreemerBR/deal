@@ -1,3 +1,4 @@
+import 'package:app_2/presenter/my_profile/my_profile_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
@@ -33,9 +34,18 @@ class BodyMyProfile extends StatelessWidget {
                     destinyPage: ActiveAnnouncesPage(),
                   ),
                   ProfileListItem(
+                    title: 'Buscas recentes',
+                  ),
+                  ProfileListItem(
+                    title: 'Notificações',
+                  ),
+                  ProfileListItem(
+                    title: 'Opções de Segurança/Privacidade',
+                  ),
+                  ProfileListItem(
                     title: 'Sobre o DEAL',
                     destinyPage: AboutDealPage(),
-                  )
+                  ),
                 ],
               ),
             ),
