@@ -2,7 +2,6 @@ import 'package:app_2/core/database.dart';
 import 'package:flutter/material.dart';
 
 import '../../active_announces/active_announces_page.dart';
-import '../../active_announces/widgets/body_announces.dart';
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
@@ -21,6 +20,8 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
+
+  String dropdownValueSelected = 'Escolha uma opção';
 
   @override
   Widget build(BuildContext context) {
@@ -41,25 +42,35 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
         child: Column(
           children: [
             ImageUploadContainer(),
-            DefaultInput(
+            UploadTextOption(
               title: "Título *",
               hint: "Exemplo: Batedeira Inox Cadence",
               controller: titleController,
             ),
-            DefaultInput(
+            UploadTextOption(
               title: "Descrição *",
               hint: "Exemplo: Semi Nova, Usada Poucas Vezes ",
               controller: descriptionController,
             ),
-            DefaultInput(
+            UploadTextOption(
               title: "Valor *",
               hint: "Exemplo: 120,00 ",
               controller: priceController,
             ),
             UploadCategoryDropdown(
               title: "Categoria *",
-              option: ["Móveis", "Roupas", "Peças", "Eletrodomésticos"],
-              controller: categoryController,
+              options: [
+                "Escolha uma opção",
+                "Móveis",
+                "Roupas",
+                "Peças",
+                "Eletrodomésticos"
+              ],
+              dropdownValue: dropdownValueSelected,
+              onChanged: (String? value) {
+                dropdownValueSelected = value!;
+                setState(() {});
+              },
             ),
             SizedBox(
               height: 20,
@@ -97,10 +108,10 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
 
                 // database.closeDatabase();
 
-                print(titleController.value);
+                print(titleController.text.trim());
                 print(descriptionController.text.trim());
                 print(priceController.text.trim());
-                print(categoryController.text.trim());
+                print(dropdownValueSelected);
 
                 Navigator.of(context).push(
                   MaterialPageRoute(

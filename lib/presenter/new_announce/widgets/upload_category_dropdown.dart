@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class UploadCategoryDropdown extends StatefulWidget {
   final String title;
-  final List<String> option;
-  final TextEditingController controller;
+  final List<String> options;
+  final String dropdownValue;
+  final void Function(String?) onChanged;
 
-  const UploadCategoryDropdown({
+  UploadCategoryDropdown({
     Key? key,
     required this.title,
-    required this.option,
-    required this.controller,
+    required this.options,
+    required this.dropdownValue,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -17,15 +19,6 @@ class UploadCategoryDropdown extends StatefulWidget {
 }
 
 class _UploadCategoryDropdownState extends State<UploadCategoryDropdown> {
-  String dropdownvalue = 'Selecione...';
-
-  var items = ['Selecione...'];
-
-  void initState() {
-    super.initState();
-    items.addAll(widget.option);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,13 +45,13 @@ class _UploadCategoryDropdownState extends State<UploadCategoryDropdown> {
               iconEnabledColor: Color.fromARGB(255, 99, 66, 191),
               isExpanded: true,
               // Initial Value
-              value: dropdownvalue,
+              value: widget.dropdownValue,
 
               // Down Arrow Icon
               icon: const Icon(Icons.keyboard_arrow_down),
 
               // Array list of items
-              items: items.map((String items) {
+              items: widget.options.map((String items) {
                 return DropdownMenuItem(
                   value: items,
                   child: Text(items),
@@ -66,13 +59,7 @@ class _UploadCategoryDropdownState extends State<UploadCategoryDropdown> {
               }).toList(),
               // After selecting the desired option,it will
               // change button value to selected value
-              onChanged: (String? newValue) {
-                setState(
-                  () {
-                    dropdownvalue = newValue!;
-                  },
-                );
-              },
+              onChanged: widget.onChanged,
             ),
           ),
         ],
