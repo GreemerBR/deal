@@ -92,9 +92,8 @@ class LoginPage extends StatelessWidget {
 
                   result.then((List<Map<String, dynamic>> list) {
                     print(list);
+                    database.closeDatabase();
                   });
-
-                  database.closeDatabase();
                 },
                 child: Text('Clique aqui'),
               )
