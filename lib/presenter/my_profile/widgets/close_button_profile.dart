@@ -1,3 +1,6 @@
+import 'package:app_2/is_logged/is_logged_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../my_profile_page.dart';
 import 'package:flutter/material.dart';
 
@@ -57,10 +60,11 @@ class CloseButtonProfile extends StatelessWidget {
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  FirebaseAuth.instance.signOut();
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return MyProfilePage();
+                        return IsLoggedPage();
                       },
                     ),
                   );
