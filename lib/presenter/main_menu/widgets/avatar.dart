@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../my_profile/my_profile_page.dart';
+
 class Avatar extends StatelessWidget {
   const Avatar({
     Key? key,
@@ -9,12 +11,23 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ClipOval(
-          child: Image.asset(
-            'assets/images/Avatar.jpeg',
-            width: 90,
-            height: 90,
-            fit: BoxFit.cover,
+        MaterialButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return MyProfilePage();
+                },
+              ),
+            );
+          },
+          child: ClipOval(
+            child: Image.asset(
+              'assets/images/Avatar.jpeg',
+              width: 90,
+              height: 90,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ],

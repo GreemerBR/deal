@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../core/app_assets.dart';
-import '../../main_menu/widgets/slide_component.dart';
+import 'slide_component_announces.dart';
+
 
 class BodyAnnouncement extends StatelessWidget {
   const BodyAnnouncement({
@@ -13,8 +14,9 @@ class BodyAnnouncement extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Expanded(
-            child: SlideComponent(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            child: SlideComponentAnnounces(
               listCarousel: imageList,
             ),
           ),
@@ -27,7 +29,7 @@ class BodyAnnouncement extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15, top: 20),
+                          padding: const EdgeInsets.only(left: 15),
                           child: Text(
                             'R\$ 10',
                             style: TextStyle(
@@ -80,12 +82,15 @@ class BodyAnnouncement extends StatelessWidget {
                               top: 5,
                               right: 25,
                             ),
-                            child: Text(
-                              'AASJFOIAHNDGÇLDPFALMASLDKAJSBFLADKFLAHSLFMSFKDFBAKLKASDBALJKSFJLÇAMFMABFKAFNKJASFA,SLDSKNFALS,FALSJFÇKASF',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Color.fromARGB(255, 196, 196, 196),
-                                overflow: TextOverflow.clip,
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 75),
+                              child: Text(
+                                'UMA DESCRIÇÃO MUITO LOUCA AQUI PRA TENTAR EMPRESTAR ESSE NEGOCIO',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Color.fromARGB(255, 196, 196, 196),
+                                  overflow: TextOverflow.clip,
+                                ),
                               ),
                             ),
                           ),

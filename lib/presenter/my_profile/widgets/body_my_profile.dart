@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../core/app_assets.dart';
 import '../../about_deal/about_deal_page.dart';
 import '../../active_announces/active_announces_page.dart';
-import '../../main_menu/main_menu_page.dart';
 import 'close_button_profile.dart';
 import 'profile_list_item.dart';
 import 'profile_summary_informations.dart';
@@ -33,9 +32,18 @@ class BodyMyProfile extends StatelessWidget {
                     destinyPage: ActiveAnnouncesPage(),
                   ),
                   ProfileListItem(
+                    title: 'Buscas recentes',
+                  ),
+                  ProfileListItem(
+                    title: 'Notificações',
+                  ),
+                  ProfileListItem(
+                    title: 'Termos e Política de Privacidade',
+                  ),
+                  ProfileListItem(
                     title: 'Sobre o DEAL',
                     destinyPage: AboutDealPage(),
-                  )
+                  ),
                 ],
               ),
             ),
