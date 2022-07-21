@@ -62,7 +62,10 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
           ),
         ],
       ),
-      body: BodyAnnouncement(),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: BodyAnnouncement(),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
         onPressed: () async {
