@@ -1,6 +1,6 @@
-import 'package:app_2/presenter/filter/filter_page.dart';
 import 'package:flutter/material.dart';
 
+import '../filter/filter_page.dart';
 import 'widgets/body_categories.dart';
 
 class CategoriesPage extends StatelessWidget {
