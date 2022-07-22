@@ -1,4 +1,4 @@
-import 'package:app_2/core/database.dart';
+import '../../../core/database.dart';
 import 'package:flutter/material.dart';
 
 import '../../active_announces/active_announces_page.dart';
