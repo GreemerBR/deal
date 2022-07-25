@@ -1,11 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:app_2/core/database.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ProfileListItem extends StatelessWidget {
   final String title;
   final Widget? destinyPage;
+  DatabaseApp database = DatabaseApp();
 
-  const ProfileListItem({
+  ProfileListItem({
     Key? key,
     required this.title,
     this.destinyPage,
@@ -41,17 +44,11 @@ class ProfileListItem extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                if (destinyPage == null) {
-                  DoNothingAction();
-                } else {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return destinyPage!;
-                      },
-                    ),
-                  );
-                }
+                Future<List<Map<String, dynamic>>> list =
+                    database.select(tableName: 'Users');
+                list.then((List<Map<String, dynamic>> objeto) {
+                  print(objeto);
+                });
               },
               icon: const Icon(
                 Icons.chevron_right_sharp,

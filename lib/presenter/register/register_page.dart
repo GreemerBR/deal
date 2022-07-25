@@ -1,14 +1,9 @@
-import '../../core/database.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../is_logged/is_logged_page.dart';
-
-import '../is_logged/is_logged_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
+import '../../core/database.dart';
 import '../../main.dart';
-
+import '../is_logged/is_logged_page.dart';
 import '../login/widgets/default_button.dart';
 import '../login/widgets/default_input.dart';
 import '../login/widgets/default_title.dart';
@@ -106,14 +101,14 @@ class _RegisterState extends State<Register> {
                     ],
                   );
 
-                  var result =
-                      database.select(tableName: 'Users', isJoin: false);
+                  var result = database.select(
+                    tableName: 'Users',
+                  );
 
                   result.then(
                     (List<Map<String, dynamic>> list) async {
                       print(list);
 
-                      database.closeDatabase();
                       await signUp();
                       Navigator.of(context).push(
                         MaterialPageRoute(

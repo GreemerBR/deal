@@ -17,7 +17,7 @@ class BodyFavorites extends StatelessWidget {
         children: [
           CardProductAd(
             productName: 'Fritadeira Eletrica Nell',
-            productPrice: '55',
+            productPrice: 55,
             productLocation: 'Ponta Aguda - 08/07 às 20:00',
             imageLink: imgAirFryer,
             isFavorite: true,

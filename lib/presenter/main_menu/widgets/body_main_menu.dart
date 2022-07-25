@@ -1,12 +1,12 @@
-import 'favorite_icon.dart';
 import 'package:flutter/material.dart';
+
 import '../../../core/app_assets.dart';
-import '../../categories/categories_page.dart';
 import 'categories_cards.dart';
 import 'divisor_line.dart';
+import 'favorite_icon.dart';
 import 'search_bar.dart';
-import 'user_card.dart';
 import 'slide_component.dart';
+import 'user_card.dart';
 
 class BodyMainMenu extends StatelessWidget {
   @override
@@ -60,22 +60,18 @@ class BodyMainMenu extends StatelessWidget {
                           CategoriesCards(
                             title: "Brinquedos",
                             icon: Icons.toys_outlined,
-                            destinyPage: CategoriesPage(),
                           ),
                           CategoriesCards(
                             title: "Cozinha",
                             icon: Icons.kitchen_rounded,
-                            destinyPage: CategoriesPage(),
                           ),
                           CategoriesCards(
                             title: "Eletrônicos",
                             icon: Icons.power_outlined,
-                            destinyPage: CategoriesPage(),
                           ),
                           CategoriesCards(
                             title: "Esportes",
                             icon: Icons.sports_basketball_rounded,
-                            destinyPage: CategoriesPage(),
                           ),
                         ],
                       ),
@@ -96,22 +92,18 @@ class BodyMainMenu extends StatelessWidget {
                           CategoriesCards(
                             title: "Lazer",
                             icon: Icons.outdoor_grill_sharp,
-                            destinyPage: CategoriesPage(),
                           ),
                           CategoriesCards(
                             title: "Moda",
                             icon: Icons.checkroom,
-                            destinyPage: CategoriesPage(),
                           ),
                           CategoriesCards(
                             title: "Jardim",
                             icon: Icons.grass,
-                            destinyPage: CategoriesPage(),
                           ),
                           CategoriesCards(
                             title: "Outros",
                             icon: Icons.more_horiz,
-                            destinyPage: CategoriesPage(),
                           ),
                         ],
                       ),

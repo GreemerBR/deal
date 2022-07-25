@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 class DatabaseApp {
   late Database database;
+
   DatabaseApp() {
     init();
   }
@@ -10,13 +11,12 @@ class DatabaseApp {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
 
-    // await deleteDatabase(path);
+    await deleteDatabase(path);
 
     database = await openDatabase(
       path,
       version: 1,
       onCreate: (Database db, int version) async {
-        // When creating the db, create the table
         await db.execute('PRAGMA foreign_keys = ON');
 
         await db.execute(
@@ -45,7 +45,7 @@ class DatabaseApp {
             AnunCat TEXT, 
             AnunCEP TEXT, 
             AnunEndereco TEXT, 
-            AnunData DATE, 
+            AnunData TEXT, 
             FOREIGN KEY (UserID) REFERENCES Users (UserID)
             );
             ''',
@@ -59,6 +59,39 @@ class DatabaseApp {
             FOREIGN KEY (UserID) REFERENCES Announces (AnunID)
             );
             ''');
+
+        await db.execute(
+          """INSERT INTO Users VALUES (
+          NULL, 
+          'Henrique da Silva', 
+          'henrique@gmail.com', 
+          'henrique123', 
+          'Riquinho', 
+          '93218234581', 
+          '58981293847', 
+          '37289123', 
+          'Rua Mesanino Bonito', 
+          72, 
+          'Casa'
+          )
+          """,
+        );
+        await db.execute(
+          """INSERT INTO Announces 
+          VALUES 
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha','GHI', 'GHI', 'GHI'),
+          (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha','GHI', 'GHI', 'GHI'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC')
+          """,
+        );
       },
     );
   }
@@ -129,7 +162,9 @@ class DatabaseApp {
     List<String>? joinLeftColumnNames,
     List<String>? joinRightTableNames,
     List<String>? joinRightColumnNames,
+    String? condition,
   }) async {
+
     bool assertJoinTrue = (isJoin == true &&
         (joinType != null &&
             joinRightTableNames != null &&
@@ -155,6 +190,10 @@ class DatabaseApp {
         query += ' = ';
         query += '${tableName}.${joinLeftColumnNames![index]}';
       }
+    }
+
+    if(condition != null) {
+      query += ' WHERE $condition';
     }
 
     List<Map<String, dynamic>> list = await database.rawQuery(query);
