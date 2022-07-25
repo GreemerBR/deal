@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../categories/categories_page.dart';
+
 class CategoriesCards extends StatelessWidget {
   final String title;
   final IconData icon;
-  final Widget destinyPage;
 
-  const CategoriesCards({Key? key, required this.title, required this.icon, required this.destinyPage})
+  const CategoriesCards({Key? key, required this.title, required this.icon, })
       : super(key: key);
 
   @override
@@ -17,7 +18,7 @@ class CategoriesCards extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return destinyPage;
+              return CategoriesPage(title: title,);
             },
           ),
         );

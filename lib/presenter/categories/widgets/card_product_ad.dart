@@ -14,7 +14,7 @@ class CardProductAd extends StatefulWidget {
   }) : super(key: key);
 
   final String productName;
-  final String productPrice;
+  final double productPrice;
   final String productLocation;
   final String imageLink;
   bool isFavorite;
@@ -23,6 +23,7 @@ class CardProductAd extends StatefulWidget {
 }
 
 class _CardProductAdState extends State<CardProductAd> {
+
   void makeFavorite() {
     setState(() {
       widget.isFavorite = !widget.isFavorite;
@@ -122,7 +123,7 @@ class _CardProductAdState extends State<CardProductAd> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
-                        'R\$ ' + widget.productPrice,
+                        'R\$ ${widget.productPrice}',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),

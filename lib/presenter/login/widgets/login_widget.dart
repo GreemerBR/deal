@@ -1,7 +1,7 @@
-import '../../../main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../../main.dart';
 import 'default_button.dart';
 import 'default_input.dart';
 

@@ -4,6 +4,9 @@ import '../filter/filter_page.dart';
 import 'widgets/body_categories.dart';
 
 class CategoriesPage extends StatelessWidget {
+  final String title;
+
+  CategoriesPage({required this.title});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +35,14 @@ class CategoriesPage extends StatelessWidget {
         toolbarHeight: 80,
         centerTitle: true,
         title: Text(
-          "Eletrônicos",
+          title,
           style: TextStyle(
             fontSize: 30,
           ),
         ),
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
       ),
-      body: BodyCategories(),
+      body: BodyCategories(title: title,),
     );
   }
 }
