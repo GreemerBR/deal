@@ -63,10 +63,10 @@ class DatabaseApp {
         await db.execute(
           """INSERT INTO Users VALUES (
           NULL, 
-          'Henrique da Silva', 
-          'henrique@gmail.com', 
-          'henrique123', 
-          'Riquinho', 
+          'André Pereira Martins', 
+          'andre@gmail.com', 
+          'andre2022', 
+          'And', 
           '93218234581', 
           '58981293847', 
           '37289123', 
@@ -164,7 +164,6 @@ class DatabaseApp {
     List<String>? joinRightColumnNames,
     String? condition,
   }) async {
-
     bool assertJoinTrue = (isJoin == true &&
         (joinType != null &&
             joinRightTableNames != null &&
@@ -192,7 +191,7 @@ class DatabaseApp {
       }
     }
 
-    if(condition != null) {
+    if (condition != null) {
       query += ' WHERE $condition';
     }
 

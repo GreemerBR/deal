@@ -18,4 +18,4 @@ Future main() async {
   );
 }
 
-  final navigatorKey = GlobalKey<NavigatorState>();
+final navigatorKey = GlobalKey<NavigatorState>();
