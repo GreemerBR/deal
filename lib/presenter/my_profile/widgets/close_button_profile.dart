@@ -59,6 +59,7 @@ class CloseButtonProfile extends StatelessWidget {
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
+                  FirebaseAuth.instance.currentUser!.email;
                   FirebaseAuth.instance.signOut();
                   Navigator.of(context).push(
                     MaterialPageRoute(

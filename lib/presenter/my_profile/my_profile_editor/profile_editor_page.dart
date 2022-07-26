@@ -14,27 +14,31 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        toolbarHeight: 80,
-        backgroundColor: Color.fromARGB(255, 99, 66, 191),
-        title: const Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Text(
-            'Editar',
-            style: TextStyle(fontSize: 30),
+          elevation: 0,
+          centerTitle: true,
+          toolbarHeight: 80,
+          backgroundColor: Color.fromARGB(255, 99, 66, 191),
+          title: const Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: Text(
+              'Editar',
+              style: TextStyle(fontSize: 30),
+            ),
           ),
-        ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.save,
-            size: 35,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: IconButton(
+                icon: Icon(
+                  Icons.save,
+
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+          ]),
       body: BodyMyProfileEditor(),
     );
   }

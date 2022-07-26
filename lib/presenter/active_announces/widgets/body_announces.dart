@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/app_assets.dart';
-import '../../announcement/widgets/button_new_announce.dart';
+import 'button_new_announce.dart';
 
 class BodyAnnounces extends StatelessWidget {
   const BodyAnnounces({
@@ -42,26 +42,6 @@ class BodyAnnounces extends StatelessWidget {
                   ),
                 ),
                 ButtonNewAnnounce(),
-
-                // MaterialButton(
-                //   height: 80,
-                //   minWidth: MediaQuery.of(context).size.width,
-                //   color: Color.fromARGB(255, 99, 66, 191),
-                //   onPressed: () {
-                //     Navigator.of(context).push(
-                //       MaterialPageRoute(
-                //         builder: (context) => NewAnnouncePage(),
-                //       ),
-                //     );
-                //   },
-                //   child: Text(
-                //     "ADICIONAR ANÚNCIOS",
-                //     style: TextStyle(
-                //       fontSize: 16,
-                //       color: Colors.white,
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),

@@ -8,10 +8,11 @@ class AnnoucementPage extends StatefulWidget {
   AnnoucementPage({
     Key? key,
     this.isFavorite = false,
+    required this.product,
   }) : super(key: key);
 
   bool isFavorite;
-
+  Map<String, dynamic> product;
   @override
   State<AnnoucementPage> createState() => _AnnoucementPageState();
 }
@@ -66,7 +67,7 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: BodyAnnouncement(),
+        child: BodyAnnouncement(product: widget.product,),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 99, 66, 191),

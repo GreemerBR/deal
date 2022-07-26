@@ -7,7 +7,10 @@ import 'slide_component_announces.dart';
 class BodyAnnouncement extends StatelessWidget {
   const BodyAnnouncement({
     Key? key,
+    required this.product,
   }) : super(key: key);
+
+  final Map<String, dynamic> product;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class BodyAnnouncement extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
-                            'R\$ 10',
+                            'R\$ ${product['AnunValor']}',
                             style: TextStyle(
                               fontSize: 40,
                             ),
@@ -40,7 +43,7 @@ class BodyAnnouncement extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 15, top: 5),
                           child: Text(
-                            'NOME DO PRODUTO',
+                            product['AnunTitulo'],
                             style: TextStyle(
                               fontSize: 25,
                               color: Color.fromARGB(255, 196, 196, 196),
@@ -50,7 +53,7 @@ class BodyAnnouncement extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 15, top: 5),
                           child: Text(
-                            'BAIRRO - DATA E HORA POSTAGEM ANÚNCIO',
+                            '${product['AnunEndereco']} - ${product['AnunData']}',
                             style: TextStyle(
                               fontSize: 10,
                               color: Color.fromARGB(255, 196, 196, 196),
@@ -85,7 +88,7 @@ class BodyAnnouncement extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 75),
                               child: Text(
-                                'UMA DESCRIÇÃO MUITO LOUCA AQUI PRA TENTAR EMPRESTAR ESSE NEGOCIO',
+                                product['AnunDescri'],
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Color.fromARGB(255, 196, 196, 196),

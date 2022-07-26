@@ -13,12 +13,13 @@ class BodyCategories extends StatelessWidget {
 
   DatabaseApp database = getIt.get<DatabaseApp>();
 
+
   @override
   Widget build(BuildContext context) {
+
     return FutureBuilder(
       future: database.select(
         tableName: 'Announces',
-        columnNames: ['AnunTitulo', 'AnunValor', 'AnunEndereco', 'AnunID'],
         condition: 'AnunCat = "$title"',
       ),
       builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
@@ -30,16 +31,15 @@ class BodyCategories extends StatelessWidget {
         }
         List<Map<String, dynamic>>? list = snapshot.data;
         return ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: list!.length,
-            itemBuilder: (context, index) {
-              return CardProductAd(
-                productName: list[index]['AnunTitulo'],
-                productPrice: list[index]['AnunValor'],
-                productLocation: list[index]['AnunEndereco'],
-                imageLink: imgBen10,
-              );
-            });
+          physics: BouncingScrollPhysics(),
+          itemCount: list!.length,
+          itemBuilder: (context, index) {
+            return CardProductAd(
+              productInformation: list[index],
+              imageLink: imgBen10,
+            );
+          },
+        );
       },
     );
   }
