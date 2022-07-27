@@ -2,11 +2,13 @@
 import 'package:app_2/core/database.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/get_it.dart';
+
 // ignore: must_be_immutable
 class ProfileListItem extends StatelessWidget {
   final String title;
   final Widget? destinyPage;
-  DatabaseApp database = DatabaseApp();
+  DatabaseApp database = getIt.get<DatabaseApp>();
 
   ProfileListItem({
     Key? key,

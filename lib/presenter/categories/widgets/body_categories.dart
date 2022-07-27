@@ -30,16 +30,17 @@ class BodyCategories extends StatelessWidget {
         }
         List<Map<String, dynamic>>? list = snapshot.data;
         return ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: list!.length,
-            itemBuilder: (context, index) {
-              return CardProductAd(
-                productName: list[index]['AnunTitulo'],
-                productPrice: list[index]['AnunValor'],
-                productLocation: list[index]['AnunEndereco'],
-                imageLink: imgBen10,
-              );
-            });
+          physics: BouncingScrollPhysics(),
+          itemCount: list!.length,
+          itemBuilder: (context, index) {
+            return CardProductAd(
+              productName: list[index]['AnunTitulo'],
+              productPrice: list[index]['AnunValor'],
+              productLocation: list[index]['AnunEndereco'],
+              imageLink: imgBen10,
+            );
+          },
+        );
       },
     );
   }

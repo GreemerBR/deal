@@ -6,8 +6,11 @@ class CategoriesCards extends StatelessWidget {
   final String title;
   final IconData icon;
 
-  const CategoriesCards({Key? key, required this.title, required this.icon, })
-      : super(key: key);
+  const CategoriesCards({
+    Key? key,
+    required this.title,
+    required this.icon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,9 @@ class CategoriesCards extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return CategoriesPage(title: title,);
+              return CategoriesPage(
+                title: title,
+              );
             },
           ),
         );
