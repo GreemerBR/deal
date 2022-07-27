@@ -102,6 +102,18 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
                   ),
                   ProfileListInformation(
                     initialText: '',
+                    boxLabel: 'Estado',
+                  ),
+                  ProfileListInformation(
+                    initialText: '',
+                    boxLabel: 'Cidade',
+                  ),
+                  ProfileListInformation(
+                    initialText: '',
+                    boxLabel: 'Bairro',
+                  ),
+                  ProfileListInformation(
+                    initialText: '',
                     boxLabel: 'Rua',
                   ),
                   ProfileListInformation(
