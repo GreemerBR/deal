@@ -29,6 +29,8 @@ class DatabaseApp {
               UserCPF TEXT, 
               UserTelefone TEXT, 
               UserCep TEXT, 
+              UserCidade TEXT,
+              UserEstado TEXT,
               UserRua TEXT, 
               UserNumero INTEGER, 
               UserComplemento TEXT
@@ -70,6 +72,8 @@ class DatabaseApp {
           '93218234581', 
           '58981293847', 
           '37289123', 
+          'São Mateus',
+          'Espiríto Santo',
           'Rua Mesanino Bonito', 
           72, 
           'Casa'

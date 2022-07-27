@@ -12,17 +12,15 @@ class BodyMyProfile extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
           ProfileSummaryInformations(
-            name: 'Gregory Viegas Zimmer',
-            address: 'Blumenau - SC',
-            photo: imgAvatar
-          ),
+              name: 'Gregory Viegas Zimmer',
+              address: 'Blumenau - SC',
+              photo: imgAvatar),
           Expanded(
             child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),
