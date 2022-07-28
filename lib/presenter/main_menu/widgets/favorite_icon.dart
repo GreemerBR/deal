@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import '../../favorites/favorites_page.dart';
 
 class FavoriteIcon extends StatelessWidget {
@@ -19,7 +20,7 @@ class FavoriteIcon extends StatelessWidget {
               size: 28,
             ),
             color: color,
-            onPressed: () {
+            onPressed: () async {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
