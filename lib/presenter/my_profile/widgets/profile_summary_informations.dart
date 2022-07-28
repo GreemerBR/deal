@@ -85,8 +85,8 @@ class ProfileSummaryInformations extends StatelessWidget {
                     bottom: 30,
                   ),
                   child: Text(
-                    '${snapshot.data[0]["UserCidade"] == null ? 'Cidade não informada' : snapshot.data![0]["UserCidade"]} -',
-                    //     ' ${snapshot.data?[0]["UserEstado"] == null ? snapshot.data![0]["UserEstado"] : 'Estado não informado'}',
+                    '${snapshot.data![0]["UserCidade"] == null ? '' : snapshot.data![0]["UserCidade"]} -' +
+                        ' ${snapshot.data![0]["UserEstado"] == null ? '' : snapshot.data![0]["UserEstado"]}',
                     style: TextStyle(
                       color: Color.fromARGB(255, 196, 196, 196),
                       fontSize: 15,

@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 class ProfileListInformation extends StatelessWidget {
   final String initialText;
   final String boxLabel;
+  final TextEditingController? controller;
+
   const ProfileListInformation({
     Key? key,
     required this.initialText,
     required this.boxLabel,
+    this.controller,
   }) : super(key: key);
 
   @override
