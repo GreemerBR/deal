@@ -17,10 +17,7 @@ class BodyMyProfile extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          ProfileSummaryInformations(
-              name: 'Gregory Viegas Zimmer',
-              address: 'Blumenau - SC',
-              photo: imgAvatar),
+          ProfileSummaryInformations(photo: imgAvatar),
           Expanded(
             child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),

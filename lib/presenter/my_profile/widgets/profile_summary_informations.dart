@@ -5,13 +5,9 @@ import '../../../core/database.dart';
 import '../../../core/get_it.dart';
 
 class ProfileSummaryInformations extends StatelessWidget {
-  final String name;
-  final String address;
   final photo;
   ProfileSummaryInformations({
     Key? key,
-    required this.name,
-    required this.address,
     required this.photo,
   }) : super(key: key);
 
@@ -85,8 +81,8 @@ class ProfileSummaryInformations extends StatelessWidget {
                     bottom: 30,
                   ),
                   child: Text(
-                    '${snapshot.data![0]["UserCidade"] == null ? '' : snapshot.data![0]["UserCidade"]} -' +
-                        ' ${snapshot.data![0]["UserEstado"] == null ? '' : snapshot.data![0]["UserEstado"]}',
+                    '${snapshot.data![0]["UserCidade"] == null ? 'Cidade não informada' : snapshot.data![0]["UserCidade"]} -' +
+                        ' ${snapshot.data![0]["UserEstado"] == null ? 'Estado não informado' : snapshot.data![0]["UserEstado"]}',
                     style: TextStyle(
                       color: Color.fromARGB(255, 196, 196, 196),
                       fontSize: 15,

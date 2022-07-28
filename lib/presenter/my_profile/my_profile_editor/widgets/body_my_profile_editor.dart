@@ -56,7 +56,19 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
     return FutureBuilder(
       future: database.select(
           tableName: 'Users',
-          columnNames: ['UserNomeCompleto', 'UserCidade', 'UserEstado'],
+          columnNames: [
+            'UserNomeCompleto',
+            'UserEmail',
+            'UserApelido',
+            'UserCPF',
+            'UserCep',
+            'UserTelefone',
+            'UserCidade',
+            'UserRua',
+            'UserNumero',
+            'UserComplemento',
+            'UserEstado'
+          ],
           condition: 'UserEmail = "${user.email!}"'),
       builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
         if (!snapshot.hasData) {
@@ -71,8 +83,6 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
                 alignment: Alignment.center,
                 children: [
                   ProfileSummaryInformations(
-                    name: 'Gregory Viegas Zimmer',
-                    address: 'Blumenau - SC',
                     photo: photo != null ? photo : tempPhoto,
                   ),
                   Container(
@@ -104,49 +114,67 @@ class _BodyMyProfileEditorState extends State<BodyMyProfileEditor> {
                   child: Column(
                     children: [
                       ProfileListInformation(
-                        initialText: snapshot.data!.isEmpty
-                            ? ''
-                            : snapshot.data![0]["UserNomeCompleto"],
+                        initialText:
+                            snapshot.data![0]["UserNomeCompleto"] == null
+                                ? ''
+                                : snapshot.data![0]["UserNomeCompleto"],
                         boxLabel: 'Nome completo',
                         controller: nameController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText: snapshot.data![0]["UserApelido"] == null
+                            ? ''
+                            : snapshot.data![0]["UserApelido"],
                         boxLabel: 'Apelido',
                         controller: apelidoController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText: snapshot.data![0]["UserCPF"] == null
+                            ? ''
+                            : snapshot.data![0]["UserCPF"],
                         boxLabel: 'CPF/CNPJ',
                         controller: cpfController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText: snapshot.data![0]["UserEmail"] == null
+                            ? ''
+                            : snapshot.data![0]["UserEmail"],
                         boxLabel: 'Email',
                         controller: emailController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText: snapshot.data![0]["UserTelefone"] == null
+                            ? ''
+                            : snapshot.data![0]["UserTelefone"],
                         boxLabel: 'Telefone',
                         controller: telefoneController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText: snapshot.data![0]["UserCep"] == null
+                            ? ''
+                            : snapshot.data![0]["UserCep"],
                         boxLabel: 'CEP',
                         controller: cepController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText: snapshot.data![0]["UserRua"] == null
+                            ? ''
+                            : snapshot.data![0]["UserRua"],
                         boxLabel: 'Rua',
                         controller: ruaController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText: snapshot.data![0]["UserNumero"] == null
+                            ? ''
+                            : snapshot.data![0]["UserNumero"],
                         boxLabel: 'Número',
                         controller: numeroController,
                       ),
                       ProfileListInformation(
-                        initialText: '',
+                        initialText:
+                            snapshot.data![0]["UserComplemento"] == null
+                                ? ''
+                                : snapshot.data![0]["UserComplemento"],
                         boxLabel: 'Complemento',
                         controller: complementoController,
                       ),
