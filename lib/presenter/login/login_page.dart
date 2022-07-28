@@ -1,3 +1,4 @@
+import 'package:app_2/core/get_it.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/database.dart';
@@ -11,7 +12,8 @@ class LoginPage extends StatelessWidget {
   LoginPage({
     Key? key,
   }) : super(key: key);
-  final database = DatabaseApp();
+
+  final database = getIt.get<DatabaseApp>();
 
   @override
   Widget build(BuildContext context) {

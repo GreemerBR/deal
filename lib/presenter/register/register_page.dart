@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/database.dart';
+import '../../core/get_it.dart';
 import '../../main.dart';
 import '../is_logged/is_logged_page.dart';
 import '../login/widgets/default_button.dart';
@@ -15,7 +16,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final database = DatabaseApp();
+  final database = getIt.get<DatabaseApp>();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
