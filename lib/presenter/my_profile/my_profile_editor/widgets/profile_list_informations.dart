@@ -36,9 +36,7 @@ class ProfileListInformation extends StatelessWidget {
             left: 10,
           ),
           child: TextField(
-            controller: TextEditingController(
-              text: initialText,
-            ),
+            controller: controller,
             style: TextStyle(
               color: Colors.black,
             ),

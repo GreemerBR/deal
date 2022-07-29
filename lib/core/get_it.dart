@@ -6,4 +6,6 @@ final getIt = GetIt.instance;
 
 void setupDependencies() {
   getIt.registerSingleton<DatabaseApp>(DatabaseApp());
+
+  // getIt.registerSingleton<ProfileEditorController>(ProfileEditorController());
 }
