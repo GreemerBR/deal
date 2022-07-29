@@ -11,7 +11,7 @@ class DatabaseApp {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
 
-    await deleteDatabase(path);
+    // await deleteDatabase(path);
 
     database = await openDatabase(
       path,
@@ -30,6 +30,8 @@ class DatabaseApp {
               UserCPF TEXT, 
               UserTelefone TEXT, 
               UserCep TEXT, 
+              UserCidade TEXT,
+              UserEstado TEXT,
               UserRua TEXT, 
               UserNumero INTEGER, 
               UserComplemento TEXT
@@ -72,6 +74,8 @@ class DatabaseApp {
           '93218234581', 
           '58981293847', 
           '37289123', 
+          'São Mateus',
+          'Espiríto Santo',
           'Rua Mesanino Bonito', 
           72, 
           'Casa'
@@ -166,7 +170,6 @@ class DatabaseApp {
     List<String>? joinRightColumnNames,
     String? condition,
   }) async {
-
     bool assertJoinTrue = (isJoin == true &&
         (joinType != null &&
             joinRightTableNames != null &&
@@ -194,7 +197,7 @@ class DatabaseApp {
       }
     }
 
-    if(condition != null) {
+    if (condition != null) {
       query += ' WHERE $condition';
     }
 

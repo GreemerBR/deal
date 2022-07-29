@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/database.dart';
+import '../../../core/get_it.dart';
 import '../../active_announces/active_announces_page.dart';
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
@@ -15,7 +16,7 @@ class NewAnnounceBody extends StatefulWidget {
 }
 
 class _NewAnnounceBodyState extends State<NewAnnounceBody> {
-  final database = DatabaseApp();
+  final database = getIt.get<DatabaseApp>();
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
