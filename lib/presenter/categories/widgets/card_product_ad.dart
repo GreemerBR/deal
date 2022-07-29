@@ -6,16 +6,11 @@ import '../../announcement/announce_page.dart';
 class CardProductAd extends StatefulWidget {
   CardProductAd({
     Key? key,
-    required this.productName,
-    required this.productPrice,
-    required this.productLocation,
+    required this.productInformation,
     required this.imageLink,
     this.isFavorite = false,
   }) : super(key: key);
-
-  final String productName;
-  final double productPrice;
-  final String productLocation;
+  final Map<String, dynamic> productInformation;
   final String imageLink;
   bool isFavorite;
   @override
@@ -23,11 +18,12 @@ class CardProductAd extends StatefulWidget {
 }
 
 class _CardProductAdState extends State<CardProductAd> {
-
   void makeFavorite() {
-    setState(() {
-      widget.isFavorite = !widget.isFavorite;
-    });
+    setState(
+      () {
+        widget.isFavorite = !widget.isFavorite;
+      },
+    );
   }
 
   @override
@@ -38,7 +34,9 @@ class _CardProductAdState extends State<CardProductAd> {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return AnnoucementPage();
+                return AnnoucementPage(
+                  product: widget.productInformation,
+                );
               },
             ),
           );
@@ -46,21 +44,10 @@ class _CardProductAdState extends State<CardProductAd> {
           print(e);
         }
       },
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-        width: double.maxFinite,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xffa9a9a9),
-              spreadRadius: 0,
-              blurRadius: 5,
-              offset: Offset(0, 5),
-            ),
-          ],
-        ),
+      child: Card(
+        margin: EdgeInsets.all(10),
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Row(
           children: [
             Stack(
@@ -92,12 +79,7 @@ class _CardProductAdState extends State<CardProductAd> {
                   icon: Icon(
                     widget.isFavorite ? Icons.favorite : Icons.favorite_border,
                     color: (widget.isFavorite
-                        ? Color.fromARGB(
-                            255,
-                            99,
-                            66,
-                            191,
-                          )
+                        ? Color.fromARGB(255, 99, 66, 191)
                         : Colors.grey),
                   ),
                   splashRadius: 1,
@@ -112,7 +94,7 @@ class _CardProductAdState extends State<CardProductAd> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.productName,
+                      widget.productInformation['AnunTitulo'],
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 14,
@@ -123,12 +105,12 @@ class _CardProductAdState extends State<CardProductAd> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
-                        'R\$ ${widget.productPrice}',
+                        'R\$ ${widget.productInformation['AnunValor']}',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
                     Text(
-                      widget.productLocation,
+                      widget.productInformation['AnunEndereco'],
                       style: TextStyle(
                         fontSize: 10,
                         color: Colors.grey,

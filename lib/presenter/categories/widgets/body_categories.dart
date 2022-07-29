@@ -13,12 +13,13 @@ class BodyCategories extends StatelessWidget {
 
   DatabaseApp database = getIt.get<DatabaseApp>();
 
+
   @override
   Widget build(BuildContext context) {
+
     return FutureBuilder(
       future: database.select(
         tableName: 'Announces',
-        columnNames: ['AnunTitulo', 'AnunValor', 'AnunEndereco', 'AnunID'],
         condition: 'AnunCat = "$title"',
       ),
       builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
@@ -34,9 +35,7 @@ class BodyCategories extends StatelessWidget {
           itemCount: list!.length,
           itemBuilder: (context, index) {
             return CardProductAd(
-              productName: list[index]['AnunTitulo'],
-              productPrice: list[index]['AnunValor'],
-              productLocation: list[index]['AnunEndereco'],
+              productInformation: list[index],
               imageLink: imgBen10,
             );
           },

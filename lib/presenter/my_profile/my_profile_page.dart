@@ -24,7 +24,6 @@ class MyProfilePage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,
-            size: 35,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -45,7 +44,7 @@ class MyProfilePage extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.edit_note,
-                size: 35,
+                size: 25,
               ),
             ),
           ),

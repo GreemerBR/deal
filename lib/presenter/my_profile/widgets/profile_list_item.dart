@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:app_2/core/database.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/get_it.dart';
@@ -8,6 +7,7 @@ import '../../../core/get_it.dart';
 class ProfileListItem extends StatelessWidget {
   final String title;
   final Widget? destinyPage;
+
   DatabaseApp database = getIt.get<DatabaseApp>();
 
   ProfileListItem({
@@ -23,42 +23,42 @@ class ProfileListItem extends StatelessWidget {
         left: 20,
         right: 20,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(color: Colors.grey),
+      child: InkWell(
+        onTap: () {
+          if (destinyPage != null) {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => destinyPage!),
+            );
+          }
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(color: Colors.grey),
+            ),
           ),
-        ),
-        height: 50,
-        width: double.maxFinite,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Text(
-                title,
-                style: TextStyle(
-                  color: Color.fromARGB(255, 99, 66, 191),
-                  fontSize: 20,
+          height: 50,
+          width: double.maxFinite,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 99, 66, 191),
+                    fontSize: 20,
+                  ),
                 ),
               ),
-            ),
-            IconButton(
-              onPressed: () {
-                Future<List<Map<String, dynamic>>> list =
-                    database.select(tableName: 'Users');
-                list.then((List<Map<String, dynamic>> objeto) {
-                  print(objeto);
-                });
-              },
-              icon: const Icon(
+              Icon(
                 Icons.chevron_right_sharp,
                 color: Colors.grey,
                 size: 25,
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
