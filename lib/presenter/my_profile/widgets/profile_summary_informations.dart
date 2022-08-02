@@ -4,25 +4,45 @@ import 'package:flutter/material.dart';
 import '../../../core/database.dart';
 import '../../../core/get_it.dart';
 
-class ProfileSummaryInformations extends StatelessWidget {
+class ProfileSummaryInformations extends StatefulWidget {
   final photo;
   ProfileSummaryInformations({
     Key? key,
     required this.photo,
   }) : super(key: key);
 
+  @override
+  State<ProfileSummaryInformations> createState() =>
+      _ProfileSummaryInformationsState();
+}
+
+class _ProfileSummaryInformationsState
+    extends State<ProfileSummaryInformations> {
   final database = getIt.get<DatabaseApp>();
+
+  late Future<List<Map<String, dynamic>>> list;
   final user = FirebaseAuth.instance.currentUser!;
 
-// Image.memory(photo!)
+  @override
+  void initState() {
+    super.initState();
+    setInformation();
+  }
 
+  Future<void> setInformation() async {
+    list = database.select(
+      tableName: 'Users',
+      columnNames: ['UserNomeCompleto', 'UserCidade', 'UserEstado'],
+      condition: 'UserEmail = "${user.email!}"',
+    );
+    setState(() {});
+  }
+
+// Image.memory(photo!)
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: database.select(
-          tableName: 'Users',
-          columnNames: ['UserNomeCompleto', 'UserCidade', 'UserEstado'],
-          condition: 'UserEmail = "${user.email!}"'),
+      future: list,
       builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
         if (!snapshot.hasData) {
           return Center(
@@ -40,13 +60,13 @@ class ProfileSummaryInformations extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                photo.runtimeType == String
+                widget.photo.runtimeType == String
                     ? Container(
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(photo),
+                            image: AssetImage(widget.photo),
                             fit: BoxFit.cover,
                           ),
                           borderRadius: BorderRadius.circular(300),
@@ -57,7 +77,7 @@ class ProfileSummaryInformations extends StatelessWidget {
                         height: 80,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: FileImage(photo),
+                            image: FileImage(widget.photo),
                             fit: BoxFit.cover,
                           ),
                           borderRadius: BorderRadius.circular(300),
@@ -81,8 +101,10 @@ class ProfileSummaryInformations extends StatelessWidget {
                     bottom: 30,
                   ),
                   child: Text(
-                    '${snapshot.data![0]["UserCidade"] == null ? 'Cidade não informada' : snapshot.data![0]["UserCidade"]} -' +
-                        ' ${snapshot.data![0]["UserEstado"] == null ? 'Estado não informado' : snapshot.data![0]["UserEstado"]}',
+                    snapshot.data!.isEmpty
+                        ? 'Cidade não Informada - Estado não Informado'
+                        : '${snapshot.data![0]["UserCidade"] == null ? 'Cidade não informada' : snapshot.data![0]["UserCidade"]} -' +
+                            ' ${snapshot.data![0]["UserEstado"] == null ? 'Estado não informado' : snapshot.data![0]["UserEstado"]}',
                     style: TextStyle(
                       color: Color.fromARGB(255, 196, 196, 196),
                       fontSize: 15,
