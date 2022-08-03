@@ -11,7 +11,7 @@ class DatabaseApp {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
 
-    // await deleteDatabase(path);
+    await deleteDatabase(path);
 
     database = await openDatabase(
       path,
