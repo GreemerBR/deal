@@ -5,12 +5,15 @@ class ProfileListInformation extends StatelessWidget {
   final String boxLabel;
   final TextEditingController? controller;
 
-  const ProfileListInformation({
-    Key? key,
+   ProfileListInformation({
+    super.key,
     required this.initialText,
     required this.boxLabel,
     this.controller,
-  }) : super(key: key);
+  }) {
+    controller!.text = initialText;
+  }
+
 
   @override
   Widget build(BuildContext context) {
