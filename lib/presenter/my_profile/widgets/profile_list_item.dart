@@ -1,18 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD
-=======
-import '../../../core/database.dart';
-import '../../../core/get_it.dart';
->>>>>>> bb9a5aad59f67c0eb7a20c6b32285ebc5e290089
-
 // ignore: must_be_immutable
 class ProfileListItem extends StatelessWidget {
   final String title;
   final Widget? destinyPage;
-
- 
 
   ProfileListItem({
     Key? key,
