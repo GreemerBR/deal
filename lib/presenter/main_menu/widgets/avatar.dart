@@ -21,12 +21,9 @@ class _AvatarState extends State<Avatar> {
     return bytes.buffer.asUint8List();
   }
 
-
-
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
@@ -35,7 +32,7 @@ class _AvatarState extends State<Avatar> {
       future: image(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          print(snapshot.data);
+          // print(snapshot.data);
           return MaterialButton(
             onPressed: () {
               Navigator.of(context).push(

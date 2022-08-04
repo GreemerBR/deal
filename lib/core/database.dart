@@ -11,7 +11,7 @@ class DatabaseApp {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
 
-    // await deleteDatabase(path);
+    await deleteDatabase(path);
 
     database = await openDatabase(
       path,
@@ -66,18 +66,18 @@ class DatabaseApp {
         await db.execute(
           """INSERT INTO Users VALUES (
           NULL, 
-          'Henrique da Silva', 
-          'henriquedasilvacardoso00@gmail.com', 
-          'henrique123', 
+          'Admin', 
+          'adm@gmail.com', 
+          'adm123', 
           NULL,
           'Riquinho', 
           '93218234581', 
           '58981293847', 
           '37289123', 
-          'São Mateus',
-          'Espiríto Santo',
-          'Rua Mesanino Bonito', 
-          72, 
+          'Blumenau',
+          'Santa Catarina',
+          'Rua da tristeza e depressão', 
+          24, 
           'Casa'
           )
           """,
@@ -145,7 +145,7 @@ class DatabaseApp {
     String query = 'UPDATE $tableName SET ';
 
     for (int index = 0; index < columnNames.length; index++) {
-      query += '${columnNames[index]} = ?, ';
+      query += '${columnNames[index]} = ${columnValues[index]}, ';
 
       if (index == columnNames.length - 1) {
         query = query.substring(0, query.length - 2);
@@ -156,7 +156,6 @@ class DatabaseApp {
 
     await database.rawUpdate(
       query,
-      columnValues,
     );
   }
 
