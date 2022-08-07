@@ -21,3 +21,5 @@ const String imgWelcomeDeal = 'assets/images/welcome_card.jpg';
 const String imgBackgroundAbout = 'assets/images/backgroundAboutDeal.png';
 const List<String> imageList = [imgAirFryer];
 const List<String> imageListCard = [imgWelcomeDeal, imgPeopleDeal];
+const String loginAnimation = 'assets/animations/loginAnimation.json';
+const String notFoundAnimation = 'assets/animations/notFoundAnimation.json';
