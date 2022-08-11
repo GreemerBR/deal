@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/database.dart';
 import '../../../core/get_it.dart';
-import '../../active_announces/active_announces_page.dart';
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
@@ -100,25 +99,38 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                   ],
                 );
 
+                // var result =
+                //     database.select(tableName: 'Announces', isJoin: false);
+
+                // result.then(
+                //   (List<Map<String, dynamic>> list) {
+                //     print(list);
+
+                // database.closeDatabase();
+
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return ActiveAnnouncesPage();
+                //     },
+                //   ),
+                // );
+              },
+              // );
+              // },
+            ),
+            MaterialButton(
+              onPressed: () {
                 var result =
                     database.select(tableName: 'Announces', isJoin: false);
 
                 result.then(
                   (List<Map<String, dynamic>> list) {
-                    print(list);
-
-                    database.closeDatabase();
-
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return ActiveAnnouncesPage();
-                        },
-                      ),
-                    );
+                    print(list.toString());
                   },
                 );
               },
+              child: Text('Visualizar'),
             ),
             SizedBox(
               height: 20,
