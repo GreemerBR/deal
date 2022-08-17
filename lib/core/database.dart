@@ -82,22 +82,22 @@ class DatabaseApp {
           )
           """,
         );
-        // await db.execute(
-        //   """INSERT INTO Announces
-        //   VALUES
-        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-        //   (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
-        //   (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
-        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
-        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
-        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
-        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC')
-        //   """,
-        // );
+        await db.execute(
+          """INSERT INTO Announces
+          VALUES
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+          (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
+          (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC')
+          """,
+        );
       },
     );
   }

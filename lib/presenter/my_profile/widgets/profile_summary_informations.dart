@@ -12,12 +12,10 @@ class ProfileSummaryInformations extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ProfileSummaryInformations> createState() =>
-      _ProfileSummaryInformationsState();
+  State<ProfileSummaryInformations> createState() => _ProfileSummaryInformationsState();
 }
 
-class _ProfileSummaryInformationsState
-    extends State<ProfileSummaryInformations> {
+class _ProfileSummaryInformationsState extends State<ProfileSummaryInformations> {
   final database = getIt.get<DatabaseApp>();
 
   late Future<List<Map<String, dynamic>>> list;
@@ -86,9 +84,7 @@ class _ProfileSummaryInformationsState
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: Text(
-                    snapshot.data!.isEmpty
-                        ? 'Usuário'
-                        : snapshot.data![0]["UserNomeCompleto"],
+                    snapshot.data!.isEmpty ? 'Usuário' : snapshot.data![0]["UserNomeCompleto"],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
