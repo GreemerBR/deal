@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/database.dart';
-import '../../../core/get_it.dart';
 import '../../active_announces/active_announces_page.dart';
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
@@ -17,7 +16,7 @@ class NewAnnounceBody extends StatefulWidget {
 }
 
 class _NewAnnounceBodyState extends State<NewAnnounceBody> {
-  final database = getIt.get<DatabaseApp>();
+
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -79,7 +78,7 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
             ),
             BottomAnnounceButton(
               func: () {
-                database.insert(
+                DatabaseApp.instance.insert(
                   tableName: 'Announces',
                   valuesAndNames: {
                     'UserID':   1,
@@ -94,11 +93,11 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                 );
 
                 var result =
-                    database.select(tableName: 'Announces', isJoin: false);
+                    DatabaseApp.instance.select(tableName: 'Announces', isJoin: false);
 
                 result.then(
                   (List<Map<String, dynamic>> list) {
-                    database.closeDatabase();
+                    DatabaseApp.instance.closeDatabase();
 
                     Navigator.of(context).push(
                       MaterialPageRoute(

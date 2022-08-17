@@ -2,19 +2,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/database.dart';
-import '../../../core/get_it.dart';
+
 import 'avatar.dart';
 
 class UserCard extends StatelessWidget {
   UserCard({Key? key}) : super(key: key);
 
-  final database = getIt.get<DatabaseApp>();
   final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: database.select(
+      future: DatabaseApp.instance.select(
           tableName: 'Users',
           columnNames: ['UserNomeCompleto'],
           condition: 'UserEmail = "${user.email!}"'),

@@ -45,6 +45,7 @@ dependencies:
   flutter_profile_picture: ^2.0.0
   get_it: ^7.2.0
   intl: ^0.17.0
+  hooks_riverpod: ^1.0.4
 
 dev_dependencies:
   flutter_test:

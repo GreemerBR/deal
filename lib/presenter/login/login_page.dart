@@ -1,7 +1,5 @@
-import 'package:app_2/core/get_it.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/database.dart';
 import 'widgets/circle_avatar.dart';
 import 'widgets/default_link_text.dart';
 import 'widgets/default_title.dart';
@@ -12,8 +10,6 @@ class LoginPage extends StatelessWidget {
   LoginPage({
     Key? key,
   }) : super(key: key);
-
-  final database = getIt.get<DatabaseApp>();
 
   @override
   Widget build(BuildContext context) {

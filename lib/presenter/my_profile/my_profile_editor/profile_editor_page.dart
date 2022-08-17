@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../core/database.dart';
-import '../../../core/get_it.dart';
+
 import '../widgets/profile_summary_informations.dart';
 import 'widgets/profile_list_informations.dart';
 
@@ -28,7 +28,6 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
   TextEditingController numeroController = TextEditingController();
   TextEditingController complementoController = TextEditingController();
 
-  final database = getIt.get<DatabaseApp>();
   final user = FirebaseAuth.instance.currentUser!;
 
   var photo;
@@ -72,7 +71,7 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                   Icons.save,
                 ),
                 onPressed: () {
-                  database.update(
+                  DatabaseApp.instance.update(
                     table: 'Users',
                     valuesAndNames: {
                       'UserNomeCompleto': nameController.text.trim(),
@@ -96,7 +95,7 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
             ),
           ]),
       body: FutureBuilder(
-        future: database.select(
+        future: DatabaseApp.instance.select(
           tableName: 'Users',
           columnNames: [
             'UserNomeCompleto',

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/database.dart';
-import '../../../core/get_it.dart';
+
 
 class ProfileSummaryInformations extends StatefulWidget {
   final photo;
@@ -18,7 +18,6 @@ class ProfileSummaryInformations extends StatefulWidget {
 
 class _ProfileSummaryInformationsState
     extends State<ProfileSummaryInformations> {
-  final database = getIt.get<DatabaseApp>();
 
   late Future<List<Map<String, dynamic>>> list;
   final user = FirebaseAuth.instance.currentUser!;
@@ -30,7 +29,7 @@ class _ProfileSummaryInformationsState
   }
 
   Future<void> setInformation() async {
-    list = database.select(
+    list = DatabaseApp.instance.select(
       tableName: 'Users',
       columnNames: ['UserNomeCompleto', 'UserCidade', 'UserEstado'],
       condition: 'UserEmail = "${user.email!}"',
