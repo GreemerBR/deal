@@ -19,6 +19,7 @@ const String imgFriendsSplash = 'assets/images/friendSplash.jpg';
 const String imgPeopleDeal = 'assets/images/deal_card.jpg';
 const String imgWelcomeDeal = 'assets/images/welcome_card.jpg';
 const String imgBackgroundAbout = 'assets/images/backgroundAboutDeal.png';
+const String imgNotFound = 'assets/images/image_not_found.png';
 const List<String> imageList = [imgAirFryer];
 const List<String> imageListCard = [imgWelcomeDeal, imgPeopleDeal];
 const String loginAnimation = 'assets/animations/loginAnimation.json';

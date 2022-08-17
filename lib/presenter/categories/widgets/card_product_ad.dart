@@ -53,7 +53,7 @@ class _CardProductAdState extends State<CardProductAd> {
             Stack(
               children: [
                 Container(
-                  height: 125,
+                  height: MediaQuery.of(context).size.height * 0.2,
                   width: 190,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -78,9 +78,7 @@ class _CardProductAdState extends State<CardProductAd> {
                   },
                   icon: Icon(
                     widget.isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: (widget.isFavorite
-                        ? Color.fromARGB(255, 99, 66, 191)
-                        : Colors.grey),
+                    color: (widget.isFavorite ? Color.fromARGB(255, 99, 66, 191) : Colors.grey),
                   ),
                   splashRadius: 1,
                 ),
