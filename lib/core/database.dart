@@ -70,34 +70,34 @@ class DatabaseApp {
           'adm@gmail.com', 
           'adm123', 
           NULL,
-          'Riquinho', 
-          '93218234581', 
+          'Administrador', 
+          '932.182.345-81', 
           '58981293847', 
-          '37289123', 
+          '89010-204', 
           'Blumenau',
           'Santa Catarina',
-          'Rua da tristeza e depressão', 
+          'R. 7 de Setembro', 
           24, 
-          'Casa'
+          'Tarumã Office'
           )
           """,
         );
-        await db.execute(
-          """INSERT INTO Announces 
-          VALUES 
-          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-          (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
-          (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
-          (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
-          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
-          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
-          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
-          (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC')
-          """,
-        );
+        // await db.execute(
+        //   """INSERT INTO Announces
+        //   VALUES
+        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+        //   (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
+        //   (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
+        //   (NULL, 1, 'GHI', 'GHI', 7.5, 'Cozinha', 'GHI', 'GHI', 'GHI'),
+        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC'),
+        //   (NULL, 1, 'ABC', 'ABC', 2.5, 'Brinquedos','ABC', 'ABC', 'ABC')
+        //   """,
+        // );
       },
     );
   }
@@ -181,8 +181,7 @@ class DatabaseApp {
             joinLeftColumnNames == null));
     assert(assertJoinTrue || assertJoinFalse);
 
-    String query =
-        'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
+    String query = 'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
 
     if (isJoin == true) {
       for (int index = 0; index < joinRightTableNames!.length; index++) {

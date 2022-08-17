@@ -1,8 +1,9 @@
+import 'package:app_2/presenter/main_menu/main_menu_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/database.dart';
 import '../../../core/get_it.dart';
-import '../../active_announces/active_announces_page.dart';
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
@@ -17,12 +18,29 @@ class NewAnnounceBody extends StatefulWidget {
 
 class _NewAnnounceBodyState extends State<NewAnnounceBody> {
   final database = getIt.get<DatabaseApp>();
+  late Future<List<Map<String, dynamic>>> list;
+
+  @override
+  void initState() {
+    super.initState();
+    setInformation();
+  }
+
+  Future<List<Map<String, dynamic>>> setInformation() async {
+    return list = database.select(
+      tableName: 'Users',
+      columnNames: ['UserCidade'],
+      condition: 'UserEmail = "${user.email!}"',
+    );
+  }
+
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
 
   String dropdownValueSelected = 'Escolha uma opção';
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +80,14 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
               title: "Categoria *",
               options: [
                 "Escolha uma opção",
-                "Móveis",
-                "Roupas",
-                "Peças",
-                "Eletrodomésticos"
+                "Brinquedos",
+                "Cozinha",
+                "Eletrônicos",
+                "Esportes",
+                "Lazer",
+                "Moda",
+                "Jardim",
+                "Outros"
               ],
               dropdownValue: dropdownValueSelected,
               onChanged: (String? value) {
@@ -86,8 +108,8 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                     'AnunDescri',
                     'AnunValor',
                     'AnunCat',
-                    // 'AnunCEP',
-                    // 'AnunEndereco',
+                    'AnunCEP',
+                    'AnunEndereco',
                     'AnunData',
                   ],
                   columnValues: [
@@ -96,29 +118,43 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                     descriptionController.text.trim(),
                     priceController.text.trim(),
                     dropdownValueSelected,
+                    '0',
+                    'Blumenau',
                     'getdate()'
                   ],
                 );
 
-                var result =
-                    database.select(tableName: 'Announces', isJoin: false);
+                // var result =
+                //     database.select(tableName: 'Announces', isJoin: false);
+
+                // result.then(
+                //   (List<Map<String, dynamic>> list) {
+                //     print(list);
+
+                // database.closeDatabase();
+
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return MainMenuPage();
+                    },
+                  ),
+                );
+              },
+              // );
+              // },
+            ),
+            MaterialButton(
+              onPressed: () {
+                var result = database.select(tableName: 'Announces', isJoin: false);
 
                 result.then(
                   (List<Map<String, dynamic>> list) {
-                    print(list);
-
-                    database.closeDatabase();
-
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return ActiveAnnouncesPage();
-                        },
-                      ),
-                    );
+                    print(list.toString());
                   },
                 );
               },
+              child: Text('Visualizar'),
             ),
             SizedBox(
               height: 20,
