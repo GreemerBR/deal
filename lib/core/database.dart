@@ -1,3 +1,4 @@
+
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseApp {
@@ -104,60 +105,28 @@ class DatabaseApp {
 
   void insert({
     required String tableName,
-    List<String>? columnNames,
-    required List<dynamic> columnValues,
-  }) async {
-    String query = 'INSERT INTO $tableName ';
-
-    for (int index = 0; index < (columnNames?.length ?? 0); index++) {
-      if (index == 0) {
-        query += '(';
-      }
-      query += "'${columnNames![index]}', ";
-      if (index == columnNames.length - 1) {
-        query = query.substring(0, query.length - 2);
-        query += ')';
-      }
-    }
-
-    query += ' VALUES ';
-
-    for (int index = 0; index < columnValues.length; index++) {
-      if (index == 0) {
-        query += '(';
-      }
-      query += "'${columnValues[index]}', ";
-      if (index == columnValues.length - 1) {
-        query = query.substring(0, query.length - 2);
-        query += ')';
-      }
-    }
-
-    await database.rawInsert(query);
-  }
-
-  void update({
-    required String tableName,
-    required List<String> columnNames,
-    required List<dynamic> columnValues,
-    required String condition,
-  }) async {
-    String query = 'UPDATE $tableName SET ';
-
-    for (int index = 0; index < columnNames.length; index++) {
-      query += '${columnNames[index]} = ${columnValues[index]}, ';
-
-      if (index == columnNames.length - 1) {
-        query = query.substring(0, query.length - 2);
-      }
-    }
-    query += ' WHERE $condition';
-    print(query);
-
-    await database.rawUpdate(
-      query,
+    required Map<String, Object?> valuesAndNames,
+  }) {
+    database.insert(
+      tableName,
+      valuesAndNames,
     );
   }
+
+  void update(
+      {required String table,
+      required Map<String, Object?> valuesAndNames,
+      required String condition,
+      required List<Object?> conditionValues}) {
+    database.update(
+      table,
+      valuesAndNames,
+      where: condition,
+      whereArgs: conditionValues,
+    );
+  }
+
+  
 
   Future<List<Map<String, dynamic>>> select({
     List<String>? columnNames,

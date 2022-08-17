@@ -73,55 +73,45 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                 ),
                 onPressed: () {
                   database.update(
-                    tableName: 'Users',
-                    columnNames: [
-                      'UserNomeCompleto',
-                      'UserApelido',
-                      'UserCPF',
-                      'UserCep',
-                      'UserTelefone',
+                    table: 'Users',
+                    valuesAndNames: {
+                      'UserNomeCompleto': nameController.text.trim(),
+                      'UserApelido': apelidoController.text.trim(),
+                      'UserCPF': cpfController.text.trim(),
+                      'UserCep': cepController.text.trim(),
+                      'UserTelefone': telefoneController.text.trim(),
                       // 'UserCidade',
-                      'UserRua',
-                      'UserNumero',
-                      'UserComplemento'
+                      'UserRua': ruaController.text.trim(),
+                      'UserNumero': int.parse(numeroController.text),
+                      'UserComplemento': complementoController.text.trim()
                       // 'UserEstado'
-                    ],
-                    columnValues: [
-                      '"${nameController.text.trim()}"',
-                      '"${apelidoController.text.trim()}"',
-                      '"${cpfController.text.trim()}"',
-                      '"${cepController.text.trim()}"',
-                      '"${telefoneController.text.trim()}"',
-                      '"${ruaController.text.trim()}"',
-                      int.parse(numeroController.text),
-                      '"${complementoController.text.trim()}"'
-                    ],
-                    condition: 'UserEmail = "${user.email!}"',
+                    },
+                    condition: 'UserEmail = ?',
+                    conditionValues: [user.email],
                   );
-                  database
-                      .select(tableName: 'Users')
-                      .then((List<Map<String, dynamic>> value) => print(value));
-                  // print(nameController.text);
+                  Navigator.of(context).pop();
+                  setState(() {});
                 },
               ),
             ),
           ]),
       body: FutureBuilder(
         future: database.select(
-            tableName: 'Users',
-            columnNames: [
-              'UserNomeCompleto',
-              'UserApelido',
-              'UserCPF',
-              'UserCep',
-              'UserTelefone',
-              'UserCidade',
-              'UserRua',
-              'UserNumero',
-              'UserComplemento',
-              'UserEstado'
-            ],
-            condition: 'UserEmail = "${user.email!}"'),
+          tableName: 'Users',
+          columnNames: [
+            'UserNomeCompleto',
+            'UserApelido',
+            'UserCPF',
+            'UserCep',
+            'UserTelefone',
+            'UserCidade',
+            'UserRua',
+            'UserNumero',
+            'UserComplemento',
+            'UserEstado'
+          ],
+          condition: 'UserEmail = "${user.email!}"',
+        ),
         builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
           if (!snapshot.hasData) {
             return Center(

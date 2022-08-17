@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../core/database.dart';
 import '../../../core/get_it.dart';
@@ -80,24 +81,16 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
               func: () {
                 database.insert(
                   tableName: 'Announces',
-                  columnNames: [
-                    'UserID',
-                    'AnunTitulo',
-                    'AnunDescri',
-                    'AnunValor',
-                    'AnunCat',
-                    // 'AnunCEP',
-                    // 'AnunEndereco',
-                    'AnunData',
-                  ],
-                  columnValues: [
-                    1,
-                    titleController.text.trim(),
-                    descriptionController.text.trim(),
-                    priceController.text.trim(),
-                    dropdownValueSelected,
-                    'getdate()'
-                  ],
+                  valuesAndNames: {
+                    'UserID':   1,
+                    'AnunTitulo':  titleController.text.trim(),
+                    'AnunDescri':descriptionController.text.trim(),
+                    'AnunValor':priceController.text.trim(),
+                    'AnunCat':dropdownValueSelected,
+                    // 'AnunCEP':
+                    // 'AnunEndereco':
+                    'AnunData': DateFormat.yMd().format(DateTime.now()) 
+                  },
                 );
 
                 var result =
@@ -105,8 +98,6 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
 
                 result.then(
                   (List<Map<String, dynamic>> list) {
-                    print(list);
-
                     database.closeDatabase();
 
                     Navigator.of(context).push(
