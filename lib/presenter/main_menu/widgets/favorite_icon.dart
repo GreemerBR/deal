@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 import '../../favorites/favorites_page.dart';
 
 class FavoriteIcon extends StatelessWidget {

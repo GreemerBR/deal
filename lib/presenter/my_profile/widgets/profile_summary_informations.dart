@@ -12,12 +12,16 @@ class ProfileSummaryInformations extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ProfileSummaryInformations> createState() =>
-      _ProfileSummaryInformationsState();
+  State<ProfileSummaryInformations> createState() => _ProfileSummaryInformationsState();
 }
 
+<<<<<<< HEAD
 class _ProfileSummaryInformationsState
     extends State<ProfileSummaryInformations> {
+=======
+class _ProfileSummaryInformationsState extends State<ProfileSummaryInformations> {
+  final database = getIt.get<DatabaseApp>();
+>>>>>>> e2fe5dfdb65c23358bd1b4ecd99cad22268bbedf
 
   late Future<List<Map<String, dynamic>>> list;
   final user = FirebaseAuth.instance.currentUser!;
@@ -85,9 +89,7 @@ class _ProfileSummaryInformationsState
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: Text(
-                    snapshot.data!.isEmpty
-                        ? 'Usuário'
-                        : snapshot.data![0]["UserNomeCompleto"],
+                    snapshot.data!.isEmpty ? 'Usuário' : snapshot.data![0]["UserNomeCompleto"],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

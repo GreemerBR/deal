@@ -1,8 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/database.dart';
+
 import '../../active_announces/active_announces_page.dart';
+
+import '../../main_menu/main_menu_page.dart';
+
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
@@ -16,13 +21,13 @@ class NewAnnounceBody extends StatefulWidget {
 }
 
 class _NewAnnounceBodyState extends State<NewAnnounceBody> {
-
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
 
   String dropdownValueSelected = 'Escolha uma opção';
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +67,14 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
               title: "Categoria *",
               options: [
                 "Escolha uma opção",
-                "Móveis",
-                "Roupas",
-                "Peças",
-                "Eletrodomésticos"
+                "Brinquedos",
+                "Cozinha",
+                "Eletrônicos",
+                "Esportes",
+                "Lazer",
+                "Moda",
+                "Jardim",
+                "Outros"
               ],
               dropdownValue: dropdownValueSelected,
               onChanged: (String? value) {
@@ -81,34 +90,42 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                 DatabaseApp.instance.insert(
                   tableName: 'Announces',
                   valuesAndNames: {
-                    'UserID':   1,
-                    'AnunTitulo':  titleController.text.trim(),
-                    'AnunDescri':descriptionController.text.trim(),
-                    'AnunValor':priceController.text.trim(),
-                    'AnunCat':dropdownValueSelected,
+                    'UserID': 1,
+                    'AnunTitulo': titleController.text.trim(),
+                    'AnunDescri': descriptionController.text.trim(),
+                    'AnunValor': priceController.text.trim(),
+                    'AnunCat': dropdownValueSelected,
                     // 'AnunCEP':
                     // 'AnunEndereco':
-                    'AnunData': DateFormat.yMd().format(DateTime.now()) 
+                    'AnunData': DateFormat.yMd().format(DateTime.now())
                   },
                 );
 
-                var result =
-                    DatabaseApp.instance.select(tableName: 'Announces', isJoin: false);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return MainMenuPage();
+                    },
+                  ),
+                );
+              },
+              // );
+              // },
+            ),
+            MaterialButton(
+              onPressed: () {
+                var result = DatabaseApp.instance.select(
+                  tableName: 'Announces',
+                  isJoin: false,
+                );
 
                 result.then(
                   (List<Map<String, dynamic>> list) {
-                    DatabaseApp.instance.closeDatabase();
-
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return ActiveAnnouncesPage();
-                        },
-                      ),
-                    );
+                    print(list.toString());
                   },
                 );
               },
+              child: Text('Visualizar'),
             ),
             SizedBox(
               height: 20,

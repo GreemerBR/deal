@@ -24,6 +24,8 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController telefoneController = TextEditingController();
   TextEditingController cepController = TextEditingController();
+  TextEditingController estadoController = TextEditingController();
+  TextEditingController cidadeController = TextEditingController();
   TextEditingController ruaController = TextEditingController();
   TextEditingController numeroController = TextEditingController();
   TextEditingController complementoController = TextEditingController();
@@ -155,60 +157,57 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                     child: Column(
                       children: [
                         ProfileListInformation(
-                          initialText:
-                              snapshot.data![0]["UserNomeCompleto"] == null
-                                  ? ''
-                                  : snapshot.data![0]["UserNomeCompleto"],
+                          initialText: snapshot.data![0]["UserNomeCompleto"] == null
+                              ? ''
+                              : snapshot.data![0]["UserNomeCompleto"],
                           boxLabel: 'Nome completo',
                           controller: nameController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserApelido"] == null
-                              ? ''
-                              : snapshot.data![0]["UserApelido"],
+                          initialText: snapshot.data![0]["UserApelido"] == null ? '' : snapshot.data![0]["UserApelido"],
                           boxLabel: 'Apelido',
                           controller: apelidoController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCPF"] == null
-                              ? ''
-                              : snapshot.data![0]["UserCPF"],
+                          initialText: snapshot.data![0]["UserCPF"] == null ? '' : snapshot.data![0]["UserCPF"],
                           boxLabel: 'CPF/CNPJ',
                           controller: cpfController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserTelefone"] == null
-                              ? ''
-                              : snapshot.data![0]["UserTelefone"],
+                          initialText:
+                              snapshot.data![0]["UserTelefone"] == null ? '' : snapshot.data![0]["UserTelefone"],
                           boxLabel: 'Telefone',
                           controller: telefoneController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCep"] == null
-                              ? ''
-                              : snapshot.data![0]["UserCep"],
+                          initialText: snapshot.data![0]["UserCep"] == null ? '' : snapshot.data![0]["UserCep"],
                           boxLabel: 'CEP',
                           controller: cepController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserRua"] == null
-                              ? ''
-                              : snapshot.data![0]["UserRua"],
+                          initialText: snapshot.data![0]["UserEstado"] == null ? '' : snapshot.data![0]["UserEstado"],
+                          boxLabel: 'Estado',
+                          controller: estadoController,
+                        ),
+                        ProfileListInformation(
+                          initialText: snapshot.data![0]["UserCidade"] == null ? '' : snapshot.data![0]["UserCidade"],
+                          boxLabel: 'Cidade',
+                          controller: cidadeController,
+                        ),
+                        ProfileListInformation(
+                          initialText: snapshot.data![0]["UserRua"] == null ? '' : snapshot.data![0]["UserRua"],
                           boxLabel: 'Rua',
                           controller: ruaController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserNumero"] == null
-                              ? ''
-                              : snapshot.data![0]["UserNumero"].toString(),
+                          initialText:
+                              snapshot.data![0]["UserNumero"] == null ? '' : snapshot.data![0]["UserNumero"].toString(),
                           boxLabel: 'Número',
                           controller: numeroController,
                         ),
                         ProfileListInformation(
                           initialText:
-                              snapshot.data![0]["UserComplemento"] == null
-                                  ? ''
-                                  : snapshot.data![0]["UserComplemento"],
+                              snapshot.data![0]["UserComplemento"] == null ? '' : snapshot.data![0]["UserComplemento"],
                           boxLabel: 'Complemento',
                           controller: complementoController,
                         ),

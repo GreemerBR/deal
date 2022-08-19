@@ -76,21 +76,21 @@ class DatabaseApp {
           'adm@gmail.com', 
           'adm123', 
           NULL,
-          'Riquinho', 
-          '93218234581', 
+          'Administrador', 
+          '932.182.345-81', 
           '58981293847', 
-          '37289123', 
+          '89010-204', 
           'Blumenau',
           'Santa Catarina',
-          'Rua da tristeza e depressão', 
+          'R. 7 de Setembro', 
           24, 
-          'Casa'
+          'Tarumã Office'
           )
           """,
         );
         await db.execute(
-          """INSERT INTO Announces 
-          VALUES 
+          """INSERT INTO Announces
+          VALUES
           (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
           (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
           (NULL, 1, 'DEF', 'DEF', 5.0, 'Eletrônicos','DEF', 'DEF', 'DEF'),
@@ -157,9 +157,13 @@ class DatabaseApp {
             joinLeftColumnNames == null));
     assert(assertJoinTrue || assertJoinFalse);
 
+<<<<<<< HEAD
     final db = await instance.database;
     String query =
         'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
+=======
+    String query = 'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
+>>>>>>> e2fe5dfdb65c23358bd1b4ecd99cad22268bbedf
 
     if (isJoin == true) {
       for (int index = 0; index < joinRightTableNames!.length; index++) {
