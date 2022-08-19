@@ -95,11 +95,9 @@ class _RegisterState extends State<Register> {
                       'UserSenha': passwordController.text.trim(),
                     },
                   );
-
                   var result = DatabaseApp.instance.select(
                     tableName: 'Users',
                   );
-
                   result.then(
                     (List<Map<String, dynamic>> list) async {
                       await signUp();

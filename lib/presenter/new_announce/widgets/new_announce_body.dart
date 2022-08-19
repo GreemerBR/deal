@@ -4,8 +4,6 @@ import 'package:intl/intl.dart';
 
 import '../../../core/database.dart';
 
-import '../../active_announces/active_announces_page.dart';
-
 import '../../main_menu/main_menu_page.dart';
 
 import 'bottom_announce_button.dart';
@@ -100,7 +98,6 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                     'AnunData': DateFormat.yMd().format(DateTime.now())
                   },
                 );
-
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
@@ -109,23 +106,6 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                   ),
                 );
               },
-              // );
-              // },
-            ),
-            MaterialButton(
-              onPressed: () {
-                var result = DatabaseApp.instance.select(
-                  tableName: 'Announces',
-                  isJoin: false,
-                );
-
-                result.then(
-                  (List<Map<String, dynamic>> list) {
-                    print(list.toString());
-                  },
-                );
-              },
-              child: Text('Visualizar'),
             ),
             SizedBox(
               height: 20,

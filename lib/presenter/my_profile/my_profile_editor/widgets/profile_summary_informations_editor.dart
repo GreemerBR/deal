@@ -1,29 +1,37 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/database.dart';
+import '../../../../core/database.dart';
 
-class ProfileSummaryInformations extends StatefulHookConsumerWidget {
+// final imageStateProvider = StateProvider((ref) {
+//   return Uint8List();
+// });
 
-  ProfileSummaryInformations({
+class ProfileSummaryInformationsEditor extends StatefulHookConsumerWidget {
+  Uint8List? image;
+  ProfileSummaryInformationsEditor({
     Key? key,
+    this.image,
   }) : super(key: key);
 
   @override
-  ConsumerState<ProfileSummaryInformations> createState() =>
-      _ProfileSummaryInformationsState();
+  ConsumerState<ProfileSummaryInformationsEditor> createState() =>
+      _ProfileSummaryInformationsEditorState();
 }
 
-class _ProfileSummaryInformationsState
-    extends ConsumerState<ProfileSummaryInformations> {
-
+class _ProfileSummaryInformationsEditorState
+    extends ConsumerState<ProfileSummaryInformationsEditor> {
   late Future<List<Map<String, dynamic>>> list;
+
   final user = FirebaseAuth.instance.currentUser!;
-    
+
   @override
   Widget build(BuildContext context) {
-  
+    // Uint8List image = ref.watch(imageStateProvider.state).state;
     return FutureBuilder(
       future: DatabaseApp.instance.select(
         tableName: 'Users',
@@ -41,6 +49,12 @@ class _ProfileSummaryInformationsState
             child: CircularProgressIndicator(),
           );
         }
+
+        Uint8List image = snapshot.data![0]['UserImage'];
+        if (widget.image != null) {
+          image = widget.image!;
+        }
+
         return Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child: Container(
@@ -54,7 +68,7 @@ class _ProfileSummaryInformationsState
               children: [
                 ClipOval(
                   child: Image.memory(
-                    snapshot.data![0]['UserImage'],
+                    image,
                     width: 90,
                     height: 90,
                     fit: BoxFit.cover,

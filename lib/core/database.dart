@@ -1,3 +1,5 @@
+import 'package:app_2/core/app_assets.dart';
+import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseApp {
@@ -16,6 +18,7 @@ class DatabaseApp {
   Future<Database> initializeDatabase() async {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
+    final ByteData bytes = await rootBundle.load(imgAvatar);
 
     await deleteDatabase(path);
 
@@ -69,25 +72,23 @@ class DatabaseApp {
             );
             ''');
 
-        await db.execute(
-          """INSERT INTO Users VALUES (
-          NULL, 
-          'Admin', 
-          'adm@gmail.com', 
-          'adm123', 
-          NULL,
-          'Administrador', 
-          '932.182.345-81', 
-          '58981293847', 
-          '89010-204', 
-          'Blumenau',
-          'Santa Catarina',
-          'R. 7 de Setembro', 
-          24, 
-          'Tarumã Office'
-          )
-          """,
-        );
+        await db.insert('Users', {
+          'UserID': null,
+          'UserNomeCompleto': 'Admin',
+          'UserEmail': 'adm@gmail.com',
+          'UserSenha': 'adm123',
+          'UserImage': bytes.buffer.asUint8List(),
+          'UserApelido': 'Administrador',
+          'UserCPF': '932.182.345-81',
+          'UserTelefone': '58981293847',
+          'UserCep': '89010-204',
+          'UserCidade': 'Blumenau',
+          'UserEstado': 'Santa Catarina',
+          'UserRua': 'R. 7 de Setembro',
+          'UserNumero': 24,
+          'UserComplemento': 'Tarumã Office'
+        });
+
         await db.execute(
           """INSERT INTO Announces
           VALUES
@@ -127,7 +128,7 @@ class DatabaseApp {
     required List<Object?> conditionValues,
   }) async {
     final db = await instance.database;
-    db.update(
+    await db.update(
       table,
       valuesAndNames,
       where: condition,
@@ -157,13 +158,9 @@ class DatabaseApp {
             joinLeftColumnNames == null));
     assert(assertJoinTrue || assertJoinFalse);
 
-<<<<<<< HEAD
     final db = await instance.database;
     String query =
         'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
-=======
-    String query = 'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
->>>>>>> e2fe5dfdb65c23358bd1b4ecd99cad22268bbedf
 
     if (isJoin == true) {
       for (int index = 0; index < joinRightTableNames!.length; index++) {

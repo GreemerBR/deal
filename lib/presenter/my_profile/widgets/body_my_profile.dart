@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/app_assets.dart';
 import '../../about_deal/about_deal_page.dart';
 import '../../active_announces/active_announces_page.dart';
 import 'close_button_profile.dart';
@@ -17,7 +16,7 @@ class BodyMyProfile extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          ProfileSummaryInformations(photo: imgAvatar),
+          ProfileSummaryInformations(),
           Expanded(
             child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),

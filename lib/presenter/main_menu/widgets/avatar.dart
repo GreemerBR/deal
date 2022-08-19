@@ -1,9 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import '../../../core/app_assets.dart';
+import '../../../core/database.dart';
 import '../../my_profile/my_profile_page.dart';
 
 class Avatar extends StatefulWidget {
@@ -16,47 +15,39 @@ class Avatar extends StatefulWidget {
 }
 
 class _AvatarState extends State<Avatar> {
-  Future<Uint8List> image() async {
-    final ByteData bytes = await rootBundle.load(imgAvatar);
-    return bytes.buffer.asUint8List();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: image(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return MaterialButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return MyProfilePage();
-                  },
-                ),
-              );
-            },
-            child: ClipOval(
-              child: Image.memory(
-                snapshot.data as Uint8List,
-                width: 90,
-                height: 90,
-                fit: BoxFit.cover,
-              ),
-            ),
-          );
-        } else {
+      future: DatabaseApp.instance.select(
+        tableName: 'Users',
+      ),
+      builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
+        print('Esse é o valor: ${snapshot.data}');
+        if (!snapshot.hasData) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: CircularProgressIndicator(),
           );
         }
+        return MaterialButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return MyProfilePage();
+                },
+              ),
+            );
+          },
+          child: ClipOval(
+            child: Image.memory(
+              snapshot.data![0]['UserImage'] as Uint8List,
+              width: 90,
+              height: 90,
+              fit: BoxFit.cover,
+            ),
+          ),
+        );
       },
     );
   }
