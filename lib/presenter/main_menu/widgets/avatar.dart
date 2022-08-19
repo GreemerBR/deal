@@ -32,7 +32,6 @@ class _AvatarState extends State<Avatar> {
       future: image(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          // print(snapshot.data);
           return MaterialButton(
             onPressed: () {
               Navigator.of(context).push(

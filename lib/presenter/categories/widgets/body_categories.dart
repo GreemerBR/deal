@@ -21,7 +21,6 @@ class BodyCategories extends StatelessWidget {
         condition: 'AnunCat = "$title"',
       ),
       builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
-        print(snapshot);
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(),
