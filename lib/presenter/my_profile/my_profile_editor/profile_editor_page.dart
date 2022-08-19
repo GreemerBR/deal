@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../../core/app_assets.dart';
 import '../../../core/database.dart';
 import '../../../core/get_it.dart';
-import '../../main_menu/main_menu_page.dart';
 import '../widgets/profile_summary_informations.dart';
 import 'widgets/profile_list_informations.dart';
 
