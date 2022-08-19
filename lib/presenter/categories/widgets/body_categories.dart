@@ -1,9 +1,9 @@
-import '../../../core/app_assets.dart';
-import '../../../core/get_it.dart';
-import 'card_product_ad.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/app_assets.dart';
 import '../../../core/database.dart';
+import '../../../core/get_it.dart';
+import 'card_product_ad.dart';
 
 // ignore: must_be_immutable
 class BodyCategories extends StatelessWidget {
@@ -13,10 +13,8 @@ class BodyCategories extends StatelessWidget {
 
   DatabaseApp database = getIt.get<DatabaseApp>();
 
-
   @override
   Widget build(BuildContext context) {
-
     return FutureBuilder(
       future: database.select(
         tableName: 'Announces',
@@ -35,7 +33,7 @@ class BodyCategories extends StatelessWidget {
           itemBuilder: (context, index) {
             return CardProductAd(
               productInformation: list[index],
-              imageLink: imgBen10,
+              imageLink: imgNotFound,
             );
           },
         );
