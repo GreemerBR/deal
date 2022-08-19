@@ -1,9 +1,9 @@
-import 'package:app_2/presenter/main_menu/main_menu_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/database.dart';
 import '../../../core/get_it.dart';
+import '../../main_menu/main_menu_page.dart';
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
