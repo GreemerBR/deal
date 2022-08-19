@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/app_assets.dart';
-import '../../categories/widgets/card_product_ad.dart';
 // import '../../main_menu/widgets/card_product_ad.dart';
 
 class BodyFavorites extends StatelessWidget {

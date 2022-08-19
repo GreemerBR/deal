@@ -30,7 +30,7 @@ class _DefaultInputState extends State<DefaultInput> {
   void initState() {
     super.initState();
     _passwordVisible = false;
-    print(_passwordVisible.toString());
+   
   }
 
   @override

@@ -90,16 +90,11 @@ class _RegisterState extends State<Register> {
                 func: () {
                   database.insert(
                     tableName: 'Users',
-                    columnNames: [
-                      'UserNomeCompleto',
-                      'UserEmail',
-                      'UserSenha',
-                    ],
-                    columnValues: [
-                      nameController.text.trim(),
-                      emailController.text.trim(),
-                      passwordController.text.trim(),
-                    ],
+                    valuesAndNames: {
+                      'UserNomeCompleto': nameController.text.trim(),
+                      'UserEmail': emailController.text.trim(),
+                      'UserSenha': passwordController.text.trim(),
+                    },
                   );
 
                   var result = database.select(
@@ -108,8 +103,6 @@ class _RegisterState extends State<Register> {
 
                   result.then(
                     (List<Map<String, dynamic>> list) async {
-                      print(list);
-
                       await signUp();
                       Navigator.of(context).push(
                         MaterialPageRoute(

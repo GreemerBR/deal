@@ -76,42 +76,23 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                 ),
                 onPressed: () {
                   database.update(
-                    tableName: 'Users',
-                    columnNames: [
-                      'UserNomeCompleto',
-                      'UserApelido',
-                      'UserCPF',
-                      'UserCep',
-                      'UserTelefone',
-                      'UserCidade',
-                      'UserEstado',
-                      'UserRua',
-                      'UserNumero',
-                      'UserComplemento'
-                    ],
-                    columnValues: [
-                      '"${nameController.text.trim()}"',
-                      '"${apelidoController.text.trim()}"',
-                      '"${cpfController.text.trim()}"',
-                      '"${cepController.text.trim()}"',
-                      '"${telefoneController.text.trim()}"',
-                      '"${cidadeController.text.trim()}"',
-                      '"${estadoController.text.trim()}"',
-                      '"${ruaController.text.trim()}"',
-                      int.parse(numeroController.text),
-                      '"${complementoController.text.trim()}"'
-                    ],
-                    condition: 'UserEmail = "${user.email!}"',
+                    table: 'Users',
+                    valuesAndNames: {
+                      'UserNomeCompleto': nameController.text.trim(),
+                      'UserApelido': apelidoController.text.trim(),
+                      'UserCPF': cpfController.text.trim(),
+                      'UserCep': cepController.text.trim(),
+                      'UserTelefone': telefoneController.text.trim(),
+                      // 'UserCidade',
+                      'UserRua': ruaController.text.trim(),
+                      'UserNumero': int.parse(numeroController.text),
+                      'UserComplemento': complementoController.text.trim()
+                      // 'UserEstado'
+                    },
+                    condition: 'UserEmail = ?',
+                    conditionValues: [user.email],
                   );
-                  database.select(tableName: 'Users').then((List<Map<String, dynamic>> value) => print(value));
-                  // print(nameController.text);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MainMenuPage();
-                      },
-                    ),
-                  );
+                  Navigator.of(context).pop();
                   setState(() {});
                 },
               ),
@@ -119,20 +100,21 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
           ]),
       body: FutureBuilder(
         future: database.select(
-            tableName: 'Users',
-            columnNames: [
-              'UserNomeCompleto',
-              'UserApelido',
-              'UserCPF',
-              'UserCep',
-              'UserTelefone',
-              'UserCidade',
-              'UserRua',
-              'UserNumero',
-              'UserComplemento',
-              'UserEstado'
-            ],
-            condition: 'UserEmail = "${user.email!}"'),
+          tableName: 'Users',
+          columnNames: [
+            'UserNomeCompleto',
+            'UserApelido',
+            'UserCPF',
+            'UserCep',
+            'UserTelefone',
+            'UserCidade',
+            'UserRua',
+            'UserNumero',
+            'UserComplemento',
+            'UserEstado'
+          ],
+          condition: 'UserEmail = "${user.email!}"',
+        ),
         builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
           if (!snapshot.hasData) {
             return Center(
