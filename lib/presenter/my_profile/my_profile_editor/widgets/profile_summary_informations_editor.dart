@@ -12,6 +12,7 @@ import '../../../../core/database.dart';
 //   return Uint8List();
 // });
 
+// ignore: must_be_immutable
 class ProfileSummaryInformationsEditor extends StatefulHookConsumerWidget {
   Uint8List? image;
   ProfileSummaryInformationsEditor({

@@ -16,67 +16,47 @@ class CloseButtonProfile extends StatelessWidget {
         right: 20,
       ),
       child: Container(
-        height: 100,
+        height: 120,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-              color: Color.fromARGB(255, 196, 196, 196),
+              color: Colors.grey,
             ),
           ),
         ),
         width: double.maxFinite,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(45),
-          child: Stack(
-            children: <Widget>[
-              Positioned.fill(
-                left: 120,
-                right: 120,
-                top: 30,
-                bottom: 30,
-                child: Container(
-                  width: double.maxFinite,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(30),
-                      bottom: Radius.circular(30),
-                    ),
-                    color: Color.fromARGB(255, 99, 66, 191),
-                  ),
-                ),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.only(
-                    top: 15,
-                    bottom: 15,
-                    left: 75,
-                    right: 75,
-                  ),
-                  backgroundColor: Color.fromARGB(255, 99, 66, 191),
-                  primary: Colors.white,
-                  textStyle: const TextStyle(fontSize: 20),
-                ),
-                onPressed: () {
-                  FirebaseAuth.instance.currentUser!.email;
-                  FirebaseAuth.instance.signOut();
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return IsLoggedPage();
-                      },
-                    ),
-                  );
+        child: TextButton(
+          style: TextButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(45),
+            ),
+            padding: EdgeInsets.only(
+              top: 15,
+              bottom: 15,
+              left: 75,
+              right: 75,
+            ),
+            backgroundColor: Color.fromARGB(255, 99, 66, 191),
+            primary: Colors.white,
+            textStyle: const TextStyle(fontSize: 20),
+          ),
+          onPressed: () {
+            FirebaseAuth.instance.currentUser!.email;
+            FirebaseAuth.instance.signOut();
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return IsLoggedPage();
                 },
-                child: const Text(
-                  'SAIR',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ),
-            ],
+            );
+          },
+          child: const Text(
+            'SAIR',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

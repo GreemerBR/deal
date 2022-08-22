@@ -1,5 +1,8 @@
+import 'package:app_2/core/general_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../core/database.dart';
 import '../../main.dart';
@@ -9,16 +12,19 @@ import '../login/widgets/default_input.dart';
 import '../login/widgets/default_title.dart';
 import '../main_menu/main_menu_page.dart';
 
-class Register extends StatefulWidget {
+class Register extends StatefulHookConsumerWidget {
+
   @override
-  State<Register> createState() => _RegisterState();
+  ConsumerState<Register> createState() => _RegisterState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterState extends ConsumerState<Register> {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  late ByteData imgDefault;
 
   Future signUp() async {
     showDialog(
@@ -37,12 +43,14 @@ class _RegisterState extends State<Register> {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-
+    ref.watch(userStateNotifierProvider.notifier).getUser();
     navigatorKey.currentState!.pop();
   }
 
   @override
   Widget build(BuildContext context) {
+    
+
     return Scaffold(
       backgroundColor: Color.fromARGB(242, 242, 242, 242),
       body: Center(
@@ -93,6 +101,7 @@ class _RegisterState extends State<Register> {
                       'UserNomeCompleto': nameController.text.trim(),
                       'UserEmail': emailController.text.trim(),
                       'UserSenha': passwordController.text.trim(),
+                      'UserImage': await ref.watch(defaultImageProvider),
                     },
                   );
                   var result = DatabaseApp.instance.select(
@@ -101,6 +110,7 @@ class _RegisterState extends State<Register> {
                   result.then(
                     (List<Map<String, dynamic>> list) async {
                       await signUp();
+                      ref.watch(userStateNotifierProvider.notifier).getUser();
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {

@@ -1,21 +1,23 @@
+import 'package:app_2/core/general_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../main.dart';
 import 'default_button.dart';
 import 'default_input.dart';
 import 'default_link_text.dart';
 
-class LoginWidget extends StatefulWidget {
+class LoginWidget extends StatefulHookConsumerWidget {
   const LoginWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<LoginWidget> createState() => _LoginWidgetState();
+  ConsumerState<LoginWidget> createState() => _LoginWidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget> {
+class _LoginWidgetState extends ConsumerState<LoginWidget> {
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
@@ -35,7 +37,6 @@ class _LoginWidgetState extends State<LoginWidget> {
         child: CircularProgressIndicator(),
       ),
     );
-
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
@@ -44,6 +45,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
+    ref.read(userStateNotifierProvider.notifier).getUser();
 
     navigatorKey.currentState!.pop();
   }
