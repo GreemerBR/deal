@@ -10,7 +10,11 @@ class SlideComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: CarouselSlider.builder(
-        options: CarouselOptions(viewportFraction: 1.0),
+        options: CarouselOptions(
+          viewportFraction: 1.0,
+          autoPlay: true,
+          autoPlayInterval: Duration(seconds: 5),
+        ),
         itemCount: listCarousel.length,
         itemBuilder: (context, index, realIdx) {
           return Row(
