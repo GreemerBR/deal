@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../../announcement/announce_page.dart';
@@ -11,7 +13,7 @@ class CardProductAd extends StatefulWidget {
     this.isFavorite = false,
   }) : super(key: key);
   final Map<String, dynamic> productInformation;
-  final String imageLink;
+  final Uint8List imageLink;
   bool isFavorite;
   @override
   State<CardProductAd> createState() => _CardProductAdState();
@@ -57,7 +59,7 @@ class _CardProductAdState extends State<CardProductAd> {
                   width: 190,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(
+                      image: MemoryImage(
                         widget.imageLink,
                       ),
                       fit: BoxFit.fitHeight,
@@ -103,7 +105,7 @@ class _CardProductAdState extends State<CardProductAd> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
-                        'R\$ ${widget.productInformation['AnunValor']}',
+                        'R\$ ${widget.productInformation['AnunValor'].toStringAsFixed(2)}',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),

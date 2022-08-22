@@ -4,9 +4,7 @@ import '../../core/database.dart';
 
 final titleStateProvider = StateProvider((ref) => '');
 
-final categoriesStateNotifierProvider =
-    StateNotifierProvider<CategoriesNotifier, List<Map<String, dynamic>>>(
-        (ref) {
+final categoriesStateNotifierProvider = StateNotifierProvider<CategoriesNotifier, List<Map<String, dynamic>>>((ref) {
   return CategoriesNotifier(
     ref.watch(titleStateProvider.state).state,
   );

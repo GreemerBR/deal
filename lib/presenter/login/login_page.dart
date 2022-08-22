@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sign_button/sign_button.dart';
+
 import '../../core/app_assets.dart';
-import 'widgets/default_link_text.dart';
+import '../register/register_page.dart';
 import 'widgets/default_title.dart';
-import 'widgets/login_google.dart';
 import 'widgets/login_widget.dart';
 
 class LoginPage extends StatelessWidget {
@@ -37,8 +38,65 @@ class LoginPage extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
               LoginWidget(),
-              GoogleButton(),
-              DefaultLinkText(),
+              SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(children: <Widget>[
+                  Expanded(
+                      child: Divider(
+                    color: Colors.white,
+                    thickness: 3,
+                  )),
+                  Text(
+                    "  ou  ",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  Expanded(
+                      child: Divider(
+                    color: Colors.white,
+                    thickness: 3,
+                  )),
+                ]),
+              ),
+              SizedBox(height: 30),
+              Container(
+                width: MediaQuery.of(context).size.width - 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SignInButton.mini(
+                      buttonType: ButtonType.mail,
+                      btnColor: Colors.white,
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Register();
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                    SignInButton.mini(
+                      buttonType: ButtonType.google,
+                      btnColor: Colors.white,
+                      onPressed: () {},
+                    ),
+                    SignInButton.mini(
+                      buttonType: ButtonType.apple,
+                      btnColor: Colors.white,
+                      onPressed: () {},
+                    ),
+                    SignInButton.mini(
+                      buttonType: ButtonType.facebook,
+                      btnColor: Colors.white,
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              )
+
+              // GoogleButton(),
             ],
           ),
         ),

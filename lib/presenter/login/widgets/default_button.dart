@@ -11,7 +11,7 @@ class DefaultButton extends StatelessWidget {
     this.rota,
     this.func,
     required this.buttonText,
-    this.borderSize = 2,
+    this.borderSize = 3,
   }) : super(key: key);
 
   @override
@@ -24,9 +24,12 @@ class DefaultButton extends StatelessWidget {
           width: borderSize,
           color: Colors.white,
         ),
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(20),
+        ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 75),
         child: Text(
           buttonText,
           style: TextStyle(fontSize: 15),

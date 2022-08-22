@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../main.dart';
 import 'default_button.dart';
 import 'default_input.dart';
+import 'default_link_text.dart';
 
 class LoginWidget extends StatefulHookConsumerWidget {
   const LoginWidget({
@@ -57,13 +58,20 @@ class _LoginWidgetState extends ConsumerState<LoginWidget> {
           texto: 'Login',
           controller: emailController,
         ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
         DefaultInput(
           icon: Icon(Icons.remove_red_eye),
           texto: 'Senha',
           controller: passwordController,
           password: true,
         ),
-        DefaultButton(buttonText: 'ACESSAR', func: signIn),
+        DefaultLinkText(),
+          ],
+        ),
+        SizedBox(height: 20),
+        DefaultButton(buttonText: 'Entrar', func: signIn),
       ],
     );
   }
