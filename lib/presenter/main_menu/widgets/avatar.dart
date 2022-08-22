@@ -20,7 +20,7 @@ class _AvatarState extends State<Avatar> {
         tableName: 'Users',
       ),
       builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
-        print('Esse é o valor: ${snapshot.data}');
+        // print('Esse é o valor: ${snapshot.data}');
         if (!snapshot.hasData) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),

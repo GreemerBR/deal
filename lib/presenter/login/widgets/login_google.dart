@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/app_assets.dart';
+import 'package:sign_button/sign_button.dart';
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({
@@ -9,14 +8,12 @@ class GoogleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      padding: EdgeInsets.zero,
-      onPressed: () {},
-      icon: Image.asset(
-        imgLoginGoogle,
-        fit: BoxFit.cover,
-      ),
-      iconSize: 150,
+    return SignInButton(
+      buttonType: ButtonType.google,
+      btnText: 'Cadastrar com Google',
+      onPressed: () {
+        print('click');
+      },
     );
   }
 }
