@@ -1,61 +1,48 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
-import '../../../core/database.dart';
+import 'package:app_2/core/general_providers.dart';
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 
 import 'avatar.dart';
 
-class UserCard extends StatelessWidget {
+class UserCard extends HookConsumerWidget {
   UserCard({Key? key}) : super(key: key);
 
-  final user = FirebaseAuth.instance.currentUser!;
+  // final user = FirebaseAuth.instance.currentUser!;
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: DatabaseApp.instance.select(
-          tableName: 'Users',
-          columnNames: ['UserNomeCompleto'],
-          condition: 'UserEmail = "${user.email!}"'),
-      builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
-        if (!snapshot.hasData) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        return Row(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Avatar(),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Olá,",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 153, 152, 152),
-                    fontSize: 16,
-                  ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userNotifier = ref.watch(userStateNotifierProvider);
+
+    return Visibility(
+      visible: (userNotifier?.userNomeCompleto ?? '').isNotEmpty,
+      replacement: Center(child: CircularProgressIndicator()),
+      child: Row(
+        children: [
+          Avatar(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Olá,",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 153, 152, 152),
+                  fontSize: 16,
                 ),
-                Text(
-                  snapshot.data!.isEmpty
-                      ? 'Usuário'
-                      : snapshot.data![0]["UserNomeCompleto"],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
+              ),
+              Text(
+                userNotifier?.userApelido ?? userNotifier?.userNomeCompleto ?? '',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
                 ),
-              ],
-            ),
-          ],
-        );
-      },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

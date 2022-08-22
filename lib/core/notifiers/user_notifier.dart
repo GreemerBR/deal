@@ -10,10 +10,17 @@ class UserNotifier extends StateNotifier<UserModel?> {
   }
 
   Future<void> getUser() async {
-    final userMap = await DatabaseApp.instance.select(
-      tableName: 'Users',
-      condition: 'UserEmail = ${FirebaseAuth.instance.currentUser!.email}',
-    );
-    state = UserModel.fromMap(userMap[0]);
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      final userMap = await DatabaseApp.instance.select(
+        tableName: 'Users',
+        condition: 'UserEmail = "${user.email}"',
+      );
+
+      state = UserModel.fromMap(userMap[0]);
+
+      
+    }
   }
 }

@@ -1,20 +1,21 @@
-import 'dart:typed_data';
 
+import 'package:app_2/core/general_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/database.dart';
 import '../../my_profile/my_profile_page.dart';
 
-class Avatar extends StatefulWidget {
+class Avatar extends StatefulHookConsumerWidget {
   Avatar({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<Avatar> createState() => _AvatarState();
+  ConsumerState<Avatar> createState() => _AvatarState();
 }
 
-class _AvatarState extends State<Avatar> {
+class _AvatarState extends ConsumerState<Avatar> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -22,7 +23,6 @@ class _AvatarState extends State<Avatar> {
         tableName: 'Users',
       ),
       builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
-        print('Esse é o valor: ${snapshot.data}');
         if (!snapshot.hasData) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -41,7 +41,7 @@ class _AvatarState extends State<Avatar> {
           },
           child: ClipOval(
             child: Image.memory(
-              snapshot.data![0]['UserImage'] as Uint8List,
+              ref.watch(userStateNotifierProvider)!.userImage!,
               width: 90,
               height: 90,
               fit: BoxFit.cover,

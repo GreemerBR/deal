@@ -1,23 +1,25 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:app_2/core/general_providers.dart';
 import 'package:app_2/presenter/my_profile/my_profile_editor/widgets/profile_summary_informations_editor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/database.dart';
 
 import 'widgets/profile_list_informations.dart';
 
-class ProfileEditorPage extends StatefulWidget {
+class ProfileEditorPage extends StatefulHookConsumerWidget {
   const ProfileEditorPage({Key? key}) : super(key: key);
 
   @override
-  State<ProfileEditorPage> createState() => _ProfileEditorPageState();
+  ConsumerState<ProfileEditorPage> createState() => _ProfileEditorPageState();
 }
 
-class _ProfileEditorPageState extends State<ProfileEditorPage> {
+class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController apelidoController = TextEditingController();
   TextEditingController cpfController = TextEditingController();
@@ -81,7 +83,8 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                       'UserCPF': cpfController.text.trim(),
                       'UserCep': cepController.text.trim(),
                       'UserTelefone': telefoneController.text.trim(),
-                      'UserImage' : photo,
+                      'UserImage': photo ??
+                          ref.watch(userStateNotifierProvider)!.userImage,
                       // 'UserCidade',
                       'UserRua': ruaController.text.trim(),
                       'UserNumero': int.parse(numeroController.text),
@@ -91,6 +94,7 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                     condition: 'UserEmail = ?',
                     conditionValues: [user.email],
                   );
+                  ref.watch(userStateNotifierProvider.notifier).getUser();
                   Navigator.of(context).pop();
                   setState(() {});
                 },
@@ -232,7 +236,6 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                     ),
                   ),
                 ),
-                // SaveButtonProfile(),
               ],
             ),
           );

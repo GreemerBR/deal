@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 import 'categories_cards.dart';
@@ -8,9 +9,10 @@ import 'search_bar.dart';
 import 'slide_component.dart';
 import 'user_card.dart';
 
-class BodyMainMenu extends StatelessWidget {
+class BodyMainMenu extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
+    // ref.read(userStateNotifierProvider.notifier).getUser();
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
