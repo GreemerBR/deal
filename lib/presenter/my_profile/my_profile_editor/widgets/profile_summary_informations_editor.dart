@@ -1,4 +1,5 @@
-import 'dart:io';
+// ignore_for_file: must_be_immutable
+
 import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,12 +20,10 @@ class ProfileSummaryInformationsEditor extends StatefulHookConsumerWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<ProfileSummaryInformationsEditor> createState() =>
-      _ProfileSummaryInformationsEditorState();
+  ConsumerState<ProfileSummaryInformationsEditor> createState() => _ProfileSummaryInformationsEditorState();
 }
 
-class _ProfileSummaryInformationsEditorState
-    extends ConsumerState<ProfileSummaryInformationsEditor> {
+class _ProfileSummaryInformationsEditorState extends ConsumerState<ProfileSummaryInformationsEditor> {
   late Future<List<Map<String, dynamic>>> list;
 
   final user = FirebaseAuth.instance.currentUser!;
@@ -77,9 +76,7 @@ class _ProfileSummaryInformationsEditorState
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: Text(
-                    snapshot.data!.isEmpty
-                        ? 'Usuário'
-                        : snapshot.data![0]["UserNomeCompleto"],
+                    snapshot.data!.isEmpty ? 'Usuário' : snapshot.data![0]["UserNomeCompleto"],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

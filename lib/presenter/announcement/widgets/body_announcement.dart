@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import '../../../core/app_assets.dart';
 import 'slide_component_announces.dart';
-
 
 class BodyAnnouncement extends StatelessWidget {
   const BodyAnnouncement({
@@ -20,7 +18,11 @@ class BodyAnnouncement extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: SlideComponentAnnounces(
-              listCarousel: imageList,
+              listCarousel: [
+                product['AnunImage1'],
+                product['AnunImage2'],
+                product['AnunImage3'],
+              ],
             ),
           ),
           Container(
@@ -28,39 +30,42 @@ class BodyAnnouncement extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15),
-                          child: Text(
-                            'R\$ ${product['AnunValor']}',
-                            style: TextStyle(
-                              fontSize: 40,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Text(
+                              'R\$ ${product['AnunValor'].toStringAsFixed(2)}',
+                              style: TextStyle(
+                                fontSize: 40,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15, top: 5),
-                          child: Text(
-                            product['AnunTitulo'],
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Color.fromARGB(255, 196, 196, 196),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15, top: 5),
+                            child: Text(
+                              product['AnunTitulo'],
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Color.fromARGB(255, 196, 196, 196),
+                                overflow: TextOverflow.clip,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15, top: 5),
-                          child: Text(
-                            '${product['AnunEndereco']} - ${product['AnunData']}',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: Color.fromARGB(255, 196, 196, 196),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15, top: 5),
+                            child: Text(
+                              '${product['AnunEndereco']} - ${product['AnunData']}',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Color.fromARGB(255, 196, 196, 196),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ],
                 ),
