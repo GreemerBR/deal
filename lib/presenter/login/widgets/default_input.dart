@@ -46,14 +46,14 @@ class _DefaultInputState extends State<DefaultInput> {
         ),
         borderRadius: BorderRadius.circular(8),
       ),
-      margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      margin: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: TextFormField(
           controller: widget.controller,
           obscureText: !_passwordVisible && widget.password,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
+            contentPadding: EdgeInsets.symmetric(horizontal: 10),
             filled: true,
             fillColor: widget.backgroundColor,
             labelText: widget.texto,
