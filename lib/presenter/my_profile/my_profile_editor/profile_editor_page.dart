@@ -1,12 +1,14 @@
 import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:app_2/presenter/my_profile/my_profile_editor/widgets/profile_summary_informations_editor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/app_assets.dart';
 import '../../../core/database.dart';
-import '../../../core/get_it.dart';
+
 import '../widgets/profile_summary_informations.dart';
 import 'widgets/profile_list_informations.dart';
 
@@ -30,21 +32,20 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
   TextEditingController numeroController = TextEditingController();
   TextEditingController complementoController = TextEditingController();
 
-  final database = getIt.get<DatabaseApp>();
   final user = FirebaseAuth.instance.currentUser!;
 
-  var photo;
-  String tempPhoto = imgAvatar;
+  Uint8List? photo;
+
   File? image;
 
-  Future pickImage() async {
+  Future<void> pickImage() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker()
+          .pickImage(source: ImageSource.gallery, imageQuality: 50);
       if (image == null) return;
-      final imageTemp = File(image.path);
-      setState(() {
-        photo = imageTemp;
-      });
+      File fileImage = File(image.path);
+      photo = fileImage.readAsBytesSync();
+      setState(() {});
     } catch (e) {
       // ignore: avoid_print
       print('Failed to pick image: $e');
@@ -74,7 +75,7 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                   Icons.save,
                 ),
                 onPressed: () {
-                  database.update(
+                  DatabaseApp.instance.update(
                     table: 'Users',
                     valuesAndNames: {
                       'UserNomeCompleto': nameController.text.trim(),
@@ -82,6 +83,7 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                       'UserCPF': cpfController.text.trim(),
                       'UserCep': cepController.text.trim(),
                       'UserTelefone': telefoneController.text.trim(),
+                      'UserImage' : photo,
                       // 'UserCidade',
                       'UserRua': ruaController.text.trim(),
                       'UserNumero': int.parse(numeroController.text),
@@ -98,12 +100,13 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
             ),
           ]),
       body: FutureBuilder(
-        future: database.select(
+        future: DatabaseApp.instance.select(
           tableName: 'Users',
           columnNames: [
             'UserNomeCompleto',
             'UserApelido',
             'UserCPF',
+            'UserImage',
             'UserCep',
             'UserTelefone',
             'UserCidade',
@@ -126,21 +129,19 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    ProfileSummaryInformations(
-                      photo: photo != null ? photo : tempPhoto,
-                    ),
+                    ProfileSummaryInformationsEditor(image: photo),
                     Container(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                          left: 70,
-                          bottom: 80,
+                          left: 90,
+                          bottom: 45,
                         ),
                         child: Transform.rotate(
-                          angle: 0.15,
+                          angle: 0,
                           child: IconButton(
                             icon: Icon(
                               Icons.edit,
-                              color: Colors.white,
+                              color: Colors.grey,
                               size: 25,
                             ),
                             onPressed: () {
@@ -158,57 +159,74 @@ class _ProfileEditorPageState extends State<ProfileEditorPage> {
                     child: Column(
                       children: [
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserNomeCompleto"] == null
-                              ? ''
-                              : snapshot.data![0]["UserNomeCompleto"],
+                          initialText:
+                              snapshot.data![0]["UserNomeCompleto"] == null
+                                  ? ''
+                                  : snapshot.data![0]["UserNomeCompleto"],
                           boxLabel: 'Nome completo',
                           controller: nameController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserApelido"] == null ? '' : snapshot.data![0]["UserApelido"],
+                          initialText: snapshot.data![0]["UserApelido"] == null
+                              ? ''
+                              : snapshot.data![0]["UserApelido"],
                           boxLabel: 'Apelido',
                           controller: apelidoController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCPF"] == null ? '' : snapshot.data![0]["UserCPF"],
+                          initialText: snapshot.data![0]["UserCPF"] == null
+                              ? ''
+                              : snapshot.data![0]["UserCPF"],
                           boxLabel: 'CPF/CNPJ',
                           controller: cpfController,
                         ),
                         ProfileListInformation(
-                          initialText:
-                              snapshot.data![0]["UserTelefone"] == null ? '' : snapshot.data![0]["UserTelefone"],
+                          initialText: snapshot.data![0]["UserTelefone"] == null
+                              ? ''
+                              : snapshot.data![0]["UserTelefone"],
                           boxLabel: 'Telefone',
                           controller: telefoneController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCep"] == null ? '' : snapshot.data![0]["UserCep"],
+                          initialText: snapshot.data![0]["UserCep"] == null
+                              ? ''
+                              : snapshot.data![0]["UserCep"],
                           boxLabel: 'CEP',
                           controller: cepController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserEstado"] == null ? '' : snapshot.data![0]["UserEstado"],
+                          initialText: snapshot.data![0]["UserEstado"] == null
+                              ? ''
+                              : snapshot.data![0]["UserEstado"],
                           boxLabel: 'Estado',
                           controller: estadoController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCidade"] == null ? '' : snapshot.data![0]["UserCidade"],
+                          initialText: snapshot.data![0]["UserCidade"] == null
+                              ? ''
+                              : snapshot.data![0]["UserCidade"],
                           boxLabel: 'Cidade',
                           controller: cidadeController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserRua"] == null ? '' : snapshot.data![0]["UserRua"],
+                          initialText: snapshot.data![0]["UserRua"] == null
+                              ? ''
+                              : snapshot.data![0]["UserRua"],
                           boxLabel: 'Rua',
                           controller: ruaController,
                         ),
                         ProfileListInformation(
-                          initialText:
-                              snapshot.data![0]["UserNumero"] == null ? '' : snapshot.data![0]["UserNumero"].toString(),
+                          initialText: snapshot.data![0]["UserNumero"] == null
+                              ? ''
+                              : snapshot.data![0]["UserNumero"].toString(),
                           boxLabel: 'Número',
                           controller: numeroController,
                         ),
                         ProfileListInformation(
                           initialText:
-                              snapshot.data![0]["UserComplemento"] == null ? '' : snapshot.data![0]["UserComplemento"],
+                              snapshot.data![0]["UserComplemento"] == null
+                                  ? ''
+                                  : snapshot.data![0]["UserComplemento"],
                           boxLabel: 'Complemento',
                           controller: complementoController,
                         ),

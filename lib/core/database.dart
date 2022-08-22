@@ -1,20 +1,28 @@
-
+import 'package:app_2/core/app_assets.dart';
+import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseApp {
-  late Database database;
+  static final DatabaseApp instance = DatabaseApp._init();
+  static Database? _database;
 
-  DatabaseApp() {
-    init();
+  DatabaseApp._init();
+
+  Future<Database> get database async {
+    if (_database != null) return _database!;
+
+    _database = await initializeDatabase();
+    return _database!;
   }
 
-  void init() async {
+  Future<Database> initializeDatabase() async {
     var databasesPath = await getDatabasesPath();
     String path = '${databasesPath}demo.db';
+    final ByteData bytes = await rootBundle.load(imgAvatar);
 
     await deleteDatabase(path);
 
-    database = await openDatabase(
+    return await openDatabase(
       path,
       version: 1,
       onCreate: (Database db, int version) async {
@@ -64,25 +72,23 @@ class DatabaseApp {
             );
             ''');
 
-        await db.execute(
-          """INSERT INTO Users VALUES (
-          NULL, 
-          'Admin', 
-          'adm@gmail.com', 
-          'adm123', 
-          NULL,
-          'Administrador', 
-          '932.182.345-81', 
-          '58981293847', 
-          '89010-204', 
-          'Blumenau',
-          'Santa Catarina',
-          'R. 7 de Setembro', 
-          24, 
-          'Tarumã Office'
-          )
-          """,
-        );
+        await db.insert('Users', {
+          'UserID': null,
+          'UserNomeCompleto': 'Admin',
+          'UserEmail': 'adm@gmail.com',
+          'UserSenha': 'adm123',
+          'UserImage': bytes.buffer.asUint8List(),
+          'UserApelido': 'Administrador',
+          'UserCPF': '932.182.345-81',
+          'UserTelefone': '58981293847',
+          'UserCep': '89010-204',
+          'UserCidade': 'Blumenau',
+          'UserEstado': 'Santa Catarina',
+          'UserRua': 'R. 7 de Setembro',
+          'UserNumero': 24,
+          'UserComplemento': 'Tarumã Office'
+        });
+
         await db.execute(
           """INSERT INTO Announces
           VALUES
@@ -103,30 +109,32 @@ class DatabaseApp {
     );
   }
 
-  void insert({
+  Future insert({
     required String tableName,
     required Map<String, Object?> valuesAndNames,
-  }) {
-    database.insert(
+  }) async {
+    final db = await instance.database;
+
+    db.insert(
       tableName,
       valuesAndNames,
     );
   }
 
-  void update(
-      {required String table,
-      required Map<String, Object?> valuesAndNames,
-      required String condition,
-      required List<Object?> conditionValues}) {
-    database.update(
+  Future update({
+    required String table,
+    required Map<String, Object?> valuesAndNames,
+    required String condition,
+    required List<Object?> conditionValues,
+  }) async {
+    final db = await instance.database;
+    await db.update(
       table,
       valuesAndNames,
       where: condition,
       whereArgs: conditionValues,
     );
   }
-
-  
 
   Future<List<Map<String, dynamic>>> select({
     List<String>? columnNames,
@@ -150,7 +158,9 @@ class DatabaseApp {
             joinLeftColumnNames == null));
     assert(assertJoinTrue || assertJoinFalse);
 
-    String query = 'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
+    final db = await instance.database;
+    String query =
+        'SELECT ${(columnNames?.join(', ') ?? "*")} FROM $tableName ';
 
     if (isJoin == true) {
       for (int index = 0; index < joinRightTableNames!.length; index++) {
@@ -168,7 +178,7 @@ class DatabaseApp {
       query += ' WHERE $condition';
     }
 
-    List<Map<String, dynamic>> list = await database.rawQuery(query);
+    List<Map<String, dynamic>> list = await db.rawQuery(query);
     return list;
   }
 
@@ -176,12 +186,14 @@ class DatabaseApp {
     required String tableName,
     required String condition,
   }) async {
-    await database.rawDelete(
+    final db = await instance.database;
+    await db.rawDelete(
       'DELETE FROM $tableName WHERE $condition',
     );
   }
 
   void closeDatabase() async {
-    await database.close();
+    final db = await instance.database;
+    await db.close();
   }
 }

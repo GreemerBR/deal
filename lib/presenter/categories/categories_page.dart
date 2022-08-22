@@ -1,14 +1,16 @@
+import 'package:app_2/presenter/categories/categories_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../filter/filter_page.dart';
 import 'widgets/body_categories.dart';
 
-class CategoriesPage extends StatelessWidget {
-  final String title;
-
-  CategoriesPage({required this.title});
+class CategoriesPage extends HookConsumerWidget {
+  
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final title = ref.watch(titleStateProvider.state).state;
+
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(

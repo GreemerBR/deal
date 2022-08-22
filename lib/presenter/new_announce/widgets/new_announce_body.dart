@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/database.dart';
-import '../../../core/get_it.dart';
+
 import '../../main_menu/main_menu_page.dart';
+
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
@@ -18,23 +19,6 @@ class NewAnnounceBody extends StatefulWidget {
 }
 
 class _NewAnnounceBodyState extends State<NewAnnounceBody> {
-  final database = getIt.get<DatabaseApp>();
-  late Future<List<Map<String, dynamic>>> list;
-
-  @override
-  void initState() {
-    super.initState();
-    setInformation();
-  }
-
-  Future<List<Map<String, dynamic>>> setInformation() async {
-    return list = database.select(
-      tableName: 'Users',
-      columnNames: ['UserCidade'],
-      condition: 'UserEmail = "${user.email!}"',
-    );
-  }
-
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -101,30 +85,19 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
             ),
             BottomAnnounceButton(
               func: () {
-                database.insert(
+                DatabaseApp.instance.insert(
                   tableName: 'Announces',
                   valuesAndNames: {
-                    'UserID':   1,
-                    'AnunTitulo':  titleController.text.trim(),
-                    'AnunDescri':descriptionController.text.trim(),
-                    'AnunValor':priceController.text.trim(),
-                    'AnunCat':dropdownValueSelected,
+                    'UserID': 1,
+                    'AnunTitulo': titleController.text.trim(),
+                    'AnunDescri': descriptionController.text.trim(),
+                    'AnunValor': priceController.text.trim(),
+                    'AnunCat': dropdownValueSelected,
                     // 'AnunCEP':
                     // 'AnunEndereco':
-                    'AnunData': DateFormat.yMd().format(DateTime.now()) 
+                    'AnunData': DateFormat.yMd().format(DateTime.now())
                   },
-
                 );
-
-                // var result =
-                //     database.select(tableName: 'Announces', isJoin: false);
-
-                // result.then(
-                //   (List<Map<String, dynamic>> list) {
-                //     print(list);
-                // database.closeDatabase();
-                // }
-
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
@@ -133,20 +106,6 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                   ),
                 );
               },
-              // );
-              // },
-            ),
-            MaterialButton(
-              onPressed: () {
-                var result = database.select(tableName: 'Announces', isJoin: false);
-
-                result.then(
-                  (List<Map<String, dynamic>> list) {
-                    print(list.toString());
-                  },
-                );
-              },
-              child: Text('Visualizar'),
             ),
             SizedBox(
               height: 20,

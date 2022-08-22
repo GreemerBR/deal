@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/database.dart';
-import '../../core/get_it.dart';
 import '../../main.dart';
 import '../is_logged/is_logged_page.dart';
 import '../login/widgets/default_button.dart';
@@ -16,7 +15,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final database = getIt.get<DatabaseApp>();
+
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -87,8 +86,8 @@ class _RegisterState extends State<Register> {
                 buttonText: 'Criar Conta',
                 borderSize: 0,
                 rota: MainMenuPage(),
-                func: () {
-                  database.insert(
+                func: () async {
+                  await DatabaseApp.instance.insert(
                     tableName: 'Users',
                     valuesAndNames: {
                       'UserNomeCompleto': nameController.text.trim(),
@@ -96,11 +95,9 @@ class _RegisterState extends State<Register> {
                       'UserSenha': passwordController.text.trim(),
                     },
                   );
-
-                  var result = database.select(
+                  var result = DatabaseApp.instance.select(
                     tableName: 'Users',
                   );
-
                   result.then(
                     (List<Map<String, dynamic>> list) async {
                       await signUp();
