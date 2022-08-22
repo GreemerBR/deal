@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../core/app_assets.dart';
+
 import '../categories_notifier.dart';
 import 'card_product_ad.dart';
 
@@ -20,7 +20,7 @@ class BodyCategories extends HookConsumerWidget {
       itemBuilder: (context, index) {
         return CardProductAd(
           productInformation: list[index],
-          imageLink: imgBen10,
+          imageLink: list[index]['AnunImage1'],
         );
       },
     );

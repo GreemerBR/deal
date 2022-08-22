@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 
 class SlideComponentAnnounces extends StatelessWidget {
   final dynamic listCarousel;
-  const SlideComponentAnnounces({Key? key, required this.listCarousel})
-      : super(key: key);
+  const SlideComponentAnnounces({Key? key, required this.listCarousel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class SlideComponentAnnounces extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 10),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
+                    child: Image.memory(
                       listCarousel[index],
                       height: 500,
                       fit: BoxFit.fitHeight,

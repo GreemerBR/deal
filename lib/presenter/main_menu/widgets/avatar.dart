@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 
 import '../../../core/database.dart';
@@ -41,7 +39,7 @@ class _AvatarState extends State<Avatar> {
           },
           child: ClipOval(
             child: Image.memory(
-              snapshot.data![0]['UserImage'] as Uint8List,
+              snapshot.data![0]['UserImage'],
               width: 90,
               height: 90,
               fit: BoxFit.cover,
