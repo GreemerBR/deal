@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,6 +10,7 @@ import '../../../../core/database.dart';
 //   return Uint8List();
 // });
 
+// ignore: must_be_immutable
 class ProfileSummaryInformationsEditor extends StatefulHookConsumerWidget {
   Uint8List? image;
   ProfileSummaryInformationsEditor({

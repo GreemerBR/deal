@@ -6,10 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../core/app_assets.dart';
 import '../../../core/database.dart';
 
-import '../widgets/profile_summary_informations.dart';
 import 'widgets/profile_list_informations.dart';
 
 class ProfileEditorPage extends StatefulWidget {
