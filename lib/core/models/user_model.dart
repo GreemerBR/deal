@@ -6,7 +6,7 @@ class UserModel {
   String userSenha;
   Uint8List? userImage;
   String? userApelido;
-  String? userCPF;
+  String? userCpf;
   String? userTelefone;
   String? userCep;
   String? userCidade;
@@ -21,7 +21,7 @@ class UserModel {
     required this.userSenha,
     this.userImage,
     this.userApelido,
-    this.userCPF,
+    this.userCpf,
     this.userTelefone,
     this.userCep,
     this.userCidade,
@@ -43,8 +43,8 @@ class UserModel {
     if (userApelido != null) {
       result.addAll({'userApelido': userApelido});
     }
-    if (userCPF != null) {
-      result.addAll({'userCPF': userCPF});
+    if (userCpf != null) {
+      result.addAll({'userCpf': userCpf});
     }
     if (userTelefone != null) {
       result.addAll({'userTelefone': userTelefone});
@@ -78,7 +78,7 @@ class UserModel {
       userSenha: map['UserSenha'] ?? '',
       userImage: map['UserImage'] != null ? map['UserImage'] : [],
       userApelido: map['UserApelido'],
-      userCPF: map['UserCPF'],
+      userCpf: map['UserCpf'],
       userTelefone: map['UserTelefone'],
       userCep: map['UserCep'],
       userCidade: map['UserCidade'],

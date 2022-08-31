@@ -10,7 +10,7 @@ class DatabaseApp {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-
+    
     _database = await initializeDatabase();
     return _database!;
   }
@@ -71,179 +71,179 @@ class DatabaseApp {
         await db.execute('PRAGMA foreign_keys = ON');
 
         await db.execute(
-          '''CREATE TABLE Users (
-              UserID INTEGER PRIMARY KEY AUTOINCREMENT, 
-              UserNomeCompleto TEXT NOT NULL, 
-              UserEmail TEXT NOT NULL, 
-              UserSenha TEXT NOT NULL, 
-              UserImage BLOB,
-              UserApelido TEXT, 
-              UserCPF TEXT, 
-              UserTelefone TEXT, 
-              UserCep TEXT, 
-              UserCidade TEXT,
-              UserEstado TEXT,
-              UserRua TEXT, 
-              UserNumero INTEGER, 
-              UserComplemento TEXT
+          '''CREATE TABLE users (
+              userID INTEGER PRIMARY KEY AUTOINCREMENT, 
+              userNomeCompleto TEXT NOT NULL, 
+              userEmail TEXT NOT NULL, 
+              userSenha TEXT NOT NULL, 
+              userImage BLOB,
+              userApelido TEXT, 
+              userCpf TEXT, 
+              userTelefone TEXT, 
+              userCep TEXT, 
+              userCidade TEXT,
+              userEstado TEXT,
+              userRua TEXT, 
+              userNumero INTEGER, 
+              userComplemento TEXT
               );''',
         );
 
         await db.execute(
           '''CREATE TABLE Announces ( 
-            AnunID INTEGER PRIMARY KEY AUTOINCREMENT, 
-            UserID INTEGER NOT NULL,
-            AnunTitulo TEXT NOT NULL, 
-            AnunDescri TEXT NOT NULL, 
-            AnunValor REAL NOT NULL,
-            AnunImage1 BLOB,
-            AnunImage2 BLOB,
-            AnunImage3 BLOB,
-            AnunCat TEXT, 
-            AnunCEP TEXT, 
-            AnunEndereco TEXT, 
-            AnunData TEXT, 
-            FOREIGN KEY (UserID) REFERENCES Users (UserID)
+            anunID INTEGER PRIMARY KEY AUTOINCREMENT, 
+            userID INTEGER NOT NULL,
+            anunTitulo TEXT NOT NULL, 
+            anunDescri TEXT NOT NULL, 
+            anunValor REAL NOT NULL,
+            anunImage1 BLOB NOT NULL,
+            anunImage2 BLOB NOT NULL,
+            anunImage3 BLOB NOT NULL,
+            anunCat TEXT NOT NULL, 
+            anunCep TEXT NOT NULL, 
+            anunEndereco TEXT NOT NULL, 
+            anunData TEXT NOT NULL, 
+            FOREIGN KEY (userID) REFERENCES users (userID)
             );
             ''',
         );
 
         await db.execute('''CREATE TABLE FavoriteAnnouces ( 
             FavId INTEGER PRIMARY KEY AUTOINCREMENT, 
-            UserID INTEGER NOT NULL, 
-            AnunID INTEGER NOT NULL,
-            FOREIGN KEY (UserID) REFERENCES Users (UserID),
-            FOREIGN KEY (UserID) REFERENCES Announces (AnunID)
+            userID INTEGER NOT NULL, 
+            anunID INTEGER NOT NULL,
+            FOREIGN KEY (userID) REFERENCES users (userID),
+            FOREIGN KEY (userID) REFERENCES Announces (anunID)
             );
             ''');
 
-        await db.insert('Users', {
-          'UserID': null,
-          'UserNomeCompleto': 'Admin',
-          'UserEmail': 'adm@gmail.com',
-          'UserSenha': 'adm123',
-          'UserImage': bytesImgAvatar.buffer.asUint8List(),
-          'UserApelido': 'Administrador',
-          'UserCPF': '932.182.345-81',
-          'UserTelefone': '58981293847',
-          'UserCep': '89010-204',
-          'UserCidade': 'Blumenau',
-          'UserEstado': 'Santa Catarina',
-          'UserRua': 'R. 7 de Setembro',
-          'UserNumero': 24,
-          'UserComplemento': 'Tarumã Office'
+        await db.insert('users', {
+          'userID': null,
+          'userNomeCompleto': 'Admin',
+          'userEmail': 'adm@gmail.com',
+          'userSenha': 'adm123',
+          'userImage': bytesImgAvatar.buffer.asUint8List(),
+          'userApelido': 'Administrador',
+          'userCpf': '932.182.345-81',
+          'userTelefone': '58981293847',
+          'userCep': '89010-204',
+          'userCidade': 'Blumenau',
+          'userEstado': 'Santa Catarina',
+          'userRua': 'R. 7 de Setembro',
+          'userNumero': 24,
+          'userComplemento': 'Tarumã Office'
         });
 
         await db.insert('Announces', {
-          'AnunID': null,
-          'UserID': 1,
-          'AnunTitulo': 'Air Fryer',
-          'AnunDescri': 'Air fryer pouco usada, em ótimo estado',
-          'AnunValor': '30.00',
-          'AnunImage1': airFryer[0].buffer.asUint8List(),
-          'AnunImage2': airFryer[1].buffer.asUint8List(),
-          'AnunImage3': airFryer[2].buffer.asUint8List(),
-          'AnunCat': 'Cozinha',
-          'AnunCEP': '89012360',
-          'AnunEndereco': 'Rua Guido Kaester Sênior, 186',
-          'AnunData': '22/08/2022',
+          'anunID': null,
+          'userID': 1,
+          'anunTitulo': 'Air Fryer',
+          'anunDescri': 'Air fryer pouco usada, em ótimo estado',
+          'anunValor': 30.00,
+          'anunImage1': airFryer[0].buffer.asUint8List(),
+          'anunImage2': airFryer[1].buffer.asUint8List(),
+          'anunImage3': airFryer[2].buffer.asUint8List(),
+          'anunCat': 'Cozinha',
+          'anunCep': '89012360',
+          'anunEndereco': 'Rua Guido Kaester Sênior, 186',
+          'anunData': '22/08/2022',
         });
 
         await db.insert('Announces', {
-          'AnunID': null,
-          'UserID': 1,
-          'AnunTitulo': 'Banco imobiliário',
-          'AnunDescri': 'Um jogo muito divertido para você e toda sua família',
-          'AnunValor': '20.00',
-          'AnunImage1': bancoImobiliario[0].buffer.asUint8List(),
-          'AnunImage2': bancoImobiliario[1].buffer.asUint8List(),
-          'AnunImage3': bancoImobiliario[2].buffer.asUint8List(),
-          'AnunCat': 'Brinquedos',
-          'AnunCEP': '89062370',
-          'AnunEndereco': 'Rua Helena Fischer, 248',
-          'AnunData': '22/08/2022',
+          'anunID': null,
+          'userID': 1,
+          'anunTitulo': 'Banco imobiliário',
+          'anunDescri': 'Um jogo muito divertido para você e toda sua família',
+          'anunValor': 20.00,
+          'anunImage1': bancoImobiliario[0].buffer.asUint8List(),
+          'anunImage2': bancoImobiliario[1].buffer.asUint8List(),
+          'anunImage3': bancoImobiliario[2].buffer.asUint8List(),
+          'anunCat': 'Brinquedos',
+          'anunCep': '89062370',
+          'anunEndereco': 'Rua Helena Fischer, 248',
+          'anunData': '22/08/2022',
         });
 
         await db.insert('Announces', {
-          'AnunID': null,
-          'UserID': 1,
-          'AnunTitulo': 'Pipoqueira',
-          'AnunDescri': '''Pipoqueira Household Kitchen Máquina de pipoca doce,
+          'anunID': null,
+          'userID': 1,
+          'anunTitulo': 'Pipoqueira',
+          'anunDescri': '''Pipoqueira Household Kitchen Máquina de pipoca doce,
           máquina automática de fazer pipoca''',
-          'AnunValor': '50.00',
-          'AnunImage1': popCornMaker[0].buffer.asUint8List(),
-          'AnunImage2': popCornMaker[1].buffer.asUint8List(),
-          'AnunImage3': popCornMaker[2].buffer.asUint8List(),
-          'AnunCat': 'Lazer',
-          'AnunCEP': '89138000',
-          'AnunEndereco': 'Rua Ribeirão São Paulo, 1661',
-          'AnunData': '15/08/2022',
+          'anunValor': 50.00,
+          'anunImage1': popCornMaker[0].buffer.asUint8List(),
+          'anunImage2': popCornMaker[1].buffer.asUint8List(),
+          'anunImage3': popCornMaker[2].buffer.asUint8List(),
+          'anunCat': 'Lazer',
+          'anunCep': '89138000',
+          'anunEndereco': 'Rua Ribeirão São Paulo, 1661',
+          'anunData': '15/08/2022',
         });
 
         await db.insert('Announces', {
-          'AnunID': null,
-          'UserID': 1,
-          'AnunTitulo': 'Máquina de Costura Singer Doméstica Facilita Pro 4411',
-          'AnunDescri': '''Sofisticada Máquina de Costura Facilita Pro 4411 da 
+          'anunID': null,
+          'userID': 1,
+          'anunTitulo': 'Máquina de Costura Singer Doméstica Facilita Pro 4411',
+          'anunDescri': '''Sofisticada Máquina de Costura Facilita Pro 4411 da 
 Singer! A Facilita Pro 4411 foi feita para quem precisa de rapidez e precisão
 nas suas costuras''',
-          'AnunValor': '150.00',
-          'AnunImage1': sewingMachine[0].buffer.asUint8List(),
-          'AnunImage2': sewingMachine[1].buffer.asUint8List(),
-          'AnunImage3': sewingMachine[2].buffer.asUint8List(),
-          'AnunCat': 'Eletrônicos',
-          'AnunCEP': '89138000',
-          'AnunEndereco': 'Rua Ribeirão São Paulo, 1661',
-          'AnunData': '15/08/2022',
+          'anunValor': 150.00,
+          'anunImage1': sewingMachine[0].buffer.asUint8List(),
+          'anunImage2': sewingMachine[1].buffer.asUint8List(),
+          'anunImage3': sewingMachine[2].buffer.asUint8List(),
+          'anunCat': 'Eletrônicos',
+          'anunCep': '89138000',
+          'anunEndereco': 'Rua Ribeirão São Paulo, 1661',
+          'anunData': '15/08/2022',
         });
 
         await db.insert('Announces', {
-          'AnunID': null,
-          'UserID': 1,
-          'AnunTitulo': 'PS5',
-          'AnunDescri': '''PS5 com leitor de cartão, em oótimo estado, como
+          'anunID': null,
+          'userID': 1,
+          'anunTitulo': 'PS5',
+          'anunDescri': '''PS5 com leitor de cartão, em oótimo estado, como
 novo. Acompanha 2 controles e conta logada com 35
 jogos na bibliotaca. Principais títulos do mercado.
 Não abaixo o preço, favor não insistir.''',
-          'AnunValor': '200.00',
-          'AnunImage1': pS5[0].buffer.asUint8List(),
-          'AnunImage2': pS5[1].buffer.asUint8List(),
-          'AnunImage3': pS5[2].buffer.asUint8List(),
-          'AnunCat': 'Eletrônicos',
-          'AnunCEP': '89036410',
-          'AnunEndereco': 'Rua Jacob Schmitt, 86',
-          'AnunData': '21/08/2022',
+          'anunValor': 200.00,
+          'anunImage1': pS5[0].buffer.asUint8List(),
+          'anunImage2': pS5[1].buffer.asUint8List(),
+          'anunImage3': pS5[2].buffer.asUint8List(),
+          'anunCat': 'Eletrônicos',
+          'anunCep': '89036410',
+          'anunEndereco': 'Rua Jacob Schmitt, 86',
+          'anunData': '21/08/2022',
         });
 
         await db.insert('Announces', {
-          'AnunID': null,
-          'UserID': 1,
-          'AnunTitulo': 'Cortador de Grama Trapp com Recolhedor',
-          'AnunDescri': 'Aparelho semi-novo, em ótimas condições',
-          'AnunValor': '90.00',
-          'AnunImage1': lawnMower[0].buffer.asUint8List(),
-          'AnunImage2': lawnMower[1].buffer.asUint8List(),
-          'AnunImage3': lawnMower[2].buffer.asUint8List(),
-          'AnunCat': 'Jardim',
-          'AnunCEP': '89050501',
-          'AnunEndereco': 'Rua Antônio Cardoso, 387',
-          'AnunData': '16/08/2022',
+          'anunID': null,
+          'userID': 1,
+          'anunTitulo': 'Cortador de Grama Trapp com Recolhedor',
+          'anunDescri': 'Aparelho semi-novo, em ótimas condições',
+          'anunValor': 90.00,
+          'anunImage1': lawnMower[0].buffer.asUint8List(),
+          'anunImage2': lawnMower[1].buffer.asUint8List(),
+          'anunImage3': lawnMower[2].buffer.asUint8List(),
+          'anunCat': 'Jardim',
+          'anunCep': '89050501',
+          'anunEndereco': 'Rua Antônio Cardoso, 387',
+          'anunData': '16/08/2022',
         });
 
         await db.insert('Announces', {
-          'AnunID': null,
-          'UserID': 1,
-          'AnunTitulo': 'Tênis de Futsal',
-          'AnunDescri': '''Bom tênies, muito macia e com boa aderência.
+          'anunID': null,
+          'userID': 1,
+          'anunTitulo': 'Tênis de Futsal',
+          'anunDescri': '''Bom tênies, muito macia e com boa aderência.
 Você vai se sentir como um carro de formula 1, voando''',
-          'AnunValor': '55.70',
-          'AnunImage1': tenisFutsal[0].buffer.asUint8List(),
-          'AnunImage2': tenisFutsal[1].buffer.asUint8List(),
-          'AnunImage3': tenisFutsal[2].buffer.asUint8List(),
-          'AnunCat': 'Esportes',
-          'AnunCEP': '89031004',
-          'AnunEndereco': 'Rua Gustavo Salinger, 120',
-          'AnunData': '17/08/2022',
+          'anunValor': '55.70',
+          'anunImage1': tenisFutsal[0].buffer.asUint8List(),
+          'anunImage2': tenisFutsal[1].buffer.asUint8List(),
+          'anunImage3': tenisFutsal[2].buffer.asUint8List(),
+          'anunCat': 'Esportes',
+          'anunCep': '89031004',
+          'anunEndereco': 'Rua Gustavo Salinger, 120',
+          'anunData': '17/08/2022',
         });
       },
     );

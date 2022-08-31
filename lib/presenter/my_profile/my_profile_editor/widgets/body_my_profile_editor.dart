@@ -14,7 +14,7 @@
 //   BodyMyProfileEditor(
 //     TextEditingController this.nameController,
 //     this.apelidoController,
-//     this.cpfController,
+//     this.CpfController,
 //     this.emailController,
 //     this.telefoneController,
 //     this.cepController,
@@ -26,7 +26,7 @@
 
 //   final TextEditingController nameController;
 //   final TextEditingController apelidoController;
-//   final TextEditingController cpfController;
+//   final TextEditingController CpfController;
 //   final TextEditingController emailController;
 //   final TextEditingController telefoneController;
 //   final TextEditingController cepController;
@@ -69,7 +69,7 @@
 //             'UserNomeCompleto',
 //             'UserEmail',
 //             'UserApelido',
-//             'UserCPF',
+//             'UserCpf',
 //             'UserCep',
 //             'UserTelefone',
 //             'UserCidade',
@@ -138,11 +138,11 @@
 //                         controller: widget.apelidoController,
 //                       ),
 //                       ProfileListInformation(
-//                         initialText: snapshot.data![0]["UserCPF"] == null
+//                         initialText: snapshot.data![0]["UserCpf"] == null
 //                             ? ''
-//                             : snapshot.data![0]["UserCPF"],
-//                         boxLabel: 'CPF/CNPJ',
-//                         controller: widget.cpfController,
+//                             : snapshot.data![0]["UserCpf"],
+//                         boxLabel: 'Cpf/CNPJ',
+//                         controller: widget.CpfController,
 //                       ),
 //                       ProfileListInformation(
 //                         initialText: snapshot.data![0]["UserEmail"] == null

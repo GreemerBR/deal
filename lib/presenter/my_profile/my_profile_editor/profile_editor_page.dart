@@ -22,7 +22,7 @@ class ProfileEditorPage extends StatefulHookConsumerWidget {
 class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController apelidoController = TextEditingController();
-  TextEditingController cpfController = TextEditingController();
+  TextEditingController CpfController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController telefoneController = TextEditingController();
   TextEditingController cepController = TextEditingController();
@@ -79,7 +79,7 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                     valuesAndNames: {
                       'UserNomeCompleto': nameController.text.trim(),
                       'UserApelido': apelidoController.text.trim(),
-                      'UserCPF': cpfController.text.trim(),
+                      'UserCpf': CpfController.text.trim(),
                       'UserCep': cepController.text.trim(),
                       'UserTelefone': telefoneController.text.trim(),
                       'UserImage': photo ??
@@ -107,7 +107,7 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
           columnNames: [
             'UserNomeCompleto',
             'UserApelido',
-            'UserCPF',
+            'UserCpf',
             'UserImage',
             'UserCep',
             'UserTelefone',
@@ -173,9 +173,9 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                           controller: apelidoController,
                         ),
                         ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCPF"] == null ? '' : snapshot.data![0]["UserCPF"],
-                          boxLabel: 'CPF/CNPJ',
-                          controller: cpfController,
+                          initialText: snapshot.data![0]["UserCpf"] == null ? '' : snapshot.data![0]["UserCpf"],
+                          boxLabel: 'Cpf/CNPJ',
+                          controller: CpfController,
                         ),
                         ProfileListInformation(
                           initialText:
