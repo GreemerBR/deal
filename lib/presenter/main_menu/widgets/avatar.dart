@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:app_2/core/general_providers.dart';
 
 import 'package:flutter/material.dart';
@@ -16,6 +19,12 @@ class Avatar extends StatefulHookConsumerWidget {
 }
 
 class _AvatarState extends ConsumerState<Avatar> {
+  late var infoImage = ref.watch(userStateNotifierProvider)!.userImage;
+
+  Uint8List callImage(){
+    return base64Decode(infoImage);
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -41,7 +50,7 @@ class _AvatarState extends ConsumerState<Avatar> {
           },
           child: ClipOval(
             child: Image.memory(
-              ref.watch(userStateNotifierProvider)!.userImage!,
+              callImage(),
               width: 90,
               height: 90,
               fit: BoxFit.cover,

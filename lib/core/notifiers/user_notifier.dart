@@ -1,4 +1,6 @@
-import 'package:app_2/core/database.dart';
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,14 +15,13 @@ class UserNotifier extends StateNotifier<UserModel?> {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      final userMap = await DatabaseApp.instance.select(
-        tableName: 'Users',
-        condition: 'UserEmail = "${user.email}"',
-      );
+      Dio dio = Dio();
+      final responseUserId = await dio.get('http://zuplae.vps-kinghost.net:8082/api/user/email/${user.email}');
+      var userId = responseUserId.data.toString();
 
-      state = UserModel.fromMap(userMap[0]);
+      var userMap = await dio.get("http://zuplae.vps-kinghost.net:8082/api/user/${userId}");
 
-      
+      state = UserModel.fromMap(userMap.data);      
     }
-  }
+  } 
 }

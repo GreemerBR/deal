@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:app_2/core/general_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +22,12 @@ class _ProfileSummaryInformationsState
   late Future<List<Map<String, dynamic>>> list;
   final user = FirebaseAuth.instance.currentUser!;
 
+  late var infoImage = ref.watch(userStateNotifierProvider)!.userImage;
+
+ Uint8List callImage(){
+    return base64Decode(infoImage);
+  }
+
   @override
   Widget build(BuildContext context) {
     final userNotifier = ref.watch(userStateNotifierProvider);
@@ -38,7 +47,7 @@ class _ProfileSummaryInformationsState
             children: [
               ClipOval(
                 child: Image.memory(
-                  userNotifier!.userImage!,
+                  callImage(),
                   width: 90,
                   height: 90,
                   fit: BoxFit.cover,
@@ -47,7 +56,7 @@ class _ProfileSummaryInformationsState
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Text(
-                  userNotifier.userNomeCompleto,
+                  userNotifier!.userNomeCompleto,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
