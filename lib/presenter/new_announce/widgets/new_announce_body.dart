@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -23,8 +24,17 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
+  var id;
 
-  String dropdownValueSelected = 'Escolha uma opção';
+  void getId() async {
+    Response responseId;
+    var dioId = Dio();
+    responseId =
+        await dioId.get('http://zuplae.vps-kinghost.net:8082/api/user/email/${user.email}');
+    id = responseId;
+  }
+
+  int dropdownValueSelected = 1;
   final user = FirebaseAuth.instance.currentUser!;
 
   @override
@@ -64,49 +74,56 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
             UploadCategoryDropdown(
               title: "Categoria *",
               options: [
-                "Escolha uma opção",
-                "Brinquedos",
-                "Cozinha",
-                "Eletrônicos",
-                "Esportes",
-                "Lazer",
-                "Moda",
-                "Jardim",
-                "Outros"
+                {'name': 'Brinquedos', 'value': 1},
+                {'name': 'Cozinha', 'value': 2},
+                {'name': 'Eletrônicos', 'value': 3},
+                {'name': 'Esportes', 'value': 4},
+                {'name': 'Lazer', 'value': 5},
+                {'name': 'Moda', 'value': 6},
+                {'name': 'Jardim', 'value': 7},
+                {'name': 'Outros', 'value': 8}
               ],
               dropdownValue: dropdownValueSelected,
-              onChanged: (String? value) {
-                dropdownValueSelected = value!;
+              onChanged: (Object? value) {
+                dropdownValueSelected = int.parse(value.toString());
                 setState(() {});
+                print(dropdownValueSelected);
               },
             ),
             SizedBox(
               height: 20,
             ),
-            BottomAnnounceButton(
-              func: () {
-                DatabaseApp.instance.insert(
-                  tableName: 'Announces',
-                  valuesAndNames: {
-                    'UserID': 1,
-                    'AnunTitulo': titleController.text.trim(),
-                    'AnunDescri': descriptionController.text.trim(),
-                    'AnunValor': priceController.text.trim(),
-                    'AnunCat': dropdownValueSelected,
-                    // 'AnunCEP':
-                    // 'AnunEndereco':
-                    'AnunData': DateFormat.yMd().format(DateTime.now())
-                  },
-                );
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return MainMenuPage();
-                    },
-                  ),
-                );
-              },
-            ),
+            BottomAnnounceButton(func: () async {
+              getId();
+              DateTime atualDate = new DateTime.now();
+              var formatter = new DateFormat('dd-MM-yyyy');
+              String formattedDate = formatter.format(atualDate);
+              Map<String, dynamic> headers = {
+                "accept": 'Application/json',
+              };
+
+              Map<String, dynamic> body = {
+                'anunTitulo': titleController.text,
+                'anunDescri': descriptionController.text,
+                'anunData': '01/02/2001',
+                'anunValor': double.parse(priceController.text),
+                'anunImage': '',
+                'categoriesId': 1,
+                'userId': 2
+              };
+
+              Response response;
+              Dio dio = Dio();
+
+              response = await dio.post(
+                "http://zuplae.vps-kinghost.net:8082/api/announce",
+                data: body,
+                options: Options(headers: headers),
+              );
+              print(
+                response.data.toString(),
+              );
+            }),
             SizedBox(
               height: 20,
             ),

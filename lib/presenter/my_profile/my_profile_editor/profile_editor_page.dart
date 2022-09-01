@@ -28,6 +28,7 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
   TextEditingController cepController = TextEditingController();
   TextEditingController estadoController = TextEditingController();
   TextEditingController cidadeController = TextEditingController();
+  TextEditingController bairroController = TextEditingController();
   TextEditingController ruaController = TextEditingController();
   TextEditingController numeroController = TextEditingController();
   TextEditingController complementoController = TextEditingController();
@@ -197,6 +198,11 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                           initialText: snapshot.data![0]["UserCidade"] == null ? '' : snapshot.data![0]["UserCidade"],
                           boxLabel: 'Cidade',
                           controller: cidadeController,
+                        ),
+                        ProfileListInformation(
+                          initialText: snapshot.data![0]["UserBairro"] == null ? '' : snapshot.data![0]["UserBairro"],
+                          boxLabel: 'Bairro',
+                          controller: bairroController,
                         ),
                         ProfileListInformation(
                           initialText: snapshot.data![0]["UserRua"] == null ? '' : snapshot.data![0]["UserRua"],

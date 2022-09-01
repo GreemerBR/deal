@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class UploadCategoryDropdown extends StatefulWidget {
   final String title;
-  final List<String> options;
-  final String dropdownValue;
-  final void Function(String?) onChanged;
+  final List<Map<String, dynamic>> options;
+  final int dropdownValue;
+  final void Function(Object?) onChanged;
 
   UploadCategoryDropdown({
     Key? key,
@@ -51,10 +51,10 @@ class _UploadCategoryDropdownState extends State<UploadCategoryDropdown> {
               icon: const Icon(Icons.keyboard_arrow_down),
 
               // Array list of items
-              items: widget.options.map((String items) {
+              items: widget.options.map((items) {
                 return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
+                  value: items['value'],
+                  child: Text(items['name'].toString()),
                 );
               }).toList(),
               // After selecting the desired option,it will
