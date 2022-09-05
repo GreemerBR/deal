@@ -104,7 +104,14 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                 Icons.save,
               ),
               onPressed: () async {
-                Dio().put(
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+                await Dio().put(
                   "http://zuplae.vps-kinghost.net:8082/api/user",
                   data: {
                     "userNomeCompleto": userInfo.userNomeCompleto,
@@ -132,6 +139,7 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                   },
                 ));
                 setState(() {});
+                
               },
             ),
           ),
@@ -200,16 +208,18 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                         controller: cepController,
                       ),
                       ProfileListInformation(
-                        initialText: userInfo.userEstado == 'Estado não informado'
-                            ? ''
-                            : userInfo.userEstado,
+                        initialText:
+                            userInfo.userEstado == 'Estado não informado'
+                                ? ''
+                                : userInfo.userEstado,
                         boxLabel: 'Estado',
                         controller: estadoController,
                       ),
                       ProfileListInformation(
-                        initialText: userInfo.userCidade == 'Cidade não informada'
-                            ? ''
-                            : userInfo.userCidade,
+                        initialText:
+                            userInfo.userCidade == 'Cidade não informada'
+                                ? ''
+                                : userInfo.userCidade,
                         boxLabel: 'Cidade',
                         controller: cidadeController,
                       ),
