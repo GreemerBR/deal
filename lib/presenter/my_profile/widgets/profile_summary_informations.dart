@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:app_2/core/general_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -52,7 +50,7 @@ class _ProfileSummaryInformationsState
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Text(
-                  userInfo.userApelido == null
+                  userInfo.userApelido == ''
                       ? userInfo.userNomeCompleto
                       : userInfo.userApelido,
                   style: TextStyle(
