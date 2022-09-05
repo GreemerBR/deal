@@ -96,7 +96,7 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
             BottomAnnounceButton(func: () async {
               getId();
               DateTime atualDate = new DateTime.now();
-              var formatter = new DateFormat('dd-MM-yyyy');
+              var formatter = new DateFormat('dd/MM/yyyy');
               String formattedDate = formatter.format(atualDate);
               Map<String, dynamic> headers = {
                 "accept": 'Application/json',
@@ -105,7 +105,7 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
               Map<String, dynamic> body = {
                 'anunTitulo': titleController.text,
                 'anunDescri': descriptionController.text,
-                'anunData': '01/02/2001',
+                'anunData': formattedDate,
                 'anunValor': double.parse(priceController.text),
                 'anunImage': '',
                 'categoriesId': 1,
