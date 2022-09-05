@@ -1,4 +1,5 @@
 import 'package:app_2/core/general_providers.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -95,32 +96,28 @@ class _RegisterState extends ConsumerState<Register> {
                 borderSize: 0,
                 rota: MainMenuPage(),
                 func: () async {
-                  await DatabaseApp.instance.insert(
-                    tableName: 'Users',
-                    valuesAndNames: {
-                      'UserNomeCompleto': nameController.text.trim(),
-                      'UserEmail': emailController.text.trim(),
-                      'UserSenha': passwordController.text.trim(),
-                      'UserImage': await ref.watch(defaultImageProvider),
-                    },
-                  );
-                  var result = DatabaseApp.instance.select(
-                    tableName: 'Users',
-                  );
-                  result.then(
-                    (List<Map<String, dynamic>> list) async {
-                      await signUp();
-                      ref.watch(userStateNotifierProvider.notifier).getUser();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return IsLoggedPage();
-                          },
-                        ),
-                      );
-                    },
-                  );
-                },
+                   Map<String, dynamic> headers = {
+        "accept": 'Application/json',
+      };
+
+      Map<String, dynamic> body = {
+        'userNomeCompleto': nameController.text,
+        'userEmail': emailController.text,
+        'userSenha': passwordController.text
+      };
+
+      Response response;
+      Dio dio = Dio();
+
+      response = await dio.post(
+        "http://zuplae.vps-kinghost.net:8082/api/user",
+        data: body,
+        options: Options(headers: headers),
+      );
+      print(
+        response.data.toString(),
+      );
+                }
               ),
             ],
           ),

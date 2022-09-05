@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 const String imgAirFryer1 = 'assets/images/AirFryer1.jpg';
 const String imgAirFryer2 = 'assets/images/AirFryer2.jpg';
 const String imgAirFryer3 = 'assets/images/AirFryer3.jpg';
@@ -46,3 +49,8 @@ const String loginAnimation = 'assets/animations/loginAnimation.json';
 const String notFoundAnimation = 'assets/animations/notFoundAnimation.json';
 
 const List<String> imageListCard = [imgWelcomeDeal, imgPeopleDeal];
+
+
+  Uint8List callImage(var infoImage) {
+    return base64Decode(infoImage);
+  }
