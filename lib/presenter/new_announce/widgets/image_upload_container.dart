@@ -1,13 +1,49 @@
+ import 'dart:io';
+    
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ImageUploadContainer extends StatelessWidget {
+import '../../my_profile/my_profile_editor/profile_editor_page.dart';
+import 'new_announce_body.dart';
+
+class ImageUploadContainer extends HookConsumerWidget {
   const ImageUploadContainer({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    Future<void> pickImageFromGallery() async {
+      try {
+        final image = await ImagePicker()
+            .pickImage(source: ImageSource.gallery, imageQuality: 50);
+        if (image == null) return;
+        File fileImage = File(image.path);
+        var tempPhoto = fileImage.readAsBytesSync();
+        ref.read(announceImageProvider.notifier).state = tempPhoto;
+      } catch (e) {
+        // ignore: avoid_print
+        print('Failed to pick image: $e');
+      }
+    }
+
+    Future<void> pickImageFromCamera() async {
+      try {
+        final image = await ImagePicker()
+            .pickImage(source: ImageSource.gallery, imageQuality: 50);
+        if (image == null) return;
+        File fileImage = File(image.path);
+        var tempPhoto = fileImage.readAsBytesSync();
+        ref.read(announceImageProvider.notifier).state = tempPhoto;
+      } catch (e) {
+        // ignore: avoid_print
+        print('Failed to pick image: $e');
+      }
+    }
+
     return Container(
       margin: EdgeInsets.all(25),
       child: DottedBorder(
@@ -28,13 +64,23 @@ class ImageUploadContainer extends StatelessWidget {
                     builder: (context) {
                       return Wrap(
                         children: [
-                          ListTile(
-                            leading: Icon(Icons.image),
-                            title: Text("Escolher Imagem da Galeria"),
+                          GestureDetector(
+                            onTap: () {
+                              pickImageFromGallery();
+                            },
+                            child: ListTile(
+                              leading: Icon(Icons.image),
+                              title: Text("Escolher Imagem da Galeria"),
+                            ),
                           ),
-                          ListTile(
-                            leading: Icon(Icons.camera_alt_outlined),
-                            title: Text("Abrir Câmera"),
+                          GestureDetector(
+                            onTap: () {
+                              pickImageFromCamera();
+                            },
+                            child: ListTile(
+                              leading: Icon(Icons.camera_alt_outlined),
+                              title: Text("Abrir Câmera"),
+                            ),
                           ),
                         ],
                       );
