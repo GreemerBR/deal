@@ -1,29 +1,37 @@
+
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:app_2/presenter/my_profile/my_profile_editor/profile_editor_page.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../../core/database.dart';
 
-import '../../main_menu/main_menu_page.dart';
 
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
 import 'upload_text_option.dart';
 
-class NewAnnounceBody extends StatefulWidget {
-  const NewAnnounceBody({Key? key}) : super(key: key);
+  final announceImageProvider = StateProvider<Uint8List?>( (ref) => null );
+
+class NewAnnounceBody extends StatefulHookConsumerWidget {
+  NewAnnounceBody({Key? key}) : super(key: key);
+
 
   @override
-  State<NewAnnounceBody> createState() => _NewAnnounceBodyState();
-}
+  ConsumerState<NewAnnounceBody> createState() => _NewAnnounceBodyState();
 
-class _NewAnnounceBodyState extends State<NewAnnounceBody> {
+}
+  class _NewAnnounceBodyState extends ConsumerState<NewAnnounceBody> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
+  
   var id;
 
   void getId() async {
@@ -39,6 +47,7 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
 
   @override
   Widget build(BuildContext context) {
+   final announceImage = ref.watch(announceImageProvider.state);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
@@ -107,7 +116,7 @@ class _NewAnnounceBodyState extends State<NewAnnounceBody> {
                 'anunDescri': descriptionController.text,
                 'anunData': formattedDate,
                 'anunValor': double.parse(priceController.text),
-                'anunImage': '',
+                'anunImage': base64Encode(announceImage.state!),
                 'categoriesId': 1,
                 'userId': 2
               };
