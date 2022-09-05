@@ -50,7 +50,6 @@ const String notFoundAnimation = 'assets/animations/notFoundAnimation.json';
 
 const List<String> imageListCard = [imgWelcomeDeal, imgPeopleDeal];
 
-
-  Uint8List callImage(var infoImage) {
-    return base64Decode(infoImage);
-  }
+Uint8List callImage(var infoImage) {
+  return base64Decode(infoImage);
+}

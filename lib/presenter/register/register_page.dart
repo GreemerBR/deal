@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:app_2/core/app_assets.dart';
 import 'package:app_2/core/general_providers.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,13 +18,11 @@ import '../login/widgets/default_title.dart';
 import '../main_menu/main_menu_page.dart';
 
 class Register extends StatefulHookConsumerWidget {
-
   @override
   ConsumerState<Register> createState() => _RegisterState();
 }
 
 class _RegisterState extends ConsumerState<Register> {
-
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -50,8 +52,6 @@ class _RegisterState extends ConsumerState<Register> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
       backgroundColor: Color.fromARGB(242, 242, 242, 242),
       body: Center(
@@ -96,28 +96,33 @@ class _RegisterState extends ConsumerState<Register> {
                 borderSize: 0,
                 rota: MainMenuPage(),
                 func: () async {
-                   Map<String, dynamic> headers = {
-        "accept": 'Application/json',
-      };
+                  ByteData byteData = await rootBundle.load(imgAvatar);
+                  Uint8List listAvatarDefault = byteData.buffer.asUint8List();
 
-      Map<String, dynamic> body = {
-        'userNomeCompleto': nameController.text,
-        'userEmail': emailController.text,
-        'userSenha': passwordController.text
-      };
+                  Map<String, dynamic> headers = {
+                    "accept": 'Application/json',
+                  };
 
-      Response response;
-      Dio dio = Dio();
+                  Map<String, dynamic> body = {
+                    'userNomeCompleto': nameController.text,
+                    'userEmail': emailController.text,
+                    'userSenha': passwordController.text,
+                    'userImage': base64Encode(listAvatarDefault),
+                  };
 
-      response = await dio.post(
-        "http://zuplae.vps-kinghost.net:8082/api/user",
-        data: body,
-        options: Options(headers: headers),
-      );
-      print(
-        response.data.toString(),
-      );
-                }
+                  Response response;
+                  Dio dio = Dio();
+
+                  response = await dio.post(
+                    "http://zuplae.vps-kinghost.net:8082/api/user",
+                    data: body,
+                    options: Options(headers: headers),
+                  );
+                  print(
+                    response.data.toString(),
+                  );
+                  signUp();
+                },
               ),
             ],
           ),

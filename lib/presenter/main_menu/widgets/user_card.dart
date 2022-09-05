@@ -33,7 +33,7 @@ class UserCard extends HookConsumerWidget {
                 ),
               ),
               Text(
-                userNotifier?.userApelido ?? userNotifier?.userNomeCompleto ?? '',
+                userNotifier?.userApelido == '' ? userNotifier!.userNomeCompleto : userNotifier!.userApelido,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,

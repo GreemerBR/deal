@@ -48,6 +48,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) {
+              // imgConverter();
               return SecondSplashScreen();
             },
           ),

@@ -4,11 +4,13 @@ class ProfileListInformation extends StatelessWidget {
   final String initialText;
   final String boxLabel;
   final TextEditingController? controller;
+  final bool enabled;
 
    ProfileListInformation({
     super.key,
     required this.initialText,
     required this.boxLabel,
+    this.enabled = true,
     this.controller,
   }) {
     controller!.text = initialText;
@@ -25,6 +27,7 @@ class ProfileListInformation extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
+          color: enabled ? Colors.white : Colors.grey.shade300,
           border: Border(
             top: BorderSide(color: Color.fromARGB(255, 196, 196, 196)),
             bottom: BorderSide(color: Color.fromARGB(255, 196, 196, 196)),
@@ -39,9 +42,10 @@ class ProfileListInformation extends StatelessWidget {
             left: 10,
           ),
           child: TextField(
+            enabled: enabled,
             controller: controller,
             style: TextStyle(
-              color: Colors.black,
+              color: enabled ? Colors.black : Colors.grey.shade500,
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -49,6 +53,7 @@ class ProfileListInformation extends StatelessWidget {
               labelStyle: TextStyle(
                 color: Colors.grey,
               ),
+
             ),
           ),
         ),

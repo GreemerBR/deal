@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProfileEditorController {
   final TextEditingController nameController;
   final TextEditingController apelidoController;
-  final TextEditingController cpfController;
+  final TextEditingController CpfController;
   final TextEditingController emailController;
   final TextEditingController telefoneController;
   final TextEditingController cepController;
@@ -14,7 +14,7 @@ class ProfileEditorController {
   ProfileEditorController({
     required this.nameController,
     required this.apelidoController,
-    required this.cpfController,
+    required this.CpfController,
     required this.emailController,
     required this.telefoneController,
     required this.cepController,

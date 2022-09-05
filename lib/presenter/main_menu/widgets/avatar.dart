@@ -21,43 +21,30 @@ class Avatar extends StatefulHookConsumerWidget {
 class _AvatarState extends ConsumerState<Avatar> {
   late var infoImage = ref.watch(userStateNotifierProvider)!.userImage;
 
-  Uint8List callImage(){
+  Uint8List callImage() {
     return base64Decode(infoImage);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: DatabaseApp.instance.select(
-        tableName: 'Users',
-      ),
-      builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
-        if (!snapshot.hasData) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: CircularProgressIndicator(),
-          );
-        }
-        return MaterialButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return MyProfilePage();
-                },
-              ),
-            );
-          },
-          child: ClipOval(
-            child: Image.memory(
-              callImage(),
-              width: 90,
-              height: 90,
-              fit: BoxFit.cover,
-            ),
+    return MaterialButton(
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return MyProfilePage();
+            },
           ),
         );
       },
+      child: ClipOval(
+        child: Image.memory(
+          callImage(),
+          width: 90,
+          height: 90,
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }

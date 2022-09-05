@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:app_2/core/app_assets.dart';
 import 'package:app_2/core/general_providers.dart';
 import 'package:app_2/presenter/my_profile/my_profile_editor/widgets/profile_summary_informations_editor.dart';
+import 'package:app_2/presenter/my_profile/my_profile_page.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -42,15 +43,13 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
 
   final user = FirebaseAuth.instance.currentUser!;
 
-  Uint8List? photo;
-
-  late var infoImage = ref.watch(userStateNotifierProvider)!.userImage;
-  
+  late var userInfo = ref.watch(userStateNotifierProvider)!;
 
   Uint8List callImage() {
-    return base64Decode(infoImage);
+    return base64Decode(userInfo.userImage);
   }
 
+  Uint8List? photo;
   File? image;
 
   Future<void> pickImage() async {
@@ -67,203 +66,182 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
     }
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
-          toolbarHeight: 80,
-          backgroundColor: Color.fromARGB(255, 99, 66, 191),
-          title: const Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Text(
-              'Editar',
-              style: TextStyle(fontSize: 30),
-            ),
+        elevation: 0,
+        centerTitle: true,
+        toolbarHeight: 80,
+        backgroundColor: Color.fromARGB(255, 99, 66, 191),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: Text(
+            'Editar',
+            style: TextStyle(fontSize: 30),
           ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.save,
-                ),
-                onPressed: () async {
-                  Dio().put("http://zuplae.vps-kinghost.net:8082/api/user",
-                      data: {
-                        "userNomeCompleto": nameController.text,
-                        "userEmail": emailController.text,
-                        "userSenha":
-                            ref.watch(userStateNotifierProvider)!.userSenha,
-                        "userApelido": apelidoController.text,
-                        "userCpf": cpfController.text,
-                        "userTelefone": telefoneController.text,
-                        "userCep": cepController.text,
-                        "userEstado": estadoController.text,
-                        "userCidade": cidadeController.text,
-                        "userBairro": bairroController.text,
-                        "userRua": ruaController.text,
-                        "userComplemento": complementoController.text,
-                        "userNumero": numeroController.text,
-                        "userImage": base64Encode(photo!),
-                        "id": ref.watch(userStateNotifierProvider)!.id,
-                      });
-
-                  ref.watch(userStateNotifierProvider.notifier).getUser();
-                  Navigator.of(context).pop();
-                  setState(() {});
+        ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_rounded,
+          ),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return MyProfilePage();
                 },
               ),
-            ),
-          ]),
-      body: FutureBuilder(
-        future: DatabaseApp.instance.select(
-          tableName: 'Users',
-          columnNames: [
-            'UserNomeCompleto',
-            'UserApelido',
-            'UserCPF',
-            'UserImage',
-            'UserCep',
-            'UserTelefone',
-            'UserCidade',
-            'UserRua',
-            'UserNumero',
-            'UserComplemento',
-            'UserEstado'
-          ],
-          condition: 'UserEmail = "${user.email!}"',
-        ),
-        builder: (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(),
             );
-          }
-          return Center(
-            child: Column(
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    ProfileSummaryInformationsEditor(image: photo),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          left: 90,
-                          bottom: 45,
-                        ),
-                        child: Transform.rotate(
-                          angle: 0,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.edit,
-                              color: Colors.grey,
-                              size: 25,
-                            ),
-                            onPressed: () {
-                              pickImage();
-                            },
+          },
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.save,
+              ),
+              onPressed: () async {
+                Dio().put(
+                  "http://zuplae.vps-kinghost.net:8082/api/user",
+                  data: {
+                    "userNomeCompleto": userInfo.userNomeCompleto,
+                    "userEmail": userInfo.userEmail,
+                    "userSenha": userInfo.userSenha,
+                    "userApelido": apelidoController.text,
+                    "userCpf": cpfController.text,
+                    "userTelefone": telefoneController.text,
+                    "userCep": cepController.text,
+                    "userEstado": estadoController.text,
+                    "userCidade": cidadeController.text,
+                    "userBairro": bairroController.text,
+                    "userRua": ruaController.text,
+                    "userComplemento": complementoController.text,
+                    "userNumero": numeroController.text,
+                    "userImage": base64Encode(photo ?? callImage()),
+                    "id": userInfo.id,
+                  },
+                );
+
+                await ref.watch(userStateNotifierProvider.notifier).getUser();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) {
+                    return MyProfilePage();
+                  },
+                ));
+                setState(() {});
+              },
+            ),
+          ),
+        ],
+      ),
+      body: Center(
+        child: SizedBox(
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  ProfileSummaryInformationsEditor(image: photo),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 90,
+                        bottom: 45,
+                      ),
+                      child: Transform.rotate(
+                        angle: 0,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.edit,
+                            color: Colors.grey,
+                            size: 25,
                           ),
+                          onPressed: () {
+                            pickImage();
+                          },
                         ),
                       ),
                     ),
-                  ],
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      children: [
-                        ProfileListInformation(
-                          initialText:
-                              snapshot.data![0]["UserNomeCompleto"] == null
-                                  ? ''
-                                  : snapshot.data![0]["UserNomeCompleto"],
-                          boxLabel: 'Nome completo',
-                          controller: nameController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserApelido"] == null
-                              ? ''
-                              : snapshot.data![0]["UserApelido"],
-                          boxLabel: 'Apelido',
-                          controller: apelidoController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCPF"] == null
-                              ? ''
-                              : snapshot.data![0]["UserCPF"],
-                          boxLabel: 'CPF/CNPJ',
-                          controller: cpfController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserTelefone"] == null
-                              ? ''
-                              : snapshot.data![0]["UserTelefone"],
-                          boxLabel: 'Telefone',
-                          controller: telefoneController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCep"] == null
-                              ? ''
-                              : snapshot.data![0]["UserCep"],
-                          boxLabel: 'CEP',
-                          controller: cepController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserEstado"] == null
-                              ? ''
-                              : snapshot.data![0]["UserEstado"],
-                          boxLabel: 'Estado',
-                          controller: estadoController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserCidade"] == null
-                              ? ''
-                              : snapshot.data![0]["UserCidade"],
-                          boxLabel: 'Cidade',
-                          controller: cidadeController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserBairro"] == null
-                              ? ''
-                              : snapshot.data![0]["UserBairro"],
-                          boxLabel: 'Bairro',
-                          controller: bairroController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserRua"] == null
-                              ? ''
-                              : snapshot.data![0]["UserRua"],
-                          boxLabel: 'Rua',
-                          controller: ruaController,
-                        ),
-                        ProfileListInformation(
-                          initialText: snapshot.data![0]["UserNumero"] == null
-                              ? ''
-                              : snapshot.data![0]["UserNumero"].toString(),
-                          boxLabel: 'Número',
-                          controller: numeroController,
-                        ),
-                        ProfileListInformation(
-                          initialText:
-                              snapshot.data![0]["UserComplemento"] == null
-                                  ? ''
-                                  : snapshot.data![0]["UserComplemento"],
-                          boxLabel: 'Complemento',
-                          controller: complementoController,
-                        ),
-                      ],
-                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      ProfileListInformation(
+                        enabled: false,
+                        initialText: userInfo.userNomeCompleto,
+                        boxLabel: 'Nome completo',
+                        controller: nameController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userApelido,
+                        boxLabel: 'Apelido',
+                        controller: apelidoController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userCpf,
+                        boxLabel: 'Cpf/CNPJ',
+                        controller: cpfController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userTelefone,
+                        boxLabel: 'Telefone',
+                        controller: telefoneController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userCep,
+                        boxLabel: 'CEP',
+                        controller: cepController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userEstado == 'Estado não informado'
+                            ? ''
+                            : userInfo.userEstado,
+                        boxLabel: 'Estado',
+                        controller: estadoController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userCidade == 'Cidade não informada'
+                            ? ''
+                            : userInfo.userCidade,
+                        boxLabel: 'Cidade',
+                        controller: cidadeController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userBairro,
+                        boxLabel: 'Bairro',
+                        controller: bairroController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userRua,
+                        boxLabel: 'Rua',
+                        controller: ruaController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userNumero == 0
+                            ? ''
+                            : userInfo.userNumero.toString(),
+                        boxLabel: 'Número',
+                        controller: numeroController,
+                      ),
+                      ProfileListInformation(
+                        initialText: userInfo.userComplemento,
+                        boxLabel: 'Complemento',
+                        controller: complementoController,
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          );
-        },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
