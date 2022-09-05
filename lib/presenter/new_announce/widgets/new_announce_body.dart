@@ -105,18 +105,18 @@ class NewAnnounceBody extends StatefulHookConsumerWidget {
             BottomAnnounceButton(func: () async {
               getId();
               DateTime atualDate = new DateTime.now();
-              var formatter = new DateFormat('dd-MM-yyyy');
+              var formatter = new DateFormat('dd/MM/yyyy');
               String formattedDate = formatter.format(atualDate);
               Map<String, dynamic> headers = {
                 "accept": 'Application/json',
               };
 
               Map<String, dynamic> body = {
-                'AnunTitulo': titleController.text,
-                'AnunDescri': descriptionController.text,
-                'AnunData': '01/02/2001',
-                'AnunValor': double.parse(priceController.text),
-                'AnunImage': base64Encode(announceImage.state!),
+                'anunTitulo': titleController.text,
+                'anunDescri': descriptionController.text,
+                'anunData': formattedDate,
+                'anunValor': double.parse(priceController.text),
+                'anunImage': base64Encode(announceImage.state!),
                 'categoriesId': 1,
                 'userId': 2
               };

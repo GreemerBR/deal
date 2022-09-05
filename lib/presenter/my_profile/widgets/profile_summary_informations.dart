@@ -8,7 +8,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
 
-
 class ProfileSummaryInformations extends StatefulHookConsumerWidget {
   ProfileSummaryInformations({
     Key? key,
@@ -21,6 +20,7 @@ class ProfileSummaryInformations extends StatefulHookConsumerWidget {
 
 class _ProfileSummaryInformationsState
     extends ConsumerState<ProfileSummaryInformations> {
+  late var userInfo = ref.watch(userStateNotifierProvider)!;
   late Future<List<Map<String, dynamic>>> list;
   final user = FirebaseAuth.instance.currentUser!;
 
@@ -52,7 +52,9 @@ class _ProfileSummaryInformationsState
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Text(
-                  userNotifier.userNomeCompleto,
+                  userInfo.userApelido == null
+                      ? userInfo.userNomeCompleto
+                      : userInfo.userApelido,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
