@@ -1,22 +1,6 @@
 import 'dart:convert';
 
 class UserModel {
-<<<<<<< HEAD
-  String userNomeCompleto;
-  String userEmail;
-  String userSenha;
-  Uint8List? userImage;
-  String? userApelido;
-  String? userCpf;
-  String? userTelefone;
-  String? userCep;
-  String? userCidade;
-  String? userEstado;
-  String? userRua;
-  int? userNumero;
-  String? userComplemento;
-
-=======
   final String userNomeCompleto;
   final String userEmail;
   final String userSenha;
@@ -32,23 +16,10 @@ class UserModel {
   final int userNumero;
   final String userImage;
   final int id;
->>>>>>> 5dbe6e7cc5fa1d67892b2da41f9f3d4186794178
   UserModel({
     required this.userNomeCompleto,
     required this.userEmail,
     required this.userSenha,
-<<<<<<< HEAD
-    this.userImage,
-    this.userApelido,
-    this.userCpf,
-    this.userTelefone,
-    this.userCep,
-    this.userCidade,
-    this.userEstado,
-    this.userRua,
-    this.userNumero,
-    this.userComplemento,
-=======
     required this.userApelido,
     required this.userCpf,
     required this.userTelefone,
@@ -61,7 +32,6 @@ class UserModel {
     required this.userNumero,
     required this.userImage,
     required this.id,
->>>>>>> 5dbe6e7cc5fa1d67892b2da41f9f3d4186794178
   });
 
   UserModel copyWith({
@@ -106,39 +76,6 @@ class UserModel {
     result.addAll({'userNomeCompleto': userNomeCompleto});
     result.addAll({'userEmail': userEmail});
     result.addAll({'userSenha': userSenha});
-<<<<<<< HEAD
-    if (userImage != null) {
-      result.addAll({'userImage': userImage!.asMap()});
-    }
-    if (userApelido != null) {
-      result.addAll({'userApelido': userApelido});
-    }
-    if (userCpf != null) {
-      result.addAll({'userCpf': userCpf});
-    }
-    if (userTelefone != null) {
-      result.addAll({'userTelefone': userTelefone});
-    }
-    if (userCep != null) {
-      result.addAll({'userCep': userCep});
-    }
-    if (userCidade != null) {
-      result.addAll({'userCidade': userCidade});
-    }
-    if (userEstado != null) {
-      result.addAll({'userEstado': userEstado});
-    }
-    if (userRua != null) {
-      result.addAll({'userRua': userRua});
-    }
-    if (userNumero != null) {
-      result.addAll({'userNumero': userNumero});
-    }
-    if (userComplemento != null) {
-      result.addAll({'userComplemento': userComplemento});
-    }
-
-=======
     result.addAll({'userApelido': userApelido});
     result.addAll({'userCpf': userCpf});
     result.addAll({'userTelefone': userTelefone});
@@ -152,27 +89,11 @@ class UserModel {
     result.addAll({'userImage': userImage});
     result.addAll({'id': id});
   
->>>>>>> 5dbe6e7cc5fa1d67892b2da41f9f3d4186794178
     return result;
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-<<<<<<< HEAD
-      userNomeCompleto: map['UserNomeCompleto'] ?? '',
-      userEmail: map['UserEmail'] ?? '',
-      userSenha: map['UserSenha'] ?? '',
-      userImage: map['UserImage'] != null ? map['UserImage'] : [],
-      userApelido: map['UserApelido'],
-      userCpf: map['UserCpf'],
-      userTelefone: map['UserTelefone'],
-      userCep: map['UserCep'],
-      userCidade: map['UserCidade'],
-      userEstado: map['UserEstado'],
-      userRua: map['UserRua'],
-      userNumero: map['UserNumero']?.toInt(),
-      userComplemento: map['UserComplemento'],
-=======
       userNomeCompleto: map['userNomeCompleto'] ?? '',
       userEmail: map['userEmail'] ?? '',
       userSenha: map['userSenha'] ?? '',
@@ -180,15 +101,14 @@ class UserModel {
       userCpf: map['userCpf'] ?? '',
       userTelefone: map['userTelefone'] ?? '',
       userCep: map['userCep'] ?? '',
-      userEstado: map['userEstado'] ?? '',
-      userCidade: map['userCidade'] ?? '',
+      userEstado: map['userEstado'] ?? 'Estado não informado',
+      userCidade: map['userCidade'] ?? 'Cidade não informada',
       userBairro: map['userBairro'] ?? '',
       userRua: map['userRua'] ?? '',
       userComplemento: map['userComplemento'] ?? '',
       userNumero: map['userNumero']?.toInt() ?? 0,
       userImage: map['userImage'] ?? '',
       id: map['id']?.toInt() ?? 0,
->>>>>>> 5dbe6e7cc5fa1d67892b2da41f9f3d4186794178
     );
   }
 

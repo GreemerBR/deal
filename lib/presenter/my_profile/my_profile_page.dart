@@ -1,3 +1,4 @@
+import 'package:app_2/presenter/is_logged/is_logged_page.dart';
 import 'package:flutter/material.dart';
 
 import 'my_profile_editor/profile_editor_page.dart';
@@ -26,7 +27,14 @@ class MyProfilePage extends StatelessWidget {
             Icons.arrow_back_rounded,
           ),
           onPressed: () {
-            Navigator.pop(context);
+           Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return IsLoggedPage();
+                },
+              ),
+            );;
           },
         ),
         actions: [
@@ -34,7 +42,7 @@ class MyProfilePage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
               onPressed: () {
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) {
                       return ProfileEditorPage();

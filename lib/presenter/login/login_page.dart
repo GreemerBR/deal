@@ -41,22 +41,25 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(children: <Widget>[
-                  Expanded(
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                        child: Divider(
+                      color: Colors.white,
+                      thickness: 3,
+                    )),
+                    Text(
+                      "  ou  ",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Expanded(
                       child: Divider(
-                    color: Colors.white,
-                    thickness: 3,
-                  )),
-                  Text(
-                    "  ou  ",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Expanded(
-                      child: Divider(
-                    color: Colors.white,
-                    thickness: 3,
-                  )),
-                ]),
+                        color: Colors.white,
+                        thickness: 3,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 30),
               Container(

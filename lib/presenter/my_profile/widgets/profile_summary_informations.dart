@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../core/app_assets.dart';
+
 
 class ProfileSummaryInformations extends StatefulHookConsumerWidget {
   ProfileSummaryInformations({
@@ -21,12 +23,6 @@ class _ProfileSummaryInformationsState
     extends ConsumerState<ProfileSummaryInformations> {
   late Future<List<Map<String, dynamic>>> list;
   final user = FirebaseAuth.instance.currentUser!;
-
-  late var infoImage = ref.watch(userStateNotifierProvider)!.userImage;
-
- Uint8List callImage(){
-    return base64Decode(infoImage);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +43,7 @@ class _ProfileSummaryInformationsState
             children: [
               ClipOval(
                 child: Image.memory(
-                  callImage(),
+                  callImage(userNotifier!.userImage),
                   width: 90,
                   height: 90,
                   fit: BoxFit.cover,
@@ -56,7 +52,7 @@ class _ProfileSummaryInformationsState
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Text(
-                  userNotifier!.userNomeCompleto,
+                  userNotifier.userNomeCompleto,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -72,7 +68,7 @@ class _ProfileSummaryInformationsState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      userNotifier.userCidade ?? 'Cidade Não Informada',
+                      userNotifier.userCidade,
                       style: TextStyle(
                         color: Color.fromARGB(255, 196, 196, 196),
                         fontSize: 15,
@@ -86,7 +82,7 @@ class _ProfileSummaryInformationsState
                       ),
                     ),
                     Text(
-                      userNotifier.userEstado ?? 'Estado Não Informado',
+                      userNotifier.userEstado,
                       style: TextStyle(
                         color: Color.fromARGB(255, 196, 196, 196),
                         fontSize: 15,
