@@ -14,26 +14,26 @@ class CategoriesPage extends HookConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const FilterPage();
-                    },
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.filter_alt_outlined,
-                size: 28,
-              ),
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.only(right: 20),
+        //     child: IconButton(
+        //       onPressed: () {
+        //         Navigator.of(context).push(
+        //           MaterialPageRoute(
+        //             builder: (context) {
+        //               return const FilterPage();
+        //             },
+        //           ),
+        //         );
+        //       },
+        //       icon: const Icon(
+        //         Icons.filter_alt_outlined,
+        //         size: 28,
+        //       ),
+        //     ),
+        //   ),
+        // ],
         toolbarHeight: 80,
         centerTitle: true,
         title: Text(
