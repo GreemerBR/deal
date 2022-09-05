@@ -1,7 +1,10 @@
-import 'dart:typed_data';
+import 'dart:convert';
 
+import 'package:app_2/core/models/announce_model.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/models/user_model.dart';
 import '../../announcement/announce_page.dart';
 
 // ignore: must_be_immutable
@@ -12,8 +15,9 @@ class CardProductAd extends StatefulWidget {
     required this.imageLink,
     this.isFavorite = false,
   }) : super(key: key);
-  final Map<String, dynamic> productInformation;
-  final Uint8List imageLink;
+  final AnnounceModel productInformation;
+  UserModel? userRelatedToAd;
+  final String imageLink;
   bool isFavorite;
   @override
   State<CardProductAd> createState() => _CardProductAdState();
@@ -28,6 +32,19 @@ class _CardProductAdState extends State<CardProductAd> {
     );
   }
 
+  Future<void> getUserFromAd(UserModel user) async {
+    var result = await Dio().get(
+        'http://zuplae.vps-kinghost.net:8082/api/user/${widget.productInformation.userId}');
+
+    user = UserModel.fromMap(result.data);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserFromAd(widget.userRelatedToAd!);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -38,6 +55,7 @@ class _CardProductAdState extends State<CardProductAd> {
               builder: (context) {
                 return AnnoucementPage(
                   product: widget.productInformation,
+                  userRelatedToAd: widget.userRelatedToAd!,
                 );
               },
             ),
@@ -60,7 +78,7 @@ class _CardProductAdState extends State<CardProductAd> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: MemoryImage(
-                        widget.imageLink,
+                        base64Decode(widget.imageLink),
                       ),
                       fit: BoxFit.fitHeight,
                     ),
@@ -80,7 +98,9 @@ class _CardProductAdState extends State<CardProductAd> {
                   },
                   icon: Icon(
                     widget.isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: (widget.isFavorite ? Color.fromARGB(255, 99, 66, 191) : Colors.grey),
+                    color: (widget.isFavorite
+                        ? Color.fromARGB(255, 99, 66, 191)
+                        : Colors.grey),
                   ),
                   splashRadius: 1,
                 ),
@@ -94,7 +114,7 @@ class _CardProductAdState extends State<CardProductAd> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.productInformation['AnunTitulo'],
+                      widget.productInformation.anunTitulo,
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 14,
@@ -105,12 +125,12 @@ class _CardProductAdState extends State<CardProductAd> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
-                        'R\$ ${widget.productInformation['AnunValor'].toStringAsFixed(2)}',
+                        'R\$ ${widget.productInformation.anunValor.toStringAsFixed(2)}',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
                     Text(
-                      widget.productInformation['AnunEndereco'],
+                      '${widget.userRelatedToAd!.userRua}, ${widget.userRelatedToAd!.userNumero}',
                       style: TextStyle(
                         fontSize: 10,
                         color: Colors.grey,

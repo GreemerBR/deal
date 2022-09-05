@@ -60,19 +60,19 @@ class BodyMainMenu extends HookConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           CategoriesCards(
-                            title: "Brinquedos",
+                            title: {"Brinquedos" : 1},
                             icon: Icons.toys_outlined,
                           ),
                           CategoriesCards(
-                            title: "Cozinha",
+                            title: {"Cozinha" : 2},
                             icon: Icons.kitchen_rounded,
                           ),
                           CategoriesCards(
-                            title: "Eletrônicos",
+                            title: {"Eletrônicos" : 3},
                             icon: Icons.power_outlined,
                           ),
                           CategoriesCards(
-                            title: "Esportes",
+                            title: {"Esportes" : 4},
                             icon: Icons.sports_basketball_rounded,
                           ),
                         ],
@@ -92,19 +92,19 @@ class BodyMainMenu extends HookConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           CategoriesCards(
-                            title: "Lazer",
+                            title: {"Lazer" : 5},
                             icon: Icons.outdoor_grill_sharp,
                           ),
                           CategoriesCards(
-                            title: "Moda",
+                            title: {"Moda" : 6},
                             icon: Icons.checkroom,
                           ),
                           CategoriesCards(
-                            title: "Jardim",
+                            title: {"Jardim" : 7},
                             icon: Icons.grass,
                           ),
                           CategoriesCards(
-                            title: "Outros",
+                            title: {"Outros" : 8},
                             icon: Icons.more_horiz,
                           ),
                         ],

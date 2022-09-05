@@ -1,4 +1,4 @@
-import 'package:app_2/presenter/categories/categories_notifier.dart';
+import 'package:app_2/core/notifiers/categories_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -37,14 +37,14 @@ class CategoriesPage extends HookConsumerWidget {
         toolbarHeight: 80,
         centerTitle: true,
         title: Text(
-          title,
+          title.keys.first,
           style: TextStyle(
             fontSize: 30,
           ),
         ),
         backgroundColor: Color.fromARGB(255, 99, 66, 191),
       ),
-      body: BodyCategories(title: title,),
+      body: BodyCategories(title: title.keys.first,),
     );
   }
 }

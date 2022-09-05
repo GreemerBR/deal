@@ -1,3 +1,5 @@
+import 'package:app_2/core/models/announce_model.dart';
+import 'package:app_2/core/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,10 +11,12 @@ class AnnoucementPage extends StatefulWidget {
     Key? key,
     this.isFavorite = false,
     required this.product,
+    required this.userRelatedToAd,
   }) : super(key: key);
 
   bool isFavorite;
-  Map<String, dynamic> product;
+  AnnounceModel product;
+  UserModel userRelatedToAd;
   @override
   State<AnnoucementPage> createState() => _AnnoucementPageState();
 }
@@ -67,7 +71,10 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: BodyAnnouncement(product: widget.product,),
+        child: BodyAnnouncement(
+          product: widget.product,
+          userRelatedToAd: widget.userRelatedToAd,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 99, 66, 191),

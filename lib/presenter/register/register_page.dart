@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/database.dart';
+
 import '../../main.dart';
-import '../is_logged/is_logged_page.dart';
+
 import '../login/widgets/default_button.dart';
 import '../login/widgets/default_input.dart';
 import '../login/widgets/default_title.dart';
