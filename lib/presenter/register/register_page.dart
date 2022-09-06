@@ -119,9 +119,6 @@ class _RegisterState extends ConsumerState<Register> {
                     data: body,
                     options: Options(headers: headers),
                   );
-                  print(
-                    response.data.toString(),
-                  );
                   signUp();
                 },
               ),

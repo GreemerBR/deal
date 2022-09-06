@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 import '../../../core/general_providers.dart';
 import '../my_profile_page.dart';
 
@@ -58,8 +57,10 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
 
   Future<void> pickImage() async {
     try {
-      final image = await ImagePicker()
-          .pickImage(source: ImageSource.gallery, imageQuality: 50);
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 50,
+      );
       if (image == null) return;
       File fileImage = File(image.path);
       photo = fileImage.readAsBytesSync();

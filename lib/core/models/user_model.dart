@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'announce_model.dart';
+
 class UserModel {
   final String userNomeCompleto;
   final String userEmail;
@@ -15,6 +17,8 @@ class UserModel {
   final String userComplemento;
   final int userNumero;
   final String userImage;
+  final List<AnnounceModel> announces;
+  final List<FavoriteAnnounce> favoriteAnnounces;
   final int id;
   UserModel({
     required this.userNomeCompleto,
@@ -31,6 +35,8 @@ class UserModel {
     required this.userComplemento,
     required this.userNumero,
     required this.userImage,
+    required this.announces,
+    required this.favoriteAnnounces,
     required this.id,
   });
 
@@ -49,6 +55,8 @@ class UserModel {
     String? userComplemento,
     int? userNumero,
     String? userImage,
+    List<AnnounceModel>? announces,
+    List<FavoriteAnnounce>? favoriteAnnounces,
     int? id,
   }) {
     return UserModel(
@@ -66,13 +74,15 @@ class UserModel {
       userComplemento: userComplemento ?? this.userComplemento,
       userNumero: userNumero ?? this.userNumero,
       userImage: userImage ?? this.userImage,
+      announces: announces ?? this.announces,
+      favoriteAnnounces: favoriteAnnounces ?? this.favoriteAnnounces,
       id: id ?? this.id,
     );
   }
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
-  
+
     result.addAll({'userNomeCompleto': userNomeCompleto});
     result.addAll({'userEmail': userEmail});
     result.addAll({'userSenha': userSenha});
@@ -87,8 +97,12 @@ class UserModel {
     result.addAll({'userComplemento': userComplemento});
     result.addAll({'userNumero': userNumero});
     result.addAll({'userImage': userImage});
+    result.addAll({'announces': announces.map((x) => x.toMap()).toList()});
+    result.addAll({
+      'favoriteAnnounces': favoriteAnnounces.map((x) => x.toMap()).toList()
+    });
     result.addAll({'id': id});
-  
+
     return result;
   }
 
@@ -101,64 +115,69 @@ class UserModel {
       userCpf: map['userCpf'] ?? '',
       userTelefone: map['userTelefone'] ?? '',
       userCep: map['userCep'] ?? '',
-      userEstado: map['userEstado'] ?? 'Estado não informado',
-      userCidade: map['userCidade'] ?? 'Cidade não informada',
+      userEstado: map['userEstado'] ?? '',
+      userCidade: map['userCidade'] ?? '',
       userBairro: map['userBairro'] ?? '',
       userRua: map['userRua'] ?? '',
       userComplemento: map['userComplemento'] ?? '',
       userNumero: map['userNumero']?.toInt() ?? 0,
       userImage: map['userImage'] ?? '',
+      announces: List<AnnounceModel>.from(
+          map['announces']?.map((x) => AnnounceModel.fromMap(x))),
+      favoriteAnnounces: List<FavoriteAnnounce>.from(
+          map['favoriteAnnounces']?.map((x) => FavoriteAnnounce.fromMap(x))),
       id: map['id']?.toInt() ?? 0,
     );
   }
 
   String toJson() => json.encode(toMap());
+}
 
-  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source));
+class FavoriteAnnounce {
+  final int userId;
+  final int announceId;
+  final AnnounceModel announce;
+  final int id;
+  FavoriteAnnounce({
+    required this.userId,
+    required this.announceId,
+    required this.announce,
+    required this.id,
+  });
 
-  @override
-  String toString() {
-    return 'UserModel(userNomeCompleto: $userNomeCompleto, userEmail: $userEmail, userSenha: $userSenha, userApelido: $userApelido, userCpf: $userCpf, userTelefone: $userTelefone, userCep: $userCep, userEstado: $userEstado, userCidade: $userCidade, userBairro: $userBairro, userRua: $userRua, userComplemento: $userComplemento, userNumero: $userNumero, userImage: $userImage, id: $id)';
+  FavoriteAnnounce copyWith({
+    int? userId,
+    int? announceId,
+    AnnounceModel? announce,
+    int? id,
+  }) {
+    return FavoriteAnnounce(
+      userId: userId ?? this.userId,
+      announceId: announceId ?? this.announceId,
+      announce: announce ?? this.announce,
+      id: id ?? this.id,
+    );
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is UserModel &&
-      other.userNomeCompleto == userNomeCompleto &&
-      other.userEmail == userEmail &&
-      other.userSenha == userSenha &&
-      other.userApelido == userApelido &&
-      other.userCpf == userCpf &&
-      other.userTelefone == userTelefone &&
-      other.userCep == userCep &&
-      other.userEstado == userEstado &&
-      other.userCidade == userCidade &&
-      other.userBairro == userBairro &&
-      other.userRua == userRua &&
-      other.userComplemento == userComplemento &&
-      other.userNumero == userNumero &&
-      other.userImage == userImage &&
-      other.id == id;
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    result.addAll({'userId': userId});
+    result.addAll({'announceId': announceId});
+    result.addAll({'announce': announce.toMap()});
+    result.addAll({'id': id});
+
+    return result;
   }
 
-  @override
-  int get hashCode {
-    return userNomeCompleto.hashCode ^
-      userEmail.hashCode ^
-      userSenha.hashCode ^
-      userApelido.hashCode ^
-      userCpf.hashCode ^
-      userTelefone.hashCode ^
-      userCep.hashCode ^
-      userEstado.hashCode ^
-      userCidade.hashCode ^
-      userBairro.hashCode ^
-      userRua.hashCode ^
-      userComplemento.hashCode ^
-      userNumero.hashCode ^
-      userImage.hashCode ^
-      id.hashCode;
+  factory FavoriteAnnounce.fromMap(Map<String, dynamic> map) {
+    return FavoriteAnnounce(
+      userId: map['userId']?.toInt() ?? 0,
+      announceId: map['announceId']?.toInt() ?? 0,
+      announce: AnnounceModel.fromMap(map['announce']),
+      id: map['id']?.toInt() ?? 0,
+    );
   }
+
+  String toJson() => json.encode(toMap());
 }
