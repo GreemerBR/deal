@@ -14,6 +14,9 @@ class BodyCategories extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final list = ref.watch(categoriesStateNotifierProvider);
 
+    // print(list.announces[4]);
+ 
+   
     return ListView.builder(
       physics: BouncingScrollPhysics(),
       itemCount: list.announces.length,
