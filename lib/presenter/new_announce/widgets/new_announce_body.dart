@@ -28,14 +28,14 @@ class _NewAnnounceBodyState extends ConsumerState<NewAnnounceBody> {
   TextEditingController priceController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
 
-  var id;
+  int id = 0;
 
   void getId() async {
     Response responseId;
     var dioId = Dio();
     responseId = await dioId.get(
         'http://zuplae.vps-kinghost.net:8082/api/user/email/${user.email}');
-    id = responseId;
+    id = responseId.data;
   }
 
   int dropdownValueSelected = 1;
@@ -115,7 +115,7 @@ class _NewAnnounceBodyState extends ConsumerState<NewAnnounceBody> {
                   'anunValor': double.parse(priceController.text),
                   'anunImage': base64Encode(announceImage.state!),
                   'categoriesId': dropdownValueSelected,
-                  'userId': 2
+                  'userId': id
                 };
 
                 Response response;
