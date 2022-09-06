@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:app_2/core/models/announce_model.dart';
@@ -7,26 +5,24 @@ import 'package:flutter/material.dart';
 
 import '../../../core/models/user_model.dart';
 
-
 class BodyAnnouncement extends StatelessWidget {
-  const BodyAnnouncement({
-    Key? key,
-    required this.product,
-    required this.userRelatedToAd
-  }) : super(key: key);
+  const BodyAnnouncement(
+      {Key? key, required this.product, required this.userRelatedToAd})
+      : super(key: key);
 
   final AnnounceModel product;
   final UserModel userRelatedToAd;
+
   @override
   Widget build(BuildContext context) {
-
     return Center(
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30),
+            padding: const EdgeInsets.only(bottom: 30),
             child: Image.memory(
               base64Decode(product.anunImage),
+              cacheHeight: 300,
             ),
           ),
           Container(
@@ -63,7 +59,7 @@ class BodyAnnouncement extends StatelessWidget {
                             child: Text(
                               '${userRelatedToAd.userRua}, ${userRelatedToAd.userNumero} - ${product.anunData}',
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 15,
                                 color: Color.fromARGB(255, 196, 196, 196),
                               ),
                             ),

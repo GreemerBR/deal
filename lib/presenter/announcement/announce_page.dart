@@ -1,12 +1,13 @@
 import 'package:app_2/core/models/announce_model.dart';
 import 'package:app_2/core/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'widgets/body_announcement.dart';
 
 // ignore: must_be_immutable
-class AnnoucementPage extends StatefulWidget {
+class AnnoucementPage extends StatefulHookConsumerWidget {
   AnnoucementPage({
     Key? key,
     this.isFavorite = false,
@@ -18,16 +19,16 @@ class AnnoucementPage extends StatefulWidget {
   AnnounceModel product;
   UserModel userRelatedToAd;
   @override
-  State<AnnoucementPage> createState() => _AnnoucementPageState();
+  ConsumerState<AnnoucementPage> createState() => _AnnoucementPageState();
 }
 
-class _AnnoucementPageState extends State<AnnoucementPage> {
-  void makeFavorite() {
-    setState(() {
-      widget.isFavorite = !widget.isFavorite;
-    });
-  }
+final favoriteStateProvider = StateProvider(
+  (ref) {
+    return false;
+  },
+);
 
+class _AnnoucementPageState extends ConsumerState<AnnoucementPage> {
   void launchWhatsApp() async {
     try {
       await launch(
@@ -56,10 +57,10 @@ class _AnnoucementPageState extends State<AnnoucementPage> {
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
               onPressed: () {
-                makeFavorite();
+                ref.read(favoriteStateProvider.state).state = !ref.read(favoriteStateProvider.state).state;
               },
               icon: Icon(
-                widget.isFavorite
+                ref.watch(favoriteStateProvider.state).state
                     ? Icons.favorite_outlined
                     : Icons.favorite_outline_sharp,
                 color: (widget.isFavorite ? Colors.white : Colors.grey),
