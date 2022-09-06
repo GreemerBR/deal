@@ -129,7 +129,7 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                     "id": userInfo.id,
                   },
                 );
-
+                var user = ref.watch(userStateNotifierProvider);
                 await ref.watch(userStateNotifierProvider.notifier).getUser();
                 navigatorKey.currentState!.pop();
                 Navigator.pop(context);

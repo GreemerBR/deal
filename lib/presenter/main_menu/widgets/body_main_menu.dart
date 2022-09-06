@@ -12,7 +12,7 @@ import 'user_card.dart';
 class BodyMainMenu extends HookConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    // ref.read(userStateNotifierProvider.notifier).getUser();
+    
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

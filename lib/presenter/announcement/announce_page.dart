@@ -32,10 +32,15 @@ class _AnnoucementPageState extends ConsumerState<AnnoucementPage> {
   void launchWhatsApp() async {
     try {
       await launch(
-        'https://api.whatsapp.com/send?phone=5545991318552&text=Ol%C3%A1%2C%20eu%20vi%20seu%20an%C3%BAncio%20no%20Deal.%20Podemos%20conversar%3F',
+        'https://api.whatsapp.com/send?phone=55${widget.userRelatedToAd.userTelefone}&text=Ol%C3%A1%2C%20eu%20vi%20seu%20an%C3%BAncio%20no%20Deal.%20Podemos%20conversar%3F',
       );
     } catch (e) {
-      print('Erro ao enviar mensagem.');
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Text('Erro ao enviar a mensagem');
+        },
+      );
     }
   }
 
@@ -57,7 +62,8 @@ class _AnnoucementPageState extends ConsumerState<AnnoucementPage> {
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
               onPressed: () {
-                ref.read(favoriteStateProvider.state).state = !ref.read(favoriteStateProvider.state).state;
+                ref.read(favoriteStateProvider.state).state =
+                    !ref.read(favoriteStateProvider.state).state;
               },
               icon: Icon(
                 ref.watch(favoriteStateProvider.state).state

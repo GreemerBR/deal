@@ -1,14 +1,16 @@
 import 'dart:convert';
 
+import 'package:app_2/core/general_providers.dart';
 import 'package:app_2/core/models/announce_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/models/user_model.dart';
 import '../../announcement/announce_page.dart';
 
 // ignore: must_be_immutable
-class CardProductAd extends StatefulWidget {
+class CardProductAd extends StatefulHookConsumerWidget {
   CardProductAd({
     Key? key,
     required this.productInformation,
@@ -20,21 +22,34 @@ class CardProductAd extends StatefulWidget {
   final String imageLink;
   bool isFavorite;
   @override
-  State<CardProductAd> createState() => _CardProductAdState();
+  ConsumerState<CardProductAd> createState() => _CardProductAdState();
 }
 
-class _CardProductAdState extends State<CardProductAd> {
-  void makeFavorite() {
+class _CardProductAdState extends ConsumerState<CardProductAd> {
+  void makeFavorite() async {
+    if (!widget.isFavorite) {
+      await Dio().post(
+        'http://zuplae.vps-kinghost.net:8082/api/favoriteannounce/',
+        data: {
+          "userId": await ref.watch(userStateNotifierProvider)!.id,
+          "anunId": widget.productInformation.id
+        },  
+      );
+    } else {
+      await Dio().delete(
+        'http://zuplae.vps-kinghost.net:8082/api/favoriteannounce/${widget.productInformation.id}',
+      );
+    }
+    widget.isFavorite = !widget.isFavorite;
     setState(
-      () {
-        widget.isFavorite = !widget.isFavorite;
-      },
+      () {},
     );
   }
 
   Future<UserModel> getUserFromAd() async {
     var result = await Dio().get(
-        'http://zuplae.vps-kinghost.net:8082/api/user/${widget.productInformation.userId}');
+      'http://zuplae.vps-kinghost.net:8082/api/user/${widget.productInformation.userId}',
+    );
 
     return UserModel.fromMap(result.data);
   }

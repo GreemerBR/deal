@@ -30,6 +30,7 @@ class _RegisterState extends ConsumerState<Register> {
   late ByteData imgDefault;
 
   Future signUp() async {
+    var userSNP = ref.read(userStateNotifierProvider.notifier);
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -46,7 +47,7 @@ class _RegisterState extends ConsumerState<Register> {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-    ref.watch(userStateNotifierProvider.notifier).getUser();
+    userSNP.getUser();
     navigatorKey.currentState!.pop();
   }
 
