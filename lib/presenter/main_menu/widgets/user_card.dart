@@ -9,8 +9,6 @@ import 'avatar.dart';
 class UserCard extends HookConsumerWidget {
   UserCard({Key? key}) : super(key: key);
 
-  // final user = FirebaseAuth.instance.currentUser!;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userNotifier = ref.watch(userStateNotifierProvider);

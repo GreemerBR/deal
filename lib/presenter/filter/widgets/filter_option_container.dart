@@ -22,6 +22,7 @@ class _FilterOptionContainerState extends State<FilterOptionContainer> {
   var items = ['Selecione...'];
 
   void initState() {
+    super.initState();
     items.addAll(widget.option);
   }
 

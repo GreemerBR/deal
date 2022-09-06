@@ -27,14 +27,7 @@ class MyProfilePage extends StatelessWidget {
             Icons.arrow_back_rounded,
           ),
           onPressed: () {
-           Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return IsLoggedPage();
-                },
-              ),
-            );;
+            Navigator.pop(context);
           },
         ),
         actions: [
@@ -42,7 +35,7 @@ class MyProfilePage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
+                Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
                       return ProfileEditorPage();

@@ -18,8 +18,8 @@ class _IsLoggedPageState extends ConsumerState<IsLoggedPage> {
   Widget build(BuildContext context) {
     final user = ref.watch(userStateNotifierProvider);
     if (user == null) {
-        FirebaseAuth.instance.signOut();
-      }
+      FirebaseAuth.instance.signOut();
+    }
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {

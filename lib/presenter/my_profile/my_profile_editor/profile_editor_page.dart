@@ -2,14 +2,21 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:app_2/core/general_providers.dart';
+import 'package:app_2/main.dart';
+import 'package:app_2/presenter/my_profile/my_profile_editor/widgets/profile_summary_informations_editor.dart';
+import 'package:app_2/presenter/my_profile/my_profile_page.dart';
+
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+
 import '../../../core/general_providers.dart';
 import '../my_profile_page.dart';
+
 import 'widgets/profile_list_informations.dart';
 import 'widgets/profile_summary_informations_editor.dart';
 
@@ -83,7 +90,7 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
             Icons.arrow_back_rounded,
           ),
           onPressed: () {
-            Navigator.pushReplacement(
+            Navigator.pop(
               context,
               MaterialPageRoute(
                 builder: (context) {
@@ -101,7 +108,14 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                 Icons.save,
               ),
               onPressed: () async {
-                Dio().put(
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+                await Dio().put(
                   "http://zuplae.vps-kinghost.net:8082/api/user",
                   data: {
                     "userNomeCompleto": userInfo.userNomeCompleto,
@@ -121,14 +135,10 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                     "id": userInfo.id,
                   },
                 );
-
+                var user = ref.watch(userStateNotifierProvider);
                 await ref.watch(userStateNotifierProvider.notifier).getUser();
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) {
-                    return MyProfilePage();
-                  },
-                ));
-                setState(() {});
+                navigatorKey.currentState!.pop();
+                Navigator.pop(context);
               },
             ),
           ),
@@ -197,16 +207,18 @@ class _ProfileEditorPageState extends ConsumerState<ProfileEditorPage> {
                         controller: cepController,
                       ),
                       ProfileListInformation(
-                        initialText: userInfo.userEstado == 'Estado não informado'
-                            ? ''
-                            : userInfo.userEstado,
+                        initialText:
+                            userInfo.userEstado == 'Estado não informado'
+                                ? ''
+                                : userInfo.userEstado,
                         boxLabel: 'Estado',
                         controller: estadoController,
                       ),
                       ProfileListInformation(
-                        initialText: userInfo.userCidade == 'Cidade não informada'
-                            ? ''
-                            : userInfo.userCidade,
+                        initialText:
+                            userInfo.userCidade == 'Cidade não informada'
+                                ? ''
+                                : userInfo.userCidade,
                         boxLabel: 'Cidade',
                         controller: cidadeController,
                       ),

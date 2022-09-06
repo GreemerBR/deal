@@ -53,7 +53,7 @@ class _ProfileSummaryInformationsEditorState
             Padding(
               padding: const EdgeInsets.only(top: 15),
               child: Text(
-                userInfo.userNomeCompleto,
+                userInfo.userApelido == '' ? userInfo.userNomeCompleto : userInfo.userApelido,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,

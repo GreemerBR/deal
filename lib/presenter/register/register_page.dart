@@ -7,9 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+
 import '../../core/app_assets.dart';
 import '../../core/general_providers.dart';
 import '../../main.dart';
+
 import '../login/widgets/default_button.dart';
 import '../login/widgets/default_input.dart';
 import '../login/widgets/default_title.dart';
@@ -28,6 +30,7 @@ class _RegisterState extends ConsumerState<Register> {
   late ByteData imgDefault;
 
   Future signUp() async {
+    var userSNP = ref.read(userStateNotifierProvider.notifier);
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -44,7 +47,7 @@ class _RegisterState extends ConsumerState<Register> {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-    ref.watch(userStateNotifierProvider.notifier).getUser();
+    userSNP.getUser();
     navigatorKey.currentState!.pop();
   }
 

@@ -1,11 +1,10 @@
-import '../../categories/categories_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../categories/categories_page.dart';
 
 class CategoriesCards extends HookConsumerWidget {
-  final String title;
+  final Map<String, int> title;
   final IconData icon;
 
   const CategoriesCards({
@@ -19,7 +18,7 @@ class CategoriesCards extends HookConsumerWidget {
     const color = Color.fromARGB(255, 192, 180, 225);
     const textColor = Color.fromARGB(255, 153, 152, 152);
     return InkWell(
-      onTap: () {
+      onTap: () async {
         ref.read(titleStateProvider.state).state = title;
 
         Navigator.of(context).push(
@@ -51,7 +50,7 @@ class CategoriesCards extends HookConsumerWidget {
             ],
           ),
           Text(
-            title,
+            title.keys.first,
             style: TextStyle(
               color: textColor,
             ),

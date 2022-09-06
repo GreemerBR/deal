@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/general_providers.dart';
 import '../../my_profile/my_profile_page.dart';
 
 class Avatar extends StatefulHookConsumerWidget {

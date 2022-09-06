@@ -1,14 +1,17 @@
+import 'dart:convert';
+
+import 'package:app_2/core/models/announce_model.dart';
 import 'package:flutter/material.dart';
 
-import 'slide_component_announces.dart';
+import '../../../core/models/user_model.dart';
 
 class BodyAnnouncement extends StatelessWidget {
-  const BodyAnnouncement({
-    Key? key,
-    required this.product,
-  }) : super(key: key);
+  const BodyAnnouncement(
+      {Key? key, required this.product, required this.userRelatedToAd})
+      : super(key: key);
 
-  final Map<String, dynamic> product;
+  final AnnounceModel product;
+  final UserModel userRelatedToAd;
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +19,10 @@ class BodyAnnouncement extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30),
-            child: SlideComponentAnnounces(
-              listCarousel: [
-                product['AnunImage1'],
-                product['AnunImage2'],
-                product['AnunImage3'],
-              ],
+            padding: const EdgeInsets.only(bottom: 30),
+            child: Image.memory(
+              base64Decode(product.anunImage),
+              cacheHeight: 300,
             ),
           ),
           Container(
@@ -37,7 +37,7 @@ class BodyAnnouncement extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 15),
                             child: Text(
-                              'R\$ ${product['AnunValor'].toStringAsFixed(2)}',
+                              'R\$ ${product.anunValor.toStringAsFixed(2)}',
                               style: TextStyle(
                                 fontSize: 40,
                               ),
@@ -46,7 +46,7 @@ class BodyAnnouncement extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 15, top: 5),
                             child: Text(
-                              product['AnunTitulo'],
+                              product.anunTitulo,
                               style: TextStyle(
                                 fontSize: 25,
                                 color: Color.fromARGB(255, 196, 196, 196),
@@ -57,9 +57,9 @@ class BodyAnnouncement extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 15, top: 5),
                             child: Text(
-                              '${product['AnunEndereco']} - ${product['AnunData']}',
+                              '${userRelatedToAd.userRua}, ${userRelatedToAd.userNumero} - ${product.anunData}',
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 15,
                                 color: Color.fromARGB(255, 196, 196, 196),
                               ),
                             ),
@@ -93,7 +93,7 @@ class BodyAnnouncement extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 75),
                               child: Text(
-                                product['AnunDescri'],
+                                product.anunDescri,
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Color.fromARGB(255, 196, 196, 196),

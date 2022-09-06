@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../core/app_assets.dart';
+import '../../core/general_providers.dart';
 import '../is_logged/is_logged_page.dart';
 import '../login/widgets/default_title.dart';
 import 'widgets/animated_slide_up.dart';
 
-class SecondSplashScreen extends StatefulWidget {
+class SecondSplashScreen extends StatefulHookConsumerWidget {
   const SecondSplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SecondSplashScreen> createState() => _SecondSplashScreenState();
+  ConsumerState<SecondSplashScreen> createState() => _SecondSplashScreenState();
 }
 
-class _SecondSplashScreenState extends State<SecondSplashScreen> {
+class _SecondSplashScreenState extends ConsumerState<SecondSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onVerticalDragUpdate: (details) {
+      onVerticalDragUpdate: (details) async{
         int sensitivity = 8;
         if (details.delta.dy < -sensitivity) {
+          ref.read(userStateNotifierProvider.notifier).getUser();
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
