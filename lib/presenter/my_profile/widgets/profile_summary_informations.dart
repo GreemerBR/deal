@@ -51,9 +51,9 @@ class _ProfileSummaryInformationsState
               Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: Text(
-                  userInfo.userApelido == ''
-                      ? userInfo.userNomeCompleto
-                      : userInfo.userApelido,
+                  userNotifier.userApelido == ''
+                      ? userNotifier.userNomeCompleto
+                      : userNotifier.userApelido,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,

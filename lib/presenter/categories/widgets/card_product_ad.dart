@@ -32,12 +32,16 @@ class _CardProductAdState extends ConsumerState<CardProductAd> {
         'http://zuplae.vps-kinghost.net:8082/api/favoriteannounce/',
         data: {
           "userId": await ref.watch(userStateNotifierProvider)!.id,
-          "anunId": widget.productInformation.id
+          "announceId": widget.productInformation.id
         },  
       );
     } else {
       await Dio().delete(
-        'http://zuplae.vps-kinghost.net:8082/api/favoriteannounce/${widget.productInformation.id}',
+        'http://zuplae.vps-kinghost.net:8082/api/favoriteannounce/delete',
+        queryParameters: {
+          "userId": ref.watch(userStateNotifierProvider)!.id,
+          "announceId": widget.productInformation.id
+        }
       );
     }
     widget.isFavorite = !widget.isFavorite;
@@ -57,6 +61,7 @@ class _CardProductAdState extends ConsumerState<CardProductAd> {
   @override
   void initState() {
     super.initState();
+  
   }
 
   @override

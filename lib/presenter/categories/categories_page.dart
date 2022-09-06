@@ -1,3 +1,4 @@
+import 'package:app_2/core/general_providers.dart';
 import 'package:app_2/core/notifiers/categories_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,6 +15,16 @@ class CategoriesPage extends HookConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            size: 30,
+          ),
+          onPressed: () async {
+            await ref.read(userStateNotifierProvider.notifier).getUser();
+            Navigator.pop(context);
+          },
+        ),
         // actions: [
         //   Padding(
         //     padding: const EdgeInsets.only(right: 20),

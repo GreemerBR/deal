@@ -30,7 +30,7 @@ class _LoginWidgetState extends ConsumerState<LoginWidget> {
   }
 
   Future signIn() async {
-    var userSNP = ref.read(userStateNotifierProvider.notifier);
+    var userSNP = await ref.read(userStateNotifierProvider.notifier);
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -46,7 +46,7 @@ class _LoginWidgetState extends ConsumerState<LoginWidget> {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-    userSNP.getUser();
+     userSNP.getUser();
 
     navigatorKey.currentState!.pop();
   }

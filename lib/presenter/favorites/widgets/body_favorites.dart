@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BodyFavorites extends StatelessWidget {
+import '../../../core/general_providers.dart';
+
+class BodyFavorites extends HookConsumerWidget {
   const BodyFavorites({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(userStateNotifierProvider);
+    return ListView.builder(
       physics: BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          // CardProductAd(
-          //   productName: 'Fritadeira Eletrica Nell',
-          //   productPrice: 55,
-          //   productLocation: 'Ponta Aguda - 08/07 às 20:00',
-          //   imageLink: imgAirFryer,
-          //   isFavorite: true,
-          // ),
-        ],
-      ),
+      itemCount: user!.favoriteAnnounces.length,
+      itemBuilder: (context, index) {
+        return SizedBox.shrink();
+        // return CardProductAd(
+        //   productInformation: user.favoriteAnnounces[index],
+        //   imageLink: user.favoriteAnnounces[index].anunImage,
+        //   isFavorite: true,
+        // );
+      },
     );
   }
 }
