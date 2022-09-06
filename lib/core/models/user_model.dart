@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:app_2/core/models/announce_model.dart';
+import 'announce_model.dart';
 
 class UserModel {
   final String userNomeCompleto;
@@ -18,7 +18,7 @@ class UserModel {
   final int userNumero;
   final String userImage;
   final List<AnnounceModel> announces;
-  final List<FavoriteAnnounceModel> favoriteAnnounces;
+  final List<FavoriteAnnounce> favoriteAnnounces;
   final int id;
   UserModel({
     required this.userNomeCompleto,
@@ -56,7 +56,7 @@ class UserModel {
     int? userNumero,
     String? userImage,
     List<AnnounceModel>? announces,
-    List<FavoriteAnnounceModel>? favoriteAnnounces,
+    List<FavoriteAnnounce>? favoriteAnnounces,
     int? id,
   }) {
     return UserModel(
@@ -82,7 +82,7 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
-  
+
     result.addAll({'userNomeCompleto': userNomeCompleto});
     result.addAll({'userEmail': userEmail});
     result.addAll({'userSenha': userSenha});
@@ -98,9 +98,11 @@ class UserModel {
     result.addAll({'userNumero': userNumero});
     result.addAll({'userImage': userImage});
     result.addAll({'announces': announces.map((x) => x.toMap()).toList()});
-    result.addAll({'favoriteAnnounces': favoriteAnnounces.map((x) => x.toMap()).toList()});
+    result.addAll({
+      'favoriteAnnounces': favoriteAnnounces.map((x) => x.toMap()).toList()
+    });
     result.addAll({'id': id});
-  
+
     return result;
   }
 
@@ -120,94 +122,62 @@ class UserModel {
       userComplemento: map['userComplemento'] ?? '',
       userNumero: map['userNumero']?.toInt() ?? 0,
       userImage: map['userImage'] ?? '',
-      announces: List<AnnounceModel>.from(map['announces']?.map((x) => AnnounceModel.fromMap(x))),
-      favoriteAnnounces: List<FavoriteAnnounceModel>.from(map['favoriteAnnounces']?.map((x) => FavoriteAnnounceModel.fromMap(x))),
+      announces: List<AnnounceModel>.from(
+          map['announces']?.map((x) => AnnounceModel.fromMap(x))),
+      favoriteAnnounces: List<FavoriteAnnounce>.from(
+          map['favoriteAnnounces']?.map((x) => FavoriteAnnounce.fromMap(x))),
       id: map['id']?.toInt() ?? 0,
     );
   }
 
   String toJson() => json.encode(toMap());
-
-
-  @override
-  int get hashCode {
-    return userNomeCompleto.hashCode ^
-      userEmail.hashCode ^
-      userSenha.hashCode ^
-      userApelido.hashCode ^
-      userCpf.hashCode ^
-      userTelefone.hashCode ^
-      userCep.hashCode ^
-      userEstado.hashCode ^
-      userCidade.hashCode ^
-      userBairro.hashCode ^
-      userRua.hashCode ^
-      userComplemento.hashCode ^
-      userNumero.hashCode ^
-      userImage.hashCode ^
-      announces.hashCode ^
-      favoriteAnnounces.hashCode ^
-      id.hashCode;
-  }
 }
 
-class FavoriteAnnounceModel {
+class FavoriteAnnounce {
   final int userId;
   final int announceId;
+  final AnnounceModel announce;
   final int id;
-  FavoriteAnnounceModel({
+  FavoriteAnnounce({
     required this.userId,
     required this.announceId,
+    required this.announce,
     required this.id,
   });
 
-  FavoriteAnnounceModel copyWith({
+  FavoriteAnnounce copyWith({
     int? userId,
     int? announceId,
+    AnnounceModel? announce,
     int? id,
   }) {
-    return FavoriteAnnounceModel(
+    return FavoriteAnnounce(
       userId: userId ?? this.userId,
       announceId: announceId ?? this.announceId,
+      announce: announce ?? this.announce,
       id: id ?? this.id,
     );
   }
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
-  
+
     result.addAll({'userId': userId});
     result.addAll({'announceId': announceId});
+    result.addAll({'announce': announce.toMap()});
     result.addAll({'id': id});
-  
+
     return result;
   }
 
-  factory FavoriteAnnounceModel.fromMap(Map<String, dynamic> map) {
-    return FavoriteAnnounceModel(
+  factory FavoriteAnnounce.fromMap(Map<String, dynamic> map) {
+    return FavoriteAnnounce(
       userId: map['userId']?.toInt() ?? 0,
       announceId: map['announceId']?.toInt() ?? 0,
+      announce: AnnounceModel.fromMap(map['announce']),
       id: map['id']?.toInt() ?? 0,
     );
   }
 
   String toJson() => json.encode(toMap());
-
-  factory FavoriteAnnounceModel.fromJson(String source) => FavoriteAnnounceModel.fromMap(json.decode(source));
-
-  @override
-  String toString() => 'FavoriteAnnounce(userId: $userId, announceId: $announceId, id: $id)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is FavoriteAnnounceModel &&
-      other.userId == userId &&
-      other.announceId == announceId &&
-      other.id == id;
-  }
-
-  @override
-  int get hashCode => userId.hashCode ^ announceId.hashCode ^ id.hashCode;
 }

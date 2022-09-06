@@ -92,7 +92,6 @@ class _NewAnnounceBodyState extends ConsumerState<NewAnnounceBody> {
               onChanged: (Object? value) {
                 dropdownValueSelected = int.parse(value.toString());
                 setState(() {});
-                print(dropdownValueSelected);
               },
             ),
             SizedBox(
@@ -126,9 +125,7 @@ class _NewAnnounceBodyState extends ConsumerState<NewAnnounceBody> {
                   data: body,
                   options: Options(headers: headers),
                 );
-                print(
-                  response.data.toString(),
-                );
+            
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => MainMenuPage()),
                 );

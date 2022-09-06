@@ -12,7 +12,7 @@ class GoogleButton extends StatelessWidget {
       buttonType: ButtonType.google,
       btnText: 'Cadastrar com Google',
       onPressed: () {
-        print('click');
+       
       },
     );
   }

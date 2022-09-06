@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,10 +19,14 @@ class _SecondSplashScreenState extends ConsumerState<SecondSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onVerticalDragUpdate: (details) async{
+      onVerticalDragUpdate: (details) async {
         int sensitivity = 8;
         if (details.delta.dy < -sensitivity) {
           ref.read(userStateNotifierProvider.notifier).getUser();
+          final user = await ref.watch(userStateNotifierProvider);
+          if (user == null) {
+            FirebaseAuth.instance.signOut();
+          }
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {

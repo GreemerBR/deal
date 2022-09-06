@@ -31,8 +31,6 @@ class BodyCategories extends HookConsumerWidget {
             );
           }
         }
-        // print(favorite);
-
         return CardProductAd(
           productInformation: list.announces[index],
           imageLink: list.announces[index].anunImage,
