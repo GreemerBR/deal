@@ -1,4 +1,4 @@
-import 'package:app_2/core/app_assets.dart';
+import 'app_assets.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 

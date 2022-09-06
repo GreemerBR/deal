@@ -1,17 +1,15 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:app_2/core/app_assets.dart';
-import 'package:app_2/core/general_providers.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/database.dart';
+import '../../core/app_assets.dart';
+import '../../core/general_providers.dart';
 import '../../main.dart';
-import '../is_logged/is_logged_page.dart';
 import '../login/widgets/default_button.dart';
 import '../login/widgets/default_input.dart';
 import '../login/widgets/default_title.dart';

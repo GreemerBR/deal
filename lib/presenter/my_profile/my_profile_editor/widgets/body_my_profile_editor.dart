@@ -171,12 +171,12 @@
 //                             : snapshot.data![0]["UserRua"],
 //                         boxLabel: 'Rua',
 //                         controller: widget.ruaController,
-//                       ),
+//                    ),
 //                       ProfileListInformation(
 //                         initialText: snapshot.data![0]["UserNumero"] == null
 //                             ? ''
 //                             : snapshot.data![0]["UserNumero"].toString(),
-//                         boxLabel: 'Número',
+//                         boxLabel: 'Número',   
 //                         controller: widget.numeroController,
 //                       ),
 //                       ProfileListInformation(

@@ -1,5 +1,5 @@
-import 'package:app_2/core/models/user_model.dart';
-import 'package:app_2/core/notifiers/user_notifier.dart';
+import 'models/user_model.dart';
+import 'notifiers/user_notifier.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

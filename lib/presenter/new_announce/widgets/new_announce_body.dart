@@ -2,21 +2,18 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:app_2/presenter/my_profile/my_profile_editor/profile_editor_page.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-
-
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
 import 'upload_text_option.dart';
 
-  final announceImageProvider = StateProvider<Uint8List?>( (ref) => null );
+  final announceImageProvider = StateProvider<Uint8List?>( (ref) => Uint8List(0) );
 
 class NewAnnounceBody extends StatefulHookConsumerWidget {
   NewAnnounceBody({Key? key}) : super(key: key);

@@ -7,12 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/database.dart';
 import '../../../../core/general_providers.dart';
-
-// final imageStateProvider = StateProvider((ref) {
-//   return Uint8List();
-// });
 
 // ignore: must_be_immutable
 class ProfileSummaryInformationsEditor extends StatefulHookConsumerWidget {
