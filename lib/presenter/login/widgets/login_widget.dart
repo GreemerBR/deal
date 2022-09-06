@@ -1,4 +1,4 @@
-import 'package:app_2/core/general_providers.dart';
+import '../../../core/general_providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

@@ -9,8 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/general_providers.dart';
 
-
-
+// ignore: must_be_immutable
 class ProfileSummaryInformationsEditor extends StatefulHookConsumerWidget {
   Uint8List? image;
   ProfileSummaryInformationsEditor({

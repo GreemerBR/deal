@@ -8,14 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-
-
 import 'bottom_announce_button.dart';
 import 'image_upload_container.dart';
 import 'upload_category_dropdown.dart';
 import 'upload_text_option.dart';
 
-  final announceImageProvider = StateProvider<Uint8List?>( (ref) => null );
+  final announceImageProvider = StateProvider<Uint8List?>( (ref) => Uint8List(0) );
 
 class NewAnnounceBody extends StatefulHookConsumerWidget {
   NewAnnounceBody({Key? key}) : super(key: key);
@@ -104,7 +102,7 @@ class NewAnnounceBody extends StatefulHookConsumerWidget {
             BottomAnnounceButton(func: () async {
               getId();
               DateTime atualDate = new DateTime.now();
-              var formatter = new DateFormat('dd/MM/yyyy');
+              var formatter = new DateFormat('dd-MM-yyyy');
               String formattedDate = formatter.format(atualDate);
               Map<String, dynamic> headers = {
                 "accept": 'Application/json',

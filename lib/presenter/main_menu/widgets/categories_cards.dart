@@ -1,4 +1,3 @@
-import 'package:app_2/core/notifiers/categories_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

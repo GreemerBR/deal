@@ -1,4 +1,4 @@
-import 'package:app_2/presenter/splash_screen/splash_screen_page.dart';
+import 'presenter/splash_screen/splash_screen_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:firebase_core/firebase_core.dart';

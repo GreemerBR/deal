@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../core/app_assets.dart';
+import '../../../core/general_providers.dart';
+
 
 class ProfileSummaryInformations extends StatefulHookConsumerWidget {
   ProfileSummaryInformations({
@@ -18,7 +20,6 @@ class ProfileSummaryInformations extends StatefulHookConsumerWidget {
 
 class _ProfileSummaryInformationsState
     extends ConsumerState<ProfileSummaryInformations> {
-  late var userInfo = ref.watch(userStateNotifierProvider)!;
   late Future<List<Map<String, dynamic>>> list;
   final user = FirebaseAuth.instance.currentUser!;
 

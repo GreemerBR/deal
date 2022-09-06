@@ -1,4 +1,4 @@
-import 'package:app_2/presenter/is_logged/is_logged_page.dart';
+import '../is_logged/is_logged_page.dart';
 import 'package:flutter/material.dart';
 
 import 'my_profile_editor/profile_editor_page.dart';
