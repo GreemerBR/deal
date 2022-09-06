@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:app_2/presenter/main_menu/main_menu_page.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -52,7 +51,10 @@ class _ImageUploadContainerState extends ConsumerState<ImageUploadContainer> {
                   onPressed: () {
                     pickImageFromGallery();
                   },
-                  icon: Icon(Icons.photo),
+                  icon: Icon(
+                    Icons.photo,
+                    color: Colors.deepPurple,
+                  ),
                 ),
                 Text(
                   "Inserir Foto...",
@@ -92,11 +94,6 @@ class _ImageUploadContainerState extends ConsumerState<ImageUploadContainer> {
               child: IconButton(
                 onPressed: () {
                   pickImageFromGallery();
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => MainMenuPage(),
-                    ),
-                  );
                 },
                 icon: Icon(Icons.edit),
                 iconSize: 30,
