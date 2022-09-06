@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../core/notifiers/categories_notifier.dart';
 import '../../categories/categories_page.dart';
 
 class CategoriesCards extends HookConsumerWidget {

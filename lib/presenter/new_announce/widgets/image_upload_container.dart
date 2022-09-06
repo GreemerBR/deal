@@ -52,7 +52,10 @@ class _ImageUploadContainerState extends ConsumerState<ImageUploadContainer> {
                   onPressed: () {
                     pickImageFromGallery();
                   },
-                  icon: Icon(Icons.photo),
+                  icon: Icon(
+                    Icons.photo,
+                    color: Colors.deepPurple,
+                  ),
                 ),
                 Text(
                   "Inserir Foto...",
